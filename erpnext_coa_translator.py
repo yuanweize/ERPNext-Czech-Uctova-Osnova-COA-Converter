@@ -4,50 +4,124 @@ import os
 import json
 import time
 import re
+import sys
 import argparse
 import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from itertools import product
 import requests
 import contextlib
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# ================= 配置区域（可被 .env 覆盖） =================
+# ================= Configuration (override via .env) =================
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 1. SiliconFlow API Key
-SILICONFLOW_API_KEY =  os.getenv("SILICONFLOW_API_KEY", "")
+# Provider selection: siliconflow | openrouter | openai | gemini
+PROVIDER = os.getenv("PROVIDER", "siliconflow").lower()
 
-# 2. 模型选择
+# SiliconFlow
+SILICONFLOW_API_KEY = os.getenv("SILICONFLOW_API_KEY", "")
 MODEL_ID = os.getenv("MODEL_ID", "Qwen/Qwen2.5-72B-Instruct")
 
-# 3. 并发数量 (动态上限)
-MAX_WORKERS = int(os.getenv("MAX_WORKERS", "16"))
+# OpenRouter (OpenAI-compatible endpoint)
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "openai/gpt-4o")
 
-# 3b. 单批翻译的词条数量
+# OpenAI (native endpoint)
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+# Gemini (OpenAI-compatible endpoint)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+
+# Concurrency
+MAX_WORKERS = int(os.getenv("MAX_WORKERS", "16"))
 BATCH_SIZE = int(os.getenv("BATCH_SIZE", "8"))
 
-# 4. 货币
+# Currency
 CURRENCY = os.getenv("CURRENCY", "CZK")
 
-# 5. 数据库限制 (ERPNext ID 限制)
+# ERPNext name length limit
 LIMIT = int(os.getenv("LIMIT", "131"))
 
-# 6. 输出前缀（文件名会自动加时间戳到分钟）
+# Output prefix (timestamp to minutes will be appended)
 OUTPUT_PREFIX = os.getenv("OUTPUT_PREFIX", "erpnext_coa_multilingual")
 
-# 数据文件路径
+# Translation toggles
+TRANSLATE_ENABLED = os.getenv("TRANSLATE_ENABLED", "false").strip().lower() == "true"
+DEFAULT_LANGS = ["en", "zh"]
+RAW_TRANSLATE_LANGS = os.getenv("TRANSLATE_LANGS", "en,zh")
+
+
+def parse_lang_codes(raw: str):
+    langs = []
+    for part in raw.split(','):
+        code = part.strip().lower()
+        if code and code not in langs:
+            langs.append(code)
+    return langs
+
+
+def validate_translation_settings(enabled: bool, langs):
+    if not enabled:
+        return []
+    if not langs:
+        langs = list(DEFAULT_LANGS)
+    if len(langs) > 2:
+        print(f"❌ TRANSLATE_LANGS supports at most 2 codes; got: {langs}")
+        sys.exit(1)
+    for code in langs:
+        if len(code) != 2 or not code.isalpha():
+            print(f"❌ Invalid language code '{code}'. Use two-letter codes, e.g., en, zh, de, pl, kr")
+            sys.exit(1)
+    return langs
+
+
+TRANSLATE_LANGS = validate_translation_settings(TRANSLATE_ENABLED, parse_lang_codes(RAW_TRANSLATE_LANGS))
+TARGET_LANGS = TRANSLATE_LANGS if TRANSLATE_ENABLED else []
+
+PROVIDERS = {
+    "siliconflow": {
+        "api_key": SILICONFLOW_API_KEY,
+        "model": MODEL_ID,
+        "base_url": "https://api.siliconflow.cn/v1",
+        "extra_headers": None,
+    },
+    "openrouter": {
+        "api_key": OPENROUTER_API_KEY,
+        "model": OPENROUTER_MODEL,
+        "base_url": "https://openrouter.ai/api/v1",
+        "extra_headers": {"X-Title": "ERPNext Czech COA Converter"},
+    },
+    "openai": {
+        "api_key": OPENAI_API_KEY,
+        "model": OPENAI_MODEL,
+        "base_url": "https://api.openai.com/v1",
+        "extra_headers": None,
+    },
+    "gemini": {
+        "api_key": GEMINI_API_KEY,
+        "model": GEMINI_MODEL,
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "extra_headers": None,
+    },
+}
+
+# Data files
 INPUT_FILE = os.path.join(CURRENT_DIR, 'uctosnova.xml')
 CACHE_FILE = os.path.join(CURRENT_DIR, 'translation_cache.json')
 SECONDARY_CACHE_FILE = os.path.join(CURRENT_DIR, 'translation_cache_Qwen', 'translation_cache.json')
 
 # --- 根节点名称 ---
-ROOT_ASSET  = "Assets - Aktiva - 资产"
-ROOT_LIAB   = "Liabilities - Pasiva - 负债"
+ROOT_ASSET = "Assets - Aktiva - 资产"
+ROOT_LIAB = "Liabilities - Pasiva - 负债"
 ROOT_EQUITY = "Equity - Vlastní kapitál - 权益"
-ROOT_EXP    = "Expenses - Náklady - 费用"
-ROOT_INC    = "Income - Výnosy - 收入"
+ROOT_EXP = "Expenses - Náklady - 费用"
+ROOT_INC = "Income - Výnosy - 收入"
+
 
 def normalize_term(term: str) -> str:
     """Normalize Czech names to avoid cache misses caused by NBSP or stray punctuation."""
@@ -59,11 +133,13 @@ def normalize_term(term: str) -> str:
     term = re.sub(r"\s+", " ", term)
     return term
 
+
 def get_node_text(node, tag_name):
     element = node.find(tag_name)
     if element is not None and element.text is not None:
         return element.text.strip()
     return ""
+
 
 def load_cache():
     if os.path.exists(CACHE_FILE):
@@ -76,10 +152,8 @@ def load_cache():
                 nk = normalize_term(k)
                 if nk != k:
                     changed = True
-                # keep the first occurrence if duplicates collapse after normalization
                 normalized_cache.setdefault(nk, v)
 
-            # 尝试从备用缓存补齐缺失（例如历史翻译文件）
             if os.path.exists(SECONDARY_CACHE_FILE):
                 try:
                     with open(SECONDARY_CACHE_FILE, 'r', encoding='utf-8') as f2:
@@ -87,159 +161,157 @@ def load_cache():
                     for k, v in secondary_raw.items():
                         nk = normalize_term(k)
                         normalized_cache.setdefault(nk, v)
-                except: pass
+                except:
+                    pass
 
             if changed:
                 save_cache(normalized_cache)
             return normalized_cache
-        except: return {}
+        except:
+            return {}
     return {}
+
 
 def save_cache(cache):
     with open(CACHE_FILE, 'w', encoding='utf-8') as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
-def call_siliconflow_api(batch_terms):
-    url = "https://api.siliconflow.cn/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {SILICONFLOW_API_KEY}",
-        "Content-Type": "application/json"
-    }
 
-    prompt = f"""
+def needs_translation_for_langs(cache_entry: dict, target_langs) -> bool:
+    if not target_langs:
+        return False
+    if not cache_entry:
+        return True
+    for lang in target_langs:
+        if not cache_entry.get(f"{lang}_full"):
+            return True
+    return False
+
+
+def build_prompt(batch_terms, target_langs):
+    langs = target_langs or DEFAULT_LANGS
+    lang_list_str = ", ".join(langs)
+    field_lines = []
+    for lang in langs:
+        upper = lang.upper()
+        field_lines.append(f'            "{lang}_full": "Formal {upper} name"')
+        field_lines.append(f'            "{lang}_short": "Concise {upper} abbreviation"')
+    fields_block = ",\n".join(field_lines)
+
+    return f"""
 
     Role: You are a Lead Partner at a Big 4 firm and a former consultant for the Czech Ministry of Finance.
 
     You are the world's leading expert in Decree No. 410/2009 Coll. (Czech Public Sector Accounting).
 
+    Task: Translate Czech COA items into the requested languages with impeccable accuracy.
 
-    Task: Map Czech Governmental Chart of Accounts to IPSAS/IFRS and Chinese Accounting Standards (CAS/ASBE).
+    Target languages (two-letter codes, max 2): {lang_list_str}
 
-
-    ### 🚨 THE "UNBREAKABLE" RULES (Failure = Immediate Project Rejection):
-
-
+    ### ⚠️ Strict Czech-to-target mapping rules:
     1. **"Cizí zdroje" (Fundamental Identity)**:
-
-       - IT IS THE LIABILITIES SIDE OF THE BALANCE SHEET.
-
        - English: MUST be "Liabilities" (NEVER "Resources").
-
        - Chinese: MUST be "负债" (NEVER "外来资源").
 
-
-    2. **"Rezervy" in Liabilities (The Provision Rule)**:
-
-       - In this context, it is a liability for future obligations.
-
+    2. **"Rezervy" (Provisions)**:
        - English: "Provisions" (Never "Reserves").
-
        - Chinese: "预计负债" or "准备金".
 
-
-    3. **"Územní samosprávné celky (ÚSC)" (The Municipality Rule)**:
-
-       - English: "Local Government Units" or "Municipalities".
-
-       - Chinese: "地方政府单位". (Never "领土/自治").
-
-
-    4. **"Organizační složky státu (OSS)" (The Budgetary Rule)**:
-
+    3. **"Státní příspěvkové organizace"**:
        - English: "State Budgetary Organizations".
+       - Chinese: "国家预算单位".
 
-       - Chinese: "国家预算单位". (Never "组织单位").
+    4. **"Územní samosprávný celek"**:
+       - English: "Local Government Units" or "Municipalities".
+       - Chinese: "地方政府单位" (Never "领土/自治").
 
-
-    5. **"Běžný účet" (The Cash Rule)**:
-
+    5. **"Běžný účet"**:
        - English: "Current Bank Account" or "Cash at Bank".
-
        - Chinese: "银行存款".
 
-
     6. **"Jmění" (The Net Assets Rule)**:
-
        - English: "Equity / Net Assets".
-
        - Chinese: "净资产" or "所有者权益".
 
-
     7. **"Ceniny" (The Voucher Rule)**:
-
        - English: "Cash Equivalents (Vouchers/Stamps)".
-
        - Chinese: "有价票证" or "有价证券".
 
-
     ### 💎 Quality Benchmarks:
-
-    - **Terminology**: English must align with **IPSAS** (International Public Sector Accounting Standards). Chinese must align with **CAS (中国企业会计准则)** for commercial logic and **GOP (政府会计准则)** for entity logic.
-
-    - **Logic**: Use "Substance over Form". If a Czech term sounds poetic, translate it to its cold, hard financial meaning.
-
-    - **Abbreviations**: Create professional, standardized abbreviations for the 'short' versions to fit database limits.
-
-      - EN: Use "Accum.", "Depr.", "PPE", "Acct.", "Prov.", "L/T", "S/T".
-
-      - ZH: 使用行业黑话，如 "长期股权投资"->"长投", "累计折旧"->"累折", "应付账款"->"应付", "其他应收款"->"其他应收".
-
+    - **Terminology**: English must align with **IPSAS**; Chinese must align with **CAS/GOP** when applicable.
+    - **Logic**: Use "Substance over Form". If a Czech term sounds poetic, translate its financial meaning.
+    - **Abbreviations**: Provide professional, standardized abbreviations for the short versions to fit database limits.
 
     ### 📥 Input Data:
-
     {json.dumps(batch_terms, ensure_ascii=False)}
 
-
     ### 📤 Output Format (Strict JSON):
-
     {{
-
         "Czech Original": {{
-
-            "en_full": "Formal IPSAS/IFRS Name",
-
-            "en_short": "Standard Audit Abbreviation",
-
-            "zh_full": "标准会计准则全称",
-
-            "zh_short": "专业会计简称"
-
+{fields_block}
         }}
-
     }}
 
-    """ 
+    Only return the JSON object. Do not add explanations.
+    """
 
-    data = {
-        "model": MODEL_ID,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.1,
-        "response_format": { "type": "json_object" }
-    }
 
+def post_with_backoff(url, headers, payload, extract_fn):
     backoff = 2
-    for attempt in range(6):
+    for _ in range(6):
         try:
-            response = requests.post(url, headers=headers, data=json.dumps(data), timeout=60)
-            if response.status_code == 200:
-                content = response.json()['choices'][0]['message']['content']
-                return json.loads(content)
-            # 对 429/5xx 做指数回退
-            if response.status_code in (429, 500, 502, 503, 504):
+            resp = requests.post(url, headers=headers, data=json.dumps(payload), timeout=60)
+            if resp.status_code == 200:
+                return extract_fn(resp)
+            if resp.status_code in (429, 500, 502, 503, 504):
                 time.sleep(backoff)
                 backoff = min(backoff * 2, 30)
                 continue
-            # 其他错误直接跳过
         except Exception:
             time.sleep(backoff)
             backoff = min(backoff * 2, 30)
+def call_openai_compatible(batch_terms, target_langs, api_key, model, base_url, extra_headers=None):
     return None
 
+
+def call_openai_compatible(batch_terms, target_langs, api_key, model, base_url, extra_headers=None):
+    url = base_url.rstrip("/") + "/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    if extra_headers:
+        headers.update({k: v for k, v in extra_headers.items() if v})
+
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": build_prompt(batch_terms, target_langs)}],
+        "temperature": 0.1,
+        "response_format": {"type": "json_object"}
+    }
+    return post_with_backoff(url, headers, payload, lambda r: json.loads(r.json()['choices'][0]['message']['content']))
+
+
+def call_provider(batch_terms, target_langs):
+    config = PROVIDERS.get(PROVIDER)
+    if not config:
+        print(f"Unknown provider: {PROVIDER}")
+        return None
+    return call_openai_compatible(
+        batch_terms,
+        target_langs,
+        api_key=config["api_key"],
+        model=config["model"],
+        base_url=config["base_url"],
+        extra_headers=config.get("extra_headers")
+    )
+
+
 def pick_worker_count(total_terms: int) -> int:
-    # 词条少就少开线程，最多不超过 MAX_WORKERS
     return max(4, min(MAX_WORKERS, max(4, total_terms // 5)))
 
-def run_batches(terms, cache, batch_size, workers, stage_label="首轮"):
+
+def run_batches(terms, cache, batch_size, workers, target_langs, stage_label="main"):
     batches = [terms[i:i + batch_size] for i in range(0, len(terms), batch_size)]
     total_batches = len(batches)
     total_terms = len(terms)
@@ -247,25 +319,26 @@ def run_batches(terms, cache, batch_size, workers, stage_label="首轮"):
     done_batches = 0
     missing_terms = []
 
-    # tqdm 进度条（可选，未安装则用文本回退；可用环境变量 DISABLE_TQDM=1 关闭）
     pbar = None
     if os.environ.get("DISABLE_TQDM") != "1":
         try:
             from tqdm import tqdm
-            pbar = tqdm(total=total_terms, desc=f"{stage_label} 翻译", unit="term", dynamic_ncols=True)
+            pbar = tqdm(total=total_terms, desc=f"{stage_label} translation", unit="term", dynamic_ncols=True)
         except Exception:
             pbar = None
 
-    print(f"   -> {stage_label}: 分配线程 {workers}，批大小 {batch_size}")
+    print(f"   -> {stage_label}: threads {workers}, batch size {batch_size}")
     with ThreadPoolExecutor(max_workers=workers) as executor:
-        future_to_batch = {executor.submit(call_siliconflow_api, b): b for b in batches}
+        future_to_batch = {executor.submit(call_provider, b, target_langs): b for b in batches}
         for future in as_completed(future_to_batch):
             batch = future_to_batch[future]
             result = future.result()
             if result:
                 for k, v in result.items():
-                    cache[normalize_term(k)] = v
-            # 标记这一批中仍未落库的词条
+                    nk = normalize_term(k)
+                    existing = cache.get(nk, {}) if isinstance(cache.get(nk, {}), dict) else {}
+                    merged = {**existing, **v}
+                    cache[nk] = merged
             for t in batch:
                 if normalize_term(t) not in cache:
                     missing_terms.append(t)
@@ -273,52 +346,65 @@ def run_batches(terms, cache, batch_size, workers, stage_label="首轮"):
             done_terms += len(batch)
             if pbar:
                 pbar.update(len(batch))
-                pbar.set_postfix_str(f"批 {done_batches}/{total_batches}")
+                pbar.set_postfix_str(f"batch {done_batches}/{total_batches}")
             else:
-                print(f"   -> {stage_label}进度: 已完成 {done_terms}/{total_terms} 词条 ({done_batches}/{total_batches} 批)", flush=True)
+                print(f"   -> {stage_label} progress: {done_terms}/{total_terms} terms ({done_batches}/{total_batches} batches)", flush=True)
 
     if pbar:
         with contextlib.suppress(Exception):
             pbar.close()
     return missing_terms
 
-def build_name_smartly(code, cz, trans_data):
-    en_full = trans_data.get('en_full', "")
-    zh_full = trans_data.get('zh_full', "")
-    if not trans_data or not en_full or en_full == cz:
+
+def build_name_smartly(code, cz, trans_data, target_langs):
+    if not target_langs or not trans_data:
         return f"{code} - {cz}"[:LIMIT]
 
-    en_short = trans_data.get('en_short', en_full)
-    zh_short = trans_data.get('zh_short', zh_full)
+    lang_entries = []
+    for lang in target_langs:
+        full = trans_data.get(f"{lang}_full", "")
+        short = trans_data.get(f"{lang}_short", full)
+        if full:
+            lang_entries.append((lang, full, short))
 
-    # 1. 三语全称
-    v1 = f"{code} - {cz} / {en_full} / {zh_full}"
-    if len(v1) <= LIMIT: return v1
+    if not lang_entries:
+        return f"{code} - {cz}"[:LIMIT]
 
-    # 2. 中文精简
-    v2 = f"{code} - {cz} / {en_full} / {zh_short}"
-    if len(v2) <= LIMIT: return v2
+    for keep_count in range(len(lang_entries), 0, -1):
+        subset = lang_entries[:keep_count]
+        choice_lists = []
+        for _, full, short in subset:
+            options = []
+            if full:
+                options.append(full)
+            if short and short != full:
+                options.append(short)
+            if not options:
+                options.append(full)
+            choice_lists.append(options)
 
-    # 3. 双语精简
-    v3 = f"{code} - {cz} / {en_short} / {zh_short}"
-    if len(v3) <= LIMIT: return v3
-
-    # 4. 弃中保英全
-    v4 = f"{code} - {cz} / {en_full}"
-    if len(v4) <= LIMIT: return v4
-
-    # 5. 弃中保英简
-    v5 = f"{code} - {cz} / {en_short}"
-    if len(v5) <= LIMIT: return v5
+        for combo in product(*choice_lists):
+            parts = [cz] + list(combo)
+            candidate = f"{code} - " + " / ".join(parts)
+            if len(candidate) <= LIMIT:
+                return candidate
 
     return f"{code} - {cz}"[:LIMIT]
 
-def build_output_file(output_dir: str) -> str:
+
+def build_output_file(output_dir: str, target_langs) -> str:
     ts = datetime.datetime.now().strftime("%Y%m%d_%H%M")
-    fname = f"{OUTPUT_PREFIX}_{ts}.csv"
+    # Use underscore separator for Windows-safe filenames (no pipes)
+    langs_label = "_".join(["CZ"] + [code.upper() for code in target_langs]) if target_langs else "CZ"
+    fname = f"{OUTPUT_PREFIX}_{langs_label}_{ts}.csv"
     target_dir = output_dir or CURRENT_DIR
     os.makedirs(target_dir, exist_ok=True)
     return os.path.join(target_dir, fname)
+
+
+def provider_key_missing() -> bool:
+    config = PROVIDERS.get(PROVIDER, {})
+    return not config.get("api_key")
 
 
 def process_xml(offline: bool = False, output_dir: str = ""):
@@ -337,31 +423,36 @@ def process_xml(offline: bool = False, output_dir: str = ""):
             valid_rows.append(row)
             name = get_node_text(row, 'polvyk_nazev')
             norm_name = normalize_term(name)
-            if norm_name: unique_names.append(norm_name)
+            if norm_name:
+                unique_names.append(norm_name)
 
-    # 去重，避免重复翻译
     unique_names = list(dict.fromkeys(unique_names))
-    
     valid_rows.sort(key=lambda x: len(get_node_text(x, 'polvyk')))
 
     cache = load_cache()
-    new_terms = [t for t in list(unique_names) if t not in cache]
-    
-    if new_terms and not offline:
+    target_langs = TARGET_LANGS
+    translation_requested = bool(target_langs)
+    new_terms = []
+    if translation_requested:
+        for t in list(unique_names):
+            entry = cache.get(t)
+            if needs_translation_for_langs(entry, target_langs):
+                new_terms.append(t)
+
+    if translation_requested and new_terms and not offline:
         total_terms = len(new_terms)
-        print(f"\n>>> 🚀 启动翻译: {total_terms} 个词条")
+        print(f"\n>>> 🚀 启动翻译({','.join(target_langs)}): {total_terms} 个词条")
         batch_size = BATCH_SIZE
         workers = pick_worker_count(total_terms)
 
-        missing_terms = run_batches(new_terms, cache, batch_size, workers, stage_label="首轮")
+        missing_terms = run_batches(new_terms, cache, batch_size, workers, target_langs, stage_label="首轮")
 
-        # 补偿重试（最多两轮），避免出现“未报错但有遗漏”
         retry_round = 1
         while missing_terms and retry_round <= 2:
             print(f"   -> 补偿第{retry_round}轮: {len(missing_terms)} 词条")
             retry_batch_size = min(batch_size, 4)
             retry_workers = min(workers, 4)
-            missing_terms = run_batches(missing_terms, cache, retry_batch_size, retry_workers, stage_label=f"补偿{retry_round}")
+            missing_terms = run_batches(missing_terms, cache, retry_batch_size, retry_workers, target_langs, stage_label=f"补偿{retry_round}")
             retry_round += 1
 
         if missing_terms:
@@ -370,23 +461,23 @@ def process_xml(offline: bool = False, output_dir: str = ""):
             print("   -> 翻译已全部落库，无遗漏")
 
         save_cache(cache)
-    elif new_terms and offline:
-        print(f"\n>>> 🚀 发现 {len(new_terms)} 个新词条，但 offline 模式下跳过翻译。它们将以原文写入 CSV。")
+    elif translation_requested and new_terms and offline:
+        print(f"\n>>> 🚀 发现 {len(new_terms)} 个新词条，但 offline 模式下跳过翻译({','.join(target_langs)})。它们将以原文写入 CSV。")
+    elif not translation_requested:
+        print("\n>>> 翻译开关已关闭：仅输出捷克语（cz）到 CSV。")
 
     print(f"\n2. 生成最终 CSV 文件...")
     csv_rows = [
         ["Account Name", "Parent Account", "Account Number", "Parent Account Number", "Is Group", "Account Type", "Root Type", "Account Currency"],
-        [ROOT_ASSET,  "", "", "", "1", "", "Asset", CURRENCY],
-        [ROOT_LIAB,   "", "", "", "1", "", "Liability", CURRENCY],
+        [ROOT_ASSET, "", "", "", "1", "", "Asset", CURRENCY],
+        [ROOT_LIAB, "", "", "", "1", "", "Liability", CURRENCY],
         [ROOT_EQUITY, "", "", "", "1", "", "Equity", CURRENCY],
-        [ROOT_EXP,    "", "", "", "1", "Expense Account", "Expense", CURRENCY],
-        [ROOT_INC,    "", "", "", "1", "Income Account", "Income", CURRENCY],
+        [ROOT_EXP, "", "", "", "1", "Expense Account", "Expense", CURRENCY],
+        [ROOT_INC, "", "", "", "1", "Income Account", "Income", CURRENCY],
     ]
 
     parent_map = {}
-    used_account_numbers = set() # <--- 新增：用于追踪已使用的科目编号
-    count = 0
-
+    used_account_numbers = set()
     for row in valid_rows:
         vykaz = get_node_text(row, 'vykaz')
         polvyk = get_node_text(row, 'polvyk')
@@ -394,85 +485,80 @@ def process_xml(offline: bool = False, output_dir: str = ""):
         norm_name_cz = normalize_term(name_cz)
         synuc = get_node_text(row, 'synuc')
 
-        if vykaz == '3' or not polvyk: continue
+        if vykaz == '3' or not polvyk:
+            continue
 
-        # 确定根类型
         root_type, erp_parent = "", ""
         is_asset = False
         is_liab = False
-        
-        if vykaz == '1': 
+
+        if vykaz == '1':
             if polvyk.startswith(('PASIVA', 'D.', 'D.I', 'D.II', 'D.III', 'D.IV')):
                 root_type, erp_parent = "Liability", ROOT_LIAB
                 is_liab = True
             elif polvyk.startswith(('C.', 'C.I', 'C.II', 'C.III')):
                 root_type, erp_parent = "Equity", ROOT_EQUITY
-            else: 
+            else:
                 root_type, erp_parent = "Asset", ROOT_ASSET
                 is_asset = True
-        elif vykaz == '2': 
-            if polvyk.startswith(('A.', 'A.I', 'A.II', 'A.III', 'A.IV', 'A.V')): 
+        elif vykaz == '2':
+            if polvyk.startswith(('A.', 'A.I', 'A.II', 'A.III', 'A.IV', 'A.V')):
                 root_type, erp_parent = "Expense", ROOT_EXP
-            else: 
+            else:
                 root_type, erp_parent = "Income", ROOT_INC
-        
-        if not root_type: continue
 
-        # ==============================================================================
-        # 🔑 处理 Account Number 的唯一性逻辑 (解决 248 冲突)
-        # ==============================================================================
+        if not root_type:
+            continue
+
         final_acc_num = ""
         if synuc and synuc != '-':
             temp_num = synuc
-            # 如果编号已经用过，且当前是资产或负债端，加上后缀区分
             if temp_num in used_account_numbers:
-                if is_asset: temp_num = f"{synuc}-A"
-                elif is_liab: temp_num = f"{synuc}-L"
-                else: temp_num = f"{synuc}-1" # 其他情况加数字
-            
-            # 如果加了后缀还冲突(极端情况)，继续加后缀直至唯一
+                if is_asset:
+                    temp_num = f"{synuc}-A"
+                elif is_liab:
+                    temp_num = f"{synuc}-L"
+                else:
+                    temp_num = f"{synuc}-1"
+
             idx = 2
             original_temp = temp_num
             while temp_num in used_account_numbers:
                 temp_num = f"{original_temp}-{idx}"
                 idx += 1
-            
+
             final_acc_num = temp_num
             used_account_numbers.add(final_acc_num)
 
-        # 获取翻译并构建名称
         trans_data = cache.get(norm_name_cz, {})
-        group_name = build_name_smartly(polvyk, name_cz, trans_data)
-        
-        # 寻找父级
+        group_name = build_name_smartly(polvyk, name_cz, trans_data, target_langs)
+
         parent_account = ""
         parts = polvyk.rstrip('.').split('.')
         if len(parts) > 1:
             parent_code = ".".join(parts[:-1]) + "."
             parent_account = parent_map.get((vykaz, parent_code))
-        
-        if not parent_account: parent_account = erp_parent
 
-        # 写入组
+        if not parent_account:
+            parent_account = erp_parent
+
         csv_rows.append([group_name, parent_account, "", "", "1", "", root_type, CURRENCY])
         parent_map[(vykaz, polvyk)] = group_name
-        count += 1
 
-        # 写入科目 (Ledger)
         if synuc and synuc != '-':
-            ledger_name = build_name_smartly(final_acc_num, name_cz, trans_data)
+            ledger_name = build_name_smartly(final_acc_num, name_cz, trans_data, target_langs)
             csv_rows.append([ledger_name, group_name, final_acc_num, "", "0", "", root_type, CURRENCY])
-            count += 1
 
-    output_file = build_output_file(output_dir)
+    output_file = build_output_file(output_dir, target_langs)
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         writer.writerows(csv_rows)
 
     print("-" * 30)
-    print(f"✅ 完成！已自动处理重复编号 (如 248 -> 248-A / 248-L)")
+    print(f"✅ 完成！生成 {len(csv_rows)-6} 个会计科目")
     print(f"输出文件: {output_file}")
     print("-" * 30)
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Translate Czech COA to ERPNext multilingual CSV")
@@ -483,7 +569,7 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    if not SILICONFLOW_API_KEY and not args.offline:
-        print("⚠️ 未找到 SILICONFLOW_API_KEY，自动切换 offline 模式（仅使用缓存或原文）")
+    if TRANSLATE_ENABLED and provider_key_missing() and not args.offline:
+        print("⚠️ Missing API key for provider, switching to offline mode (cache/CZ only)")
         args.offline = True
     process_xml(offline=args.offline, output_dir=args.output_dir)

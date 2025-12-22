@@ -2,7 +2,7 @@
 
 English | [Čeština](README.cs.md) | [中文](README.zh.md)
 
-A small utility to convert the Czech public sector Chart of Accounts (Směrná účtová osnova) into an ERPNext-ready multilingual CSV (Czech / English / Chinese). It normalizes source XML, translates with SiliconFlow (Qwen) respecting IPSAS/CAS terminology, handles duplicate account numbers, and stamps output filenames with a timestamp for auditing.
+A small utility to convert the Czech public sector Chart of Accounts (Směrná účtová osnova) into an ERPNext-ready multilingual CSV (Czech / English / Chinese). It normalizes source XML, translates with LLMs (SiliconFlow / OpenRouter / OpenAI / Gemini) respecting IPSAS/CAS terminology, handles duplicate account numbers, and stamps output filenames with a timestamp for auditing.
 
 ## Key features
 - ERPNext-focused mapping of Czech COA to Asset/Liability/Equity/Income/Expense roots.
@@ -14,12 +14,13 @@ A small utility to convert the Czech public sector Chart of Accounts (Směrná �
 - CSV: https://monitor.statnipokladna.gov.cz/data/csv/CIS_POLVYK.CSV
 - XML: https://monitor.statnipokladna.gov.cz/data/xml/uctosnova.xml
 - XSD: https://monitor.statnipokladna.gov.cz/data/xsd/ciselniky/monitorUctosnova.xsd
+- Dataset hub (latest links): https://data.gov.cz/dataset?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F00006947%2F87ab86b58f0a0341acb8cb84ca4094fb
 
 ## Quick start
 1) Python 3.10+ and git clone.
 2) `python -m venv .venv && .venv/Scripts/activate` (Windows) or `source .venv/bin/activate` (Unix).
 3) `pip install -r requirements.txt`.
-4) Copy `.env.example` -> `.env`, fill `SILICONFLOW_API_KEY` (or run offline for demos).
+4) Copy `.env.example` -> `.env`, choose provider (`PROVIDER=siliconflow|openrouter|openai|gemini`), fill the corresponding API key. Translation is off by default (Czech-only); set `TRANSLATE_ENABLED=true` to emit CZ plus your target languages.
 
 ### Offline / full run (uses cache or translates missing terms if API key present):
 ```bash
@@ -30,15 +31,16 @@ python erpnext_coa_translator.py
 - Caches translations in `translation_cache.json` (kept in repo for baseline examples).
 
 ## Configuration (.env)
-- `SILICONFLOW_API_KEY` (required for translation)
-- `MODEL_ID` (default `Qwen/Qwen2.5-72B-Instruct`)
-- `MAX_WORKERS`, `BATCH_SIZE` (concurrency)
-- `CURRENCY` (default CZK)
-- `LIMIT` (ERPNext name length limit, default 131)
-- `OUTPUT_PREFIX` (default `erpnext_coa_multilingual`)
+- `PROVIDER` one of `siliconflow|openrouter|openai|gemini`
+- SiliconFlow: `SILICONFLOW_API_KEY`, `MODEL_ID` (default `Qwen/Qwen2.5-72B-Instruct`)
+- OpenRouter: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (default `openai/gpt-4o`)
+- OpenAI: `OPENAI_API_KEY`, `OPENAI_MODEL` (default `gpt-4o-mini`)
+- Gemini: `GEMINI_API_KEY`, `GEMINI_MODEL` (default `gemini-1.5-flash`), via OpenAI-compatible endpoint
+- Translation: `TRANSLATE_ENABLED` (default `false` for CZ-only output); `TRANSLATE_LANGS` (default `en,zh`, two-letter codes, max 2). Examples: `en,zh` -> cz/en/zh; `kr` -> cz/kr; `de,pl` -> cz/de/pl. More than 2 codes errors. Output filenames include language tags, e.g., `erpnext_coa_CZ_EN_YYYYMMDD_HHMM.csv` (underscore for Windows-safe names).
+- Runtime: `MAX_WORKERS`, `BATCH_SIZE`, `CURRENCY`, `LIMIT`, `OUTPUT_PREFIX`
 
-## SEO / Keywords
-ERPNext chart of accounts, Czech accounting, Směrná účtová osnova, IPSAS mapping, CAS/ASBE, multilingual CSV export, XML to CSV converter, Czech public sector finance.
+## Keywords
+ERPNext chart of accounts, COA, Czech accounting, Směrná účtová osnova, IPSAS mapping, CAS/ASBE, multilingual CSV export, XML to CSV converter, Czech public sector finance.
 
 ## License
 MIT. See [LICENSE](LICENSE).
@@ -47,3 +49,14 @@ MIT. See [LICENSE](LICENSE).
 - `translation_cache_Qwen/` is ignored (scratch). Keep `translation_cache.json` as sample cache.
 - Example data `CIS_POLVYK.CSV` and `uctosnova.xml` are retained for reproducible demos.
 - Output files are timestamped; add preferred sample to docs if needed.
+
+## Project structure (tree)
+- erpnext_coa_translator.py — main translator/generator
+- translation_cache.json — sample cache kept in repo
+- CIS_POLVYK.CSV / uctosnova.xml — official sample data inputs
+- README.md / README.cs.md / README.zh.md — docs (EN/CZ/ZH)
+- requirements.txt — runtime deps
+- .env.example — config template
+- .gitignore — ignores venv, caches, timestamped outputs, scratch folder
+- erpnext_coa_multilingual_YYYYMMDD_HHMM.csv — generated output (gitignored)
+- translation_cache_Qwen/ — scratch cache (gitignored)

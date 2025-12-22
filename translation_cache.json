@@ -1,1898 +1,3163 @@
 {
   "Vratky nepřímých daní": {
-    "en_full": "Refunds of Indirect Taxes",
-    "en_short": "Refunds Ind. Taxes",
+    "en_full": "Rebates of Indirect Taxes",
+    "en_short": "RbIT",
     "zh_full": "间接税退税",
-    "zh_short": "间接税退"
+    "zh_short": "间税退",
+    "de_full": "Rückerstattung indirekter Steuern",
+    "de_short": "Rückerst. ind. Steuern",
+    "ru_full": "Возврат косвенных налогов",
+    "ru_short": "Возвр. косв. налогов"
   },
   "Ostatní daně, poplatky a jiná obdobná peněžitá plnění": {
     "en_full": "Other Taxes, Fees, and Similar Cash Payments",
-    "en_short": "Other Taxes, Fees",
+    "en_short": "Other Taxes",
     "zh_full": "其他税、费及类似现金支付",
-    "zh_short": "其他税费"
+    "zh_short": "其他税费",
+    "de_full": "Andere Steuern, Gebühren und vergleichbare Geldleistungen",
+    "de_short": "ASG",
+    "ru_full": "Другие налоги, сборы и аналогичные денежные платежи",
+    "ru_short": "ДНС"
   },
   "Fond reprodukce majetku, fond investic": {
     "en_full": "Asset Reproduction Fund, Investment Fund",
     "en_short": "Asset Rep. Fund, Inv. Fund",
     "zh_full": "资产再生产基金、投资基金",
-    "zh_short": "资产再生产、投资"
+    "zh_short": "资产再生产、投资",
+    "de_full": "Fonds für Vermögensreproduktion, Investitionsfonds",
+    "de_short": "Fonds Verm. Reprod., Inv.",
+    "ru_full": "Фонд воспроизводства имущества, инвестиционный фонд",
+    "ru_short": "Фонд воспр. имущ., инв."
   },
   "Ostatní úpravy o nepeněžní operace": {
     "en_full": "Other Adjustments for Non-Cash Operations",
     "en_short": "Other Non-Cash Adj.",
     "zh_full": "其他非现金调整",
-    "zh_short": "其他非现金"
+    "zh_short": "其他非现金调整",
+    "de_full": "Weitere Anpassungen für nicht monetäre Transaktionen",
+    "de_short": "Weitere nicht-monetäre Anpassungen",
+    "ru_full": "Прочие корректировки по немонетарным операциям",
+    "ru_short": "Прочие немонетарные корректировки"
   },
   "Ostatní služby": {
     "en_full": "Other Services",
-    "en_short": "Other Serv.",
+    "en_short": "Other Serv",
     "zh_full": "其他服务",
-    "zh_short": "其他服务"
+    "zh_short": "其他服务",
+    "de_full": "Sonstige Dienstleistungen",
+    "de_short": "Sonst. Dienstl.",
+    "ru_full": "Прочие услуги",
+    "ru_short": "Проч. усл."
   },
   "Běžné účty fondů územních samosprávných celků": {
-    "en_full": "Current Accounts of Local Government Units",
-    "en_short": "Local Gov. Units Curr. Acc.",
-    "zh_full": "地方政府单位银行存款",
-    "zh_short": "地方单位存款"
+    "en_full": "Current Bank Accounts of Local Government Unit Funds",
+    "en_short": "CBA LGUF",
+    "zh_full": "地方政府单位基金银行存款",
+    "zh_short": "地基金银存",
+    "de_full": "Girokonten der Fonds der lokalen Selbstverwaltungsgebiete",
+    "de_short": "Giro Fonds LSG",
+    "ru_full": "Текущие счета фондов местных самоуправлений",
+    "ru_short": "Тек. счета фондов МС"
   },
   "Čerpání fondů": {
-    "en_full": "Fund Drawdowns",
-    "en_short": "Fund Draw.",
-    "zh_full": "基金拨款",
-    "zh_short": "基金拨款"
+    "en_full": "Utilization of Funds",
+    "en_short": "Util. of Funds",
+    "zh_full": "基金使用",
+    "zh_short": "基金使用",
+    "de_full": "Auszahlung von Fonds",
+    "de_short": "Ausg. Fonds",
+    "ru_full": "Использование фондов",
+    "ru_short": "Исп. фондов"
   },
   "Rezervy": {
     "en_full": "Provisions",
-    "en_short": "Prov.",
+    "en_short": "Prov",
     "zh_full": "预计负债",
-    "zh_short": "预计负债"
+    "zh_short": "预计负债",
+    "de_full": "Rückstellungen",
+    "de_short": "Rückst.",
+    "ru_full": "Резервы",
+    "ru_short": "Рез."
   },
   "Fondy účetní jednotky": {
     "en_full": "Accounting Unit Funds",
     "en_short": "Fund Acc.",
     "zh_full": "会计单位基金",
-    "zh_short": "会计基金"
+    "zh_short": "会计基金",
+    "de_full": "Fonds der Buchungseinheit",
+    "de_short": "Fonds Buchungseinheit",
+    "ru_full": "Фонды учетной единицы",
+    "ru_short": "Фонды учет. един."
   },
   "Drobný dlouhodobý hmotný majetek": {
     "en_full": "Minor Long-term Tangible Assets",
-    "en_short": "Minor L/T PPE",
-    "zh_full": "次要长期有形资产",
-    "zh_short": "次要长有形"
+    "en_short": "Minor LT Tang. Assets",
+    "zh_full": "小额长期有形资产",
+    "zh_short": "小额长期资产",
+    "de_full": "Kleinigkeiten langfristiger Sachanlagen",
+    "de_short": "Kleinigk. langfr. Sachanl.",
+    "ru_full": "Мелкий долгосрочный материальный актив",
+    "ru_short": "Мелк. долг. мат. актив"
   },
   "Pořízení zboží": {
-    "en_full": "Acquisition of Goods",
-    "en_short": "Acq. Goods",
-    "zh_full": "商品采购",
-    "zh_short": "商品采购"
+    "en_full": "Inventory - Purchased Goods",
+    "en_short": "Inv. PG",
+    "zh_full": "库存 - 外购商品",
+    "zh_short": "外购商品",
+    "de_full": "Einkauf von Waren",
+    "de_short": "Eink. W.",
+    "ru_full": "Приобретение товаров",
+    "ru_short": "Приобр. тов."
   },
   "Kurzové ztráty": {
     "en_full": "Foreign Exchange Losses",
     "en_short": "FX Loss",
     "zh_full": "汇兑损失",
-    "zh_short": "汇兑损"
+    "zh_short": "汇兑损",
+    "de_full": "Währungsschwankungsverluste",
+    "de_short": "Währ. Verluste",
+    "ru_full": "Валютные убытки",
+    "ru_short": "Вал. убытки"
   },
   "Výnosy z prodaného zboží": {
     "en_full": "Revenue from Sale of Goods",
-    "en_short": "Rev. Sale Goods",
+    "en_short": "Sales Rev.",
     "zh_full": "销售商品收入",
-    "zh_short": "销售商品"
+    "zh_short": "销售商品收入",
+    "de_full": "Einnahmen aus dem Verkauf von Waren",
+    "de_short": "Einn. Verk. Waren",
+    "ru_full": "Доходы от продажи товаров",
+    "ru_short": "Дох. прод. тов."
   },
   "Termínované vklady krátkodobé": {
     "en_full": "Short-term Time Deposits",
-    "en_short": "S/T Time Dep.",
+    "en_short": "Short-term TDs",
     "zh_full": "短期定期存款",
-    "zh_short": "短期定存"
+    "zh_short": "短期定期",
+    "de_full": "Kurzfristige terminierte Einlagen",
+    "de_short": "KurzTermEinl",
+    "ru_full": "Краткосрочные срочные депозиты",
+    "ru_short": "КраткСрДеп"
   },
   "Změna stavu zásob": {
-    "en_full": "Change in Inventory Levels",
-    "en_short": "Inv. Change",
-    "zh_full": "库存变动",
-    "zh_short": "库存变动"
+    "en_full": "Change in Inventories",
+    "en_short": "Change in Inv.",
+    "zh_full": "存货的变化",
+    "zh_short": "存货变化",
+    "de_full": "Veränderung des Bestands von Vorräten",
+    "de_short": "Veränderung Vorräte",
+    "ru_full": "Изменение остатков запасов",
+    "ru_short": "Изм. запасов"
   },
   "VÝNOSY CELKEM": {
     "en_full": "Total Revenues",
     "en_short": "Total Rev.",
     "zh_full": "总收入",
-    "zh_short": "总收入"
+    "zh_short": "总收入",
+    "de_full": "Gesamteinnahmen",
+    "de_short": "Ges. Einn.",
+    "ru_full": "Общие доходы",
+    "ru_short": "Общ. д."
   },
   "Kurzové rozdíly": {
-    "en_full": "Foreign Exchange Differences",
-    "en_short": "FX Diff.",
-    "zh_full": "外汇差额",
-    "zh_short": "汇差"
+    "en_full": "Exchange Differences",
+    "en_short": "Exch. Diff.",
+    "zh_full": "汇兑差额",
+    "zh_short": "汇兑差额",
+    "de_full": "Wechselkursdifferenzen",
+    "de_short": "WKD",
+    "ru_full": "Валютные разницы",
+    "ru_short": "ВР"
   },
   "Výnosy z prodeje služeb": {
-    "en_full": "Revenue from Sale of Services",
-    "en_short": "Serv. Rev.",
-    "zh_full": "销售服务收入",
-    "zh_short": "服务收入"
+    "en_full": "Proceeds from Sale of Services",
+    "en_short": "Sale of Serv.",
+    "zh_full": "服务销售收入",
+    "zh_short": "服务销售收入",
+    "de_full": "Einnahmen aus dem Verkauf von Dienstleistungen",
+    "de_short": "Einn. Verk. Dienstl.",
+    "ru_full": "Доходы от продажи услуг",
+    "ru_short": "Дох. прод. усл."
   },
   "Poskytnuté zálohy na dlouhodobý nehmotný majetek": {
     "en_full": "Advances for Long-term Intangible Assets",
-    "en_short": "Adv. L/T Intang.",
+    "en_short": "Adv. for L-T Intangibles",
     "zh_full": "长期无形资产预付款",
-    "zh_short": "长期无形预付"
+    "zh_short": "长期无形资产预付",
+    "de_full": "Vorausgezahlte Anzahlungen für langfristige immaterielle Vermögenswerte",
+    "de_short": "Vorauszahl. f. langfr. imm. Verm.",
+    "ru_full": "Предоплаты по долгосрочным нематериальным активам",
+    "ru_short": "Предопл. по долг. немат. акт."
   },
   "Zákonné sociální náklady": {
     "en_full": "Statutory Social Costs",
-    "en_short": "Stat. Soc. Costs",
-    "zh_full": "法定社会保障费用",
-    "zh_short": "法定社保费"
+    "en_short": "Stat Soc Costs",
+    "zh_full": "法定社会费用",
+    "zh_short": "法定社费",
+    "de_full": "Rechtliche Sozialkosten",
+    "de_short": "Rechtl. Sozialk.",
+    "ru_full": "Обязательные социальные расходы",
+    "ru_short": "Обяз. соц. расходы"
   },
   "Ostatní zásoby": {
     "en_full": "Other Inventories",
     "en_short": "Other Inv.",
     "zh_full": "其他存货",
-    "zh_short": "其他存货"
+    "zh_short": "其他存货",
+    "de_full": "Sonstige Vorräte",
+    "de_short": "Sonst. Vorr.",
+    "ru_full": "Прочие запасы",
+    "ru_short": "Проч. зап."
   },
   "Závazky k osobám mimo vybrané vládní instituce": {
     "en_full": "Liabilities to Persons Outside Selected Government Institutions",
-    "en_short": "Liab. to Non-Inst. Pers.",
-    "zh_full": "对非选定政府机构人员的负债",
-    "zh_short": "非机构人员负债"
+    "en_short": "Liab to Non-Selected Gov Inst",
+    "zh_full": "对非选定政府机构外人员的负债",
+    "zh_short": "非选定机构外负债",
+    "de_full": "Verbindlichkeiten gegenüber Personen außerhalb ausgewählter Regierungsinstitutionen",
+    "de_short": "Verbindl. außerhalb Reg.-Inst.",
+    "ru_full": "Обязательства перед лицами, не являющимися выбранными государственными учреждениями",
+    "ru_short": "Обязат. перед лицами"
   },
   "Závazky k vybraným ústředním vládním institucím": {
     "en_full": "Liabilities to Selected Central Government Institutions",
-    "en_short": "Liab. to Sel. Cent. Gov. Inst.",
+    "en_short": "Liab to Sel Cent Gov Inst",
     "zh_full": "对选定中央政府机构的负债",
-    "zh_short": "选定中央机构负债"
+    "zh_short": "选定中央机构负债",
+    "de_full": "Verbindlichkeiten gegenüber ausgewählten zentralen Regierungsinstitutionen",
+    "de_short": "Verbindl. zentrale Reg.-Inst.",
+    "ru_full": "Обязательства перед выбранными центральными государственными учреждениями",
+    "ru_short": "Обязат. перед центр. гос. учр."
   },
   "Jiné oceňovací rozdíly": {
     "en_full": "Other Revaluation Differences",
-    "en_short": "Other Reval. Diff.",
-    "zh_full": "其他重估差异",
-    "zh_short": "其他重估差"
+    "en_short": "Oth. Reval. Diff.",
+    "zh_full": "其他评估差异",
+    "zh_short": "其他评估差",
+    "de_full": "Andere Bewertungsunterschiede",
+    "de_short": "ABU",
+    "ru_full": "Другие оценочные разницы",
+    "ru_short": "ДОР"
   },
   "Výnosy ze sdílených majetkových daní": {
-    "en_full": "Revenue from Shared Property Taxes",
-    "en_short": "Rev. Shared Prop. Tax",
+    "en_full": "Revenues from Shared Property Taxes",
+    "en_short": "Shared Property Tax Revenues",
     "zh_full": "共享财产税收入",
-    "zh_short": "共享财税"
+    "zh_short": "共享财产税",
+    "de_full": "Einnahmen aus den geteilten Vermögenssteuern",
+    "de_short": "Einn. geteilte Verm. Steuern",
+    "ru_full": "Доходы от общих имущественных налогов",
+    "ru_short": "Дох. общ. имущ. налоги"
   },
   "Příjmy z privatizace státního majetku": {
-    "en_full": "Revenue from Privatization of State Assets",
-    "en_short": "Rev. Privat. State Assets",
+    "en_full": "Revenue from Privatization of State Property",
+    "en_short": "Revenue Privatization",
     "zh_full": "国有资产私有化收入",
-    "zh_short": "国资私有化"
+    "zh_short": "国有资产私有化收入",
+    "de_full": "Einnahmen aus der Privatisierung staatlichen Eigentums",
+    "de_short": "Einn. Priv. staatl. Eig.",
+    "ru_full": "Доходы от приватизации государственного имущества",
+    "ru_short": "Дох. прив. гос. им."
   },
   "Náklady ze sdílených daní a poplatků": {
-    "en_full": "Expenses from Shared Taxes and Fees",
-    "en_short": "Exp. Shared Taxes & Fees",
-    "zh_full": "共享税及费用支出",
-    "zh_short": "共享税费"
+    "en_full": "Costs from Shared Taxes and Fees",
+    "en_short": "Shared Taxes & Fees",
+    "zh_full": "共享税和费用",
+    "zh_short": "共享税费",
+    "de_full": "Kosten aus geteilten Steuern und Gebühren",
+    "de_short": "Kosten aus geteilten Steuern/Gebühren",
+    "ru_full": "Расходы из совместно используемых налогов и сборов",
+    "ru_short": "Расх. из совм. налогов/сборов"
   },
   "Výnosy ze spotřebních daní": {
-    "en_full": "Revenue from Consumption Taxes",
-    "en_short": "Rev. Cons. Tax",
+    "en_full": "Revenue from Excise Duties",
+    "en_short": "Excise Revenue",
     "zh_full": "消费税收入",
-    "zh_short": "消费税"
+    "zh_short": "消费税收入",
+    "de_full": "Einnahmen aus den Verbrauchsteuern",
+    "de_short": "Einn. Verbr. St.",
+    "ru_full": "Доходы от акцизов",
+    "ru_short": "Дох. Акцизы"
   },
   "Dohadné účty pasivní": {
-    "en_full": "Provisions",
-    "en_short": "Prov.",
-    "zh_full": "预计负债",
-    "zh_short": "预计负债"
+    "en_full": "Provisional Accounts (Passive Side of the Balance Sheet}",
+    "en_short": "Provisional Acc. (Passive Side}",
+    "zh_full": "预计负债账户（资产负债表的负债方）",
+    "zh_short": "预计负债账户",
+    "de_full": "Schätzkonten (Passivseite}",
+    "de_short": "Schätzk. (Pass.)",
+    "ru_full": "Оценочные счета (пассивные}",
+    "ru_short": "Оц. сч. (пасс.)"
   },
   "Změna stavu krátkodobých pohledávek": {
-    "en_full": "Change in Status of Short-Term Receivables",
-    "en_short": "Chg. S/T Rec.",
-    "zh_full": "短期应收款项变动",
-    "zh_short": "短期应收变动"
+    "en_full": "Change in Short-Term Receivables",
+    "en_short": "Change in ST Rec.",
+    "zh_full": "短期应收款项的变化",
+    "zh_short": "短期应收款项变化",
+    "de_full": "Veränderung des Bestands von kurzfristigen Forderungen",
+    "de_short": "Veränderung kurzfr. Forderungen",
+    "ru_full": "Изменение остатков краткосрочных дебиторской задолженности",
+    "ru_short": "Изм. краткоср. деб. зад."
   },
   "Změna stavu rezerv": {
-    "en_full": "Change in Status of Provisions",
-    "en_short": "Chg. Prov.",
-    "zh_full": "预计负债变动",
-    "zh_short": "预计负债变动"
+    "en_full": "Change in the Status of Provisions",
+    "en_short": "Change in Provisions",
+    "zh_full": "预计负债状态的变化",
+    "zh_short": "预计负债变化",
+    "de_full": "Änderung des Status der Rückstellungen",
+    "de_short": "Änderung Rückstellungen",
+    "ru_full": "Изменение состояния резервов",
+    "ru_short": "Изменение резервов"
   },
   "Přijaté podíly na zisku": {
-    "en_full": "Received Shares of Profit",
-    "en_short": "Rec. Profit Share",
+    "en_full": "Share of Profits Received",
+    "en_short": "Share Profits",
     "zh_full": "收到的利润份额",
-    "zh_short": "收到利润份额"
+    "zh_short": "利润份额",
+    "de_full": "Erhaltene Anteile am Gewinn",
+    "de_short": "Erhaltene Gewinnanteile",
+    "ru_full": "Полученные доли прибыли",
+    "ru_short": "Получ. доли прибыли"
   },
   "Povolenky na emise a preferenční limity": {
-    "en_full": "Emission Allowances and Preferential Limits",
-    "en_short": "Emiss. All. & Pref. Lim.",
+    "en_full": "Emission Permits and Preferential Limits",
+    "en_short": "EPPL",
     "zh_full": "排放许可和优先限额",
-    "zh_short": "排放许可&优先限额"
+    "zh_short": "排放许可",
+    "de_full": "Emissionsgenehmigungen und präferenzielle Obergrenzen",
+    "de_short": "EmisGenehm",
+    "ru_full": "Лимиты на эмиссии и предпочтительные лимиты",
+    "ru_short": "ЛимЭмис"
   },
   "Svěření majetku příspěvkové organizaci": {
-    "en_full": "Transfer of Assets to Grant Recipient Organizations",
-    "en_short": "Asset Trans. to Grant Recip.",
-    "zh_full": "向补助接受组织转让资产",
-    "zh_short": "向补助接受组织转让资产"
+    "de_full": "Übertragung von Vermögen an eine Zuschussorganisation",
+    "de_short": "Übertragung Verm. Zuschussorg.",
+    "en_full": "Transfer of Assets to a Contributory Organization",
+    "en_short": "Asset Transfer",
+    "zh_full": "向补助组织转让资产",
+    "zh_short": "资产转让",
+    "ru_full": "Передача имущества субсидиарной организации",
+    "ru_short": "Передача имущ. субсид. орг."
   },
   "Odpisy": {
-    "en_full": "Depreciation",
-    "en_short": "Depr.",
-    "zh_full": "折旧",
-    "zh_short": "折旧"
+    "en_full": "Write-offs",
+    "en_short": "Write-offs",
+    "zh_full": "注销",
+    "zh_short": "注销",
+    "de_full": "Abschreibungen",
+    "de_short": "Abschreib.",
+    "ru_full": "Амортизация",
+    "ru_short": "Аморт."
   },
   "Ostatní dlouhodobé pohledávky": {
-    "en_full": "Other Long-Term Receivables",
-    "en_short": "Other L/T Rec.",
-    "zh_full": "其他长期应收款",
-    "zh_short": "其他长期应收"
+    "en_full": "Other Long-term Claims",
+    "en_short": "OLTC",
+    "zh_full": "其他长期债权",
+    "zh_short": "其他长期",
+    "de_full": "Andere langfristige Forderungen",
+    "de_short": "And. langfr. Forder.",
+    "ru_full": "Прочие долгосрочные требования",
+    "ru_short": "Проч. долг. тр."
   },
   "Přijaté návratné finanční výpomoci dlouhodobé": {
-    "en_full": "Long-Term Reimbursable Financial Assistance Received",
-    "en_short": "L/T Reimb. Fin. Assist. Rec.",
+    "en_full": "Long-term Reimbursable Financial Assistance Received",
+    "en_short": "LTRFA",
     "zh_full": "收到的长期可偿还财务援助",
-    "zh_short": "收到长期可偿还财务援助"
+    "zh_short": "长期可偿还援助",
+    "de_full": "Langfristige erhaltene rückzahlbare Finanzhilfen",
+    "de_short": "Lfr. erhalt. rückz. Finanzh.",
+    "ru_full": "Долгосрочные полученные возвратные финансовые субсидии",
+    "ru_short": "Долг. получ. возвр. фин. субс."
   },
   "Peněžní toky vyplývající ze změny vlastního kapitálu ( + / - )": {
-    "en_full": "Cash Flows from Changes in Own Capital ( + / - )",
-    "en_short": "Cash Flows from Own Cap. Chg. ( + / - )",
-    "zh_full": "自身资本变动产生的现金流量 ( + / - )",
-    "zh_short": "自身资本变动现金流量 ( + / - )"
+    "en_full": "Cash Flows Resulting from Changes in Own Capital ( + / - )",
+    "en_short": "CF from Changes in OC",
+    "zh_full": "自有资本变动引起的现金流量 ( + / - )",
+    "zh_short": "自有资本变动CF",
+    "de_full": "Geldströme, die sich aus der Veränderung des Eigenkapitals ergeben ( + / - )",
+    "de_short": "Geldstr. v. Veränder. Eig. Kap. ( + / - )",
+    "ru_full": "Денежные потоки, возникающие в результате изменения собственного капитала ( + / - )",
+    "ru_short": "Д. п. от измен. собст. кап. ( + / - )"
   },
   "Výnosy z prodeje dlouhodobého nehmotného majetku": {
-    "en_full": "Gains from Sale of Long-Term Intangible Assets",
-    "en_short": "Gains from Sale of L/T Intang. Assets",
-    "zh_full": "出售长期无形资产的收益",
-    "zh_short": "出售长期无形资产收益"
+    "en_full": "Proceeds from Sale of Long-term Intangible Assets",
+    "en_short": "Sale of L-T Intang.",
+    "zh_full": "长期无形资产销售收入",
+    "zh_short": "长期无形资产收入",
+    "de_full": "Einnahmen aus dem Verkauf von langfristigen immateriellen Vermögenswerten",
+    "de_short": "Einn. a. V. l. i. V.",
+    "ru_full": "Доходы от продажи долгосрочных нематериальных активов",
+    "ru_short": "Дох. от пр. д. н. а."
   },
   "Prodané zboží": {
-    "en_full": "Goods Sold",
-    "en_short": "Goods Sold",
-    "zh_full": "已售商品",
-    "zh_short": "已售商品"
+    "en_full": "Cost of Goods Sold",
+    "en_short": "COGS",
+    "zh_full": "已售商品成本",
+    "zh_short": "已售商品成本",
+    "de_full": "Verkauftes Warenbestand",
+    "de_short": "Verk. Warenbestand",
+    "ru_full": "Проданное товарное запасы",
+    "ru_short": "Прод. товар. запасы"
   },
   "Jiné běžné účty": {
     "en_full": "Other Current Bank Accounts",
-    "en_short": "Other Curr. Acc.",
+    "en_short": "Other Curr Accts",
     "zh_full": "其他银行存款",
-    "zh_short": "其他银行存"
+    "zh_short": "其他银行存款",
+    "de_full": "Andere Girokonten",
+    "de_short": "AndGiro",
+    "ru_full": "Другие текущие счета",
+    "ru_short": "ДрТекСч"
   },
   "Majetkové cenné papíry k obchodování": {
     "en_full": "Trading Financial Assets",
-    "en_short": "Trad. Fin. Assets",
+    "en_short": "TFA",
     "zh_full": "交易性金融资产",
-    "zh_short": "交易金融资"
+    "zh_short": "交金资",
+    "de_full": "Handelswertpapiere",
+    "de_short": "Handels WP",
+    "ru_full": "Торговые ценные бумаги",
+    "ru_short": "Торг. ц. б."
   },
   "Změna, vznik nebo zánik příslušnosti hospodařit s majetkem státu": {
-    "en_full": "Changes in State Property Management Rights",
-    "en_short": "Chg. State Prop. Mgmt.",
-    "zh_full": "国家财产管理权变更",
-    "zh_short": "国家财产变更"
+    "en_full": "Change, Creation, or Cessation of State Property Management",
+    "en_short": "State Prop Mgmt Chg",
+    "zh_full": "国家财产管理的变更、产生或终止",
+    "zh_short": "国家财产管理变更",
+    "de_full": "Veränderung, Entstehung oder Erlöschen der Zuständigkeit für die Verwaltung des Staatsvermögens",
+    "de_short": "Veränderung Zust. Staatsvermögen",
+    "ru_full": "Изменение, возникновение или прекращение полномочий по управлению государственным имуществом",
+    "ru_short": "Изм., возн. или прекр. полном. по управл. гос. имущ."
   },
   "Rezervní fond tvořený ze zlepšeného výsledku hospodaření": {
     "en_full": "Provision Fund from Improved Operating Results",
     "en_short": "Prov. Fund (Imp. Op. Res.)",
     "zh_full": "经营改善准备金",
-    "zh_short": "经营改善准备"
+    "zh_short": "经营改善准备",
+    "de_full": "Reservenfonds aus verbessertem Betriebsergebnis",
+    "de_short": "Reservenfonds Verb. Betr. Erg.",
+    "ru_full": "Резервный фонд, сформированный из улучшенного финансового результата",
+    "ru_short": "Рез. фонд улучш. фин. рез."
   },
   "Příjmový a výdajový účet rozpočtového hospodaření": {
-    "en_full": "Budgetary Revenue and Expenditure Account",
-    "en_short": "Budget Rev. & Exp. Acc.",
+    "en_full": "Revenue and Expenditure Account of Budgetary Operations",
+    "en_short": "Budget Rev. & Exp. Acct.",
     "zh_full": "预算收支账户",
-    "zh_short": "预算收支账"
+    "zh_short": "预算收支账",
+    "de_full": "Einnahmen- und Ausgabenkonto des Haushaltsplans",
+    "de_short": "E/A-Konto Haushaltsplan",
+    "ru_full": "Доходно-расходный счет бюджетного управления",
+    "ru_short": "Д/Р счет бюджета"
   },
   "Krátkodobé pohledávky": {
     "en_full": "Short-term Receivables",
-    "en_short": "S/T Receivables",
+    "en_short": "ST Rec.",
     "zh_full": "短期应收款项",
-    "zh_short": "短期应收"
+    "zh_short": "短期应收",
+    "de_full": "Kurzfristige Forderungen",
+    "de_short": "Kurzfr. F.",
+    "ru_full": "Краткосрочные дебиторские задолженности",
+    "ru_short": "Кратк. деб. з."
   },
   "Mzdové náklady": {
-    "en_full": "Wages and Salaries Expense",
-    "en_short": "Wages & Salaries",
-    "zh_full": "工资及薪金费用",
-    "zh_short": "工资薪金费"
+    "en_full": "Wages and Salaries",
+    "en_short": "Wages",
+    "zh_full": "工资和薪金",
+    "zh_short": "工资",
+    "de_full": "Lohnkosten",
+    "de_short": "Lohnk.",
+    "ru_full": "Затраты на оплату труда",
+    "ru_short": "Затр. на опл. труда"
   },
   "Fond privatizace": {
     "en_full": "Privatization Fund",
     "en_short": "Priv. Fund",
     "zh_full": "私有化基金",
-    "zh_short": "私有化基金"
+    "zh_short": "私有化基金",
+    "de_full": "Privatisierungsfonds",
+    "de_short": "PF",
+    "ru_full": "Фонд приватизации",
+    "ru_short": "ФП"
   },
   "Změna stavu dlouhodobých pohledávek ( + / - )": {
-    "en_full": "Change in Long-Term Receivables (Increase / Decrease) ( + / - )",
-    "en_short": "Chg. L/T Rec. ( + / - )",
-    "zh_full": "长期应收款变动 (增加 / 减少) ( + / - )",
-    "zh_short": "长应收变动 ( + / - )"
+    "en_full": "Change in the Status of Long-term Receivables ( + / - )",
+    "en_short": "Change in LTR",
+    "zh_full": "长期应收款状况的变动 ( + / - )",
+    "zh_short": "长期应收款变动",
+    "de_full": "Veränderung des langfristigen Forderungen ( + / - )",
+    "de_short": "Veränderung Lfr. Forderungen ( + / - )",
+    "ru_full": "Изменение состояния долгосрочных требований ( + / - )",
+    "ru_short": "Изм. сост. дл. треб. ( + / - )"
   },
   "Daň z přidané hodnoty": {
     "en_full": "Value Added Tax",
     "en_short": "VAT",
     "zh_full": "增值税",
-    "zh_short": "增税"
+    "zh_short": "增值税",
+    "de_full": "Umsatzsteuer",
+    "de_short": "USt",
+    "ru_full": "Налог на добавленную стоимость",
+    "ru_short": "НДС"
   },
   "Dlouhodobé závazky z vydaných dluhopisů": {
-    "en_full": "Long-Term Liabilities from Issued Bonds",
-    "en_short": "L/T Liab. from Bonds",
-    "zh_full": "发行债券形成的长期负债",
-    "zh_short": "发行债券长债"
+    "en_full": "Long-term Liabilities from Issued Bonds",
+    "en_short": "LT Liab. from Bonds",
+    "zh_full": "长期负债-发行债券",
+    "zh_short": "长期债券负债",
+    "de_full": "Langfristige Verbindlichkeiten aus ausgegebenen Anleihen",
+    "de_short": "Lfr. Verbindl. a. Anl.",
+    "ru_full": "Долгосрочные обязательства по выпущенным облигациям",
+    "ru_short": "Долг. обяз. по обл."
   },
   "Směnky k inkasu": {
     "en_full": "Bills Receivable",
-    "en_short": "Bills Rec.",
+    "en_short": "B/R",
     "zh_full": "应收票据",
-    "zh_short": "应收票据"
+    "zh_short": "应收票据",
+    "de_full": "Wechsel zur Einlösung",
+    "de_short": "Wechsel z. Einl.",
+    "ru_full": "Векселя к погашению",
+    "ru_short": "Векс. к пог."
   },
   "Výnosy z daně z příjmů fyzických osob": {
     "en_full": "Revenue from Personal Income Tax",
-    "en_short": "Rev. from PIT",
+    "en_short": "PIT Rev.",
     "zh_full": "个人所得税收入",
-    "zh_short": "个税收入"
+    "zh_short": "个税收入",
+    "de_full": "Einnahmen aus der Einkommensteuer für natürliche Personen",
+    "de_short": "EUEPNP",
+    "ru_full": "Доходы от налога на доходы физических лиц",
+    "ru_short": "ДОНДФЛ"
   },
   "Výnosy z dlouhodobého finančního majetku": {
-    "en_full": "Revenue from Long-Term Financial Assets",
-    "en_short": "Rev. from L/T Fin. Assets",
-    "zh_full": "长期金融资产收入",
-    "zh_short": "长金资产收入"
+    "en_full": "Income from Long-term Financial Assets",
+    "en_short": "LTF Asset Income",
+    "zh_full": "长期金融资产收益",
+    "zh_short": "长期金融收益",
+    "de_full": "Einnahmen aus langfristigem Finanzvermögen",
+    "de_short": "Einn. langfr. Fin. V.",
+    "ru_full": "Доходы от долгосрочных финансовых активов",
+    "ru_short": "Дох. долг. фин. акт."
   },
   "Dary": {
+    "de_full": "Spenden",
+    "de_short": "Spenden",
     "en_full": "Donations",
-    "en_short": "Don.",
+    "en_short": "Donations",
     "zh_full": "捐赠",
-    "zh_short": "捐赠"
+    "zh_short": "捐赠",
+    "ru_full": "Дары",
+    "ru_short": "Дары"
   },
   "Účty řízení likvidity státní pokladny a státního dluhu": {
-    "en_full": "Accounts for State Treasury and State Debt Liquidity Management",
-    "en_short": "Acct. for St. Treas. & St. Debt Mgmt.",
-    "zh_full": "国库和国家债务流动性管理账户",
-    "zh_short": "国库债务管理账户"
+    "en_full": "Accounts for State Treasury and Debt Management",
+    "en_short": "Treasury & Debt Mgmt Accts",
+    "zh_full": "国家金库和债务管理账户",
+    "zh_short": "金库债务管理",
+    "de_full": "Konten zur Liquiditätssteuerung der Staatskasse und des Staatsschuldenmanagements",
+    "de_short": "LiqStPokKt",
+    "ru_full": "Счета управления ликвидностью государственной казны и государственного долга",
+    "ru_short": "СчУпрЛик"
   },
   "Prodané cenné papíry a podíly": {
     "en_full": "Disposal of Financial Instruments and Equity Interests",
     "en_short": "Disp. Fin. Inst. & Eq. Int.",
     "zh_full": "处置金融工具和股权投资",
-    "zh_short": "处置金融工具及股权"
+    "zh_short": "处置金融工具及股权",
+    "de_full": "Verkaufte Wertpapiere und Anteile",
+    "de_short": "Verk. Wp. u. Ant.",
+    "ru_full": "Проданные ценные бумаги и доли",
+    "ru_short": "Прод. цб. и д."
   },
   "Daň z příjmů": {
     "en_full": "Income Tax",
     "en_short": "Inc. Tax",
     "zh_full": "所得税",
-    "zh_short": "所得税"
+    "zh_short": "所得税",
+    "de_full": "Einkommensteuer",
+    "de_short": "ESt",
+    "ru_full": "Налог на доходы",
+    "ru_short": "НД"
   },
   "Ocenitelná práva": {
-    "en_full": "Measurable Rights",
-    "en_short": "Meas. Rts.",
-    "zh_full": "可计量权利",
-    "zh_short": "可计量权"
+    "en_full": "Valuable Rights",
+    "en_short": "VR",
+    "zh_full": "可评估权利",
+    "zh_short": "评估权",
+    "de_full": "Bewertungsberechtigungen",
+    "de_short": "BewertPr",
+    "ru_full": "Оценочные права",
+    "ru_short": "ОцПрава"
   },
   "Ostatní finanční náklady": {
     "en_full": "Other Financial Expenses",
     "en_short": "Other Fin. Exp.",
     "zh_full": "其他财务费用",
-    "zh_short": "其他财务费"
+    "zh_short": "其他财务费",
+    "de_full": "Sonstige Finanzkosten",
+    "de_short": "Sonst. Fin. Kosten",
+    "ru_full": "Прочие финансовые расходы",
+    "ru_short": "Проч. фин. расходы"
   },
   "Závazky z upsaných nesplacených cenných papírů a podílů": {
-    "en_full": "Liabilities from Unpaid Securities and Equity Interests",
-    "en_short": "Liab. from Unpd. Sec. & Eq. Int.",
-    "zh_full": "未付证券和股权的负债",
-    "zh_short": "未付证券及股权负债"
+    "en_full": "Liabilities from Endorsed Unpaid Securities and Shares",
+    "en_short": "Endorsed Unpaid Sec. Liab.",
+    "zh_full": "背书未付证券和股份负债",
+    "zh_short": "背书未付证券负债",
+    "de_full": "Verbindlichkeiten aus nicht beglichenen Wertpapieren und Anteilen",
+    "de_short": "VNBWPA",
+    "ru_full": "Обязательства по непогашенным ценным бумагам и долям",
+    "ru_short": "ОПНЦБД"
   },
   "Výsledek hospodaření před zdaněním": {
     "en_full": "Operating Result Before Tax",
-    "en_short": "Op. Res. B/Tax",
+    "en_short": "Op. Result B/Tax",
     "zh_full": "税前经营成果",
-    "zh_short": "税前经营成果"
+    "zh_short": "税前经营成果",
+    "de_full": "Ergebnis der Haushaltsführung vor Steuern",
+    "de_short": "Ergebnis vor Steuern",
+    "ru_full": "Результат хозяйствования до налогообложения",
+    "ru_short": "Рез. до налогообл."
   },
   "Nedokončený dlouhodobý hmotný majetek": {
-    "en_full": "Incomplete Long-Term Tangible Assets",
-    "en_short": "Incomp. L/T Tang. Assets",
+    "en_full": "Incomplete Long-term Tangible Assets",
+    "en_short": "Incomplete LT Tang. Assets",
     "zh_full": "未完成长期有形资产",
-    "zh_short": "未完成长期有形资产"
+    "zh_short": "未完成长期资产",
+    "de_full": "Unvollendete langfristige Sachanlagen",
+    "de_short": "Unvoll. langfr. Sachanl.",
+    "ru_full": "Незавершенные долгосрочные материальные активы",
+    "ru_short": "Незав. долг. мат. активы"
   },
   "Dohadné účty aktivní": {
-    "en_full": "Provisional Accounts (Active Side of the Balance Sheet, i.e., Assets or Liabilities depending on context, but here treated as Assets for mapping purposes in the absence of specific context indicating otherwise.)",
-    "en_short": "Prov. Accts. (Act.)",
-    "zh_full": "预估账户（资产负债表的资产方，根据上下文可能是资产或负债，但在此处映射为资产。）",
-    "zh_short": "预估账户（资产）"
+    "en_full": "Contingent Accounts (Active}",
+    "en_short": "Contingent Accts (Act.)",
+    "zh_full": "或有账户（主动）",
+    "zh_short": "或有账户（主动）",
+    "de_full": "Schätzkonten aktiv",
+    "de_short": "Schätzk. aktiv",
+    "ru_full": "Оценочные счета активные",
+    "ru_short": "Оц. сч. активн."
   },
   "Přeplatky na daních": {
     "en_full": "Tax Overpayments",
-    "en_short": "Tax Overp.",
-    "zh_full": "税款预付",
-    "zh_short": "税预付"
+    "en_short": "Tax Overp",
+    "zh_full": "税款多付",
+    "zh_short": "税款多付",
+    "de_full": "Überzahlungen von Steuern",
+    "de_short": "Überz. Steuern",
+    "ru_full": "Переплаты по налогам",
+    "ru_short": "Переплаты по налогам"
   },
   "NÁKLADY CELKEM": {
     "en_full": "Total Expenses",
-    "en_short": "Tot. Exp.",
+    "en_short": "TE",
     "zh_full": "总费用",
-    "zh_short": "总费"
+    "zh_short": "总费用",
+    "de_full": "Gesamtkosten",
+    "de_short": "Ges. Kosten",
+    "ru_full": "Общие расходы",
+    "ru_short": "Общ. расходы"
   },
   "Výnosy ze sdílených spotřebních daní": {
     "en_full": "Revenues from Shared Consumption Taxes",
-    "en_short": "Rev. from Shared Cons. Taxes",
+    "en_short": "Shared Consumption Tax Revenues",
     "zh_full": "共享消费税收入",
-    "zh_short": "共享消费税"
+    "zh_short": "共享消费税",
+    "de_full": "Einnahmen aus den geteilten Verbrauchsteuern",
+    "de_short": "Einn. geteilte Verbr. Steuern",
+    "ru_full": "Доходы от общих потребительских налогов",
+    "ru_short": "Дох. общ. потреб. налоги"
   },
   "Výsledek hospodaření ve schvalovacím řízení": {
-    "en_full": "Operating Result in Approval Process",
-    "en_short": "Op. Res. in Appr. Proc.",
+    "en_full": "Operating Result in the Approval Process",
+    "en_short": "Approval Proc. Op. Result",
     "zh_full": "审批过程中的经营成果",
-    "zh_short": "审批经营成果"
+    "zh_short": "审批过程经营成果",
+    "de_full": "Ergebnis der Haushaltsführung im Genehmigungsverfahren",
+    "de_short": "Ergebnis Genehmigungsverfahren",
+    "ru_full": "Результат управления в процедуре утверждения",
+    "ru_short": "Резултат утверждения"
   },
   "Rezervní fond z ostatních titulů": {
     "en_full": "Provision Fund from Other Titles",
     "en_short": "Prov. Fund from Other Titles",
     "zh_full": "其他标题的预计负债基金",
-    "zh_short": "其他预计负债基金"
+    "zh_short": "其他预计负债基金",
+    "de_full": "Reservenfonds aus anderen Titeln",
+    "de_short": "Reservenfonds Andere Titel",
+    "ru_full": "Резервный фонд из других источников",
+    "ru_short": "Рез. фонд др. источ."
   },
   "Pořízení materiálu": {
-    "en_full": "Acquisition of Materials",
-    "en_short": "Acq. of Mat.",
+    "en_full": "Material Acquisitions",
+    "en_short": "Mat. Acq.",
     "zh_full": "材料采购",
-    "zh_short": "材料采购"
+    "zh_short": "材料采购",
+    "de_full": "Materialbeschaffung",
+    "de_short": "Mat. Besch.",
+    "ru_full": "Приобретение материалов",
+    "ru_short": "Приобр. мат."
   },
   "Peněžní toky z provozní činnosti": {
     "en_full": "Cash Flows from Operating Activities",
     "en_short": "Cash Flows from Op. Act.",
     "zh_full": "经营活动产生的现金流量",
-    "zh_short": "经营现金流量"
+    "zh_short": "经营活动现金流量",
+    "de_full": "Cashflows aus der betrieblichen Tätigkeit",
+    "de_short": "Betriebliche Cashflows",
+    "ru_full": "Потоки денежных средств от операционной деятельности",
+    "ru_short": "Операционные потоки"
   },
   "Spotřeba jiných neskladovatelných dodávek": {
     "en_full": "Consumption of Other Non-Stockable Supplies",
-    "en_short": "Cons. of Non-Stock. Supp.",
-    "zh_full": "其他非库存物资的消耗",
-    "zh_short": "其他非库存消耗"
+    "en_short": "Consump. Non-Stock",
+    "zh_full": "消耗其他非库存物资",
+    "zh_short": "消耗非库存物资",
+    "de_full": "Verbrauch von anderen nicht lagerfähigen Lieferungen",
+    "de_short": "VerbrNLL",
+    "ru_full": "Потребление других нематериальных поставок",
+    "ru_short": "ПотрНмПост"
   },
   "Oběžná aktiva": {
     "en_full": "Current Assets",
     "en_short": "Curr. Assets",
     "zh_full": "流动资产",
-    "zh_short": "流动资产"
+    "zh_short": "流动资产",
+    "de_full": "Umlaufvermögen",
+    "de_short": "Umlaufv.",
+    "ru_full": "Оборотные активы",
+    "ru_short": "Обор. активы"
   },
   "Dlouhodobý hmotný majetek určený k prodeji": {
-    "en_full": "Non-current Assets Held for Sale",
-    "en_short": "N/C Assets for Sale",
-    "zh_full": "持有待售的非流动资产",
-    "zh_short": "待售非流"
+    "en_full": "Long-term Tangible Assets Held for Sale",
+    "en_short": "L-T Tangibles for Sale",
+    "zh_full": "待售的长期有形资产",
+    "zh_short": "待售长期有形资产",
+    "de_full": "Langfristige materielle Vermögenswerte zur Veräußerung bestimmt",
+    "de_short": "Langfr. mat. Verm. z. Veräuß.",
+    "ru_full": "Долгосрочные материальные активы, предназначенные для продажи",
+    "ru_short": "Долг. мат. акт. для прод."
   },
   "Ostatní finanční výnosy": {
     "en_full": "Other Financial Income",
-    "en_short": "Other Fin. Inc.",
-    "zh_full": "其他金融收入",
-    "zh_short": "其他金融收入"
+    "en_short": "Other Fin. Income",
+    "zh_full": "其他金融收益",
+    "zh_short": "其他金融收入",
+    "de_full": "Sonstige Finanzierungsrevenuen",
+    "de_short": "Sonst. Fin. Rev.",
+    "ru_full": "Прочие финансовые доходы",
+    "ru_short": "Проч. фин. д."
   },
   "Náklady z ostatních sdílených daní a poplatků": {
     "en_full": "Expenses from Other Shared Taxes and Fees",
-    "en_short": "Exp. Other Shared Taxes",
-    "zh_full": "其他共享税和费用支出",
-    "zh_short": "其他共享税"
+    "en_short": "Exp. Other Shared Taxes/Fees",
+    "zh_full": "其他共享税费费用",
+    "zh_short": "其他共享税费",
+    "de_full": "Kosten aus anderen geteilten Steuern und Gebühren",
+    "de_short": "Kosten a. g. St. u. Geb.",
+    "ru_full": "Расходы по другим делящимся налогам и сборам",
+    "ru_short": "Расх. др. д. н. и сб."
   },
   "Krátkodobé přijaté zálohy na transfery": {
-    "en_full": "Short-term Advance Payments Received for Transfers",
-    "en_short": "S/T Adv. Rec. Trans.",
+    "en_full": "Short-term Advance Receipts for Transfers",
+    "en_short": "Short-term Adv. Rec. Trans.",
     "zh_full": "短期收到的转移预付款",
-    "zh_short": "短期转移预"
+    "zh_short": "短期预收款",
+    "de_full": "Kurzfristige erhaltenen Vorschüsse für Transfers",
+    "de_short": "KEVT",
+    "ru_full": "Краткосрочные полученные авансы на переводы",
+    "ru_short": "КОПАП"
   },
   "Pevné termínové operace a opce": {
     "en_full": "Fixed Term Derivatives and Options",
     "en_short": "Fixed Term Deriv. & Opt.",
     "zh_full": "固定期限衍生工具和期权",
-    "zh_short": "固定期限衍"
+    "zh_short": "固定期限衍",
+    "de_full": "Feste Termingeschäfte und Optionen",
+    "de_short": "Feste Term. u. Optionen",
+    "ru_full": "Форвардные сделки и опционы",
+    "ru_short": "Форв. сделки и опц."
   },
   "Krátkodobé závazky z vydaných dluhopisů": {
     "en_full": "Short-term Liabilities from Issued Bonds",
-    "en_short": "S/T Liab. Iss. Bonds",
-    "zh_full": "发行债券的短期负债",
-    "zh_short": "发行债券短"
+    "en_short": "Short-term Bond Liab.",
+    "zh_full": "短期发行债券负债",
+    "zh_short": "短期发行债券负债",
+    "de_full": "Kurzfristige Verbindlichkeiten aus ausgegebenen Anleihen",
+    "de_short": "KVAA",
+    "ru_full": "Краткосрочные обязательства по выпущенным облигациям",
+    "ru_short": "КОВО"
   },
   "Daň z nemovitostí": {
     "en_full": "Property Tax",
-    "en_short": "Prop. Tax",
-    "zh_full": "房产税",
-    "zh_short": "房产税"
+    "en_short": "PrTx",
+    "zh_full": "财产税",
+    "zh_short": "财税",
+    "de_full": "Grundsteuer",
+    "de_short": "Grundst. Steuer",
+    "ru_full": "Налог на недвижимость",
+    "ru_short": "Налог на недв."
   },
   "Krátkodobé zprostředkování transferů": {
-    "en_full": "Short-term Transfer Intermediation",
-    "en_short": "ST Trans. Int.",
+    "en_full": "Short-term Transfer Mediation",
+    "en_short": "Short-term Transfer Mediation",
     "zh_full": "短期转移中介",
-    "zh_short": "短期转移"
+    "zh_short": "短期转移中介",
+    "de_full": "Kurzfristige Vermittlung von Transferzahlungen",
+    "de_short": "Kurzfr. Vermittl. Transf.",
+    "ru_full": "Краткосрочное посредничество в трансферах",
+    "ru_short": "Кратк. посредн. в транс."
   },
   "Výnosy z pronájmu": {
     "en_full": "Rental Income",
     "en_short": "Rent Inc.",
-    "zh_full": "租赁收入",
-    "zh_short": "租赁收入"
+    "zh_full": "租金收入",
+    "zh_short": "租金收入",
+    "de_full": "Einnahmen aus der Vermietung",
+    "de_short": "Einn. Vermiet.",
+    "ru_full": "Доходы от аренды",
+    "ru_short": "Дох. аренда"
   },
   "Dlouhodobé zprostředkování transferů": {
     "en_full": "Long-term Transfer Intermediation",
-    "en_short": "L/T Trans. Int.",
+    "en_short": "LTIT",
     "zh_full": "长期转移中介",
-    "zh_short": "长期转移"
+    "zh_short": "长期转移中介",
+    "de_full": "Langfristige Vermittlung von Transfers",
+    "de_short": "Langfr. Vermitt. Trans.",
+    "ru_full": "Долгосрочное посредничество в трансферах",
+    "ru_short": "Долг. посред. транс."
   },
   "Peněžní toky ze změny oběžných aktiv a krátkodobých závazků ( + / - )": {
-    "en_full": "Cash Flows from Changes in Current Assets and Short-term Liabilities ( + / - )",
-    "en_short": "Cash Flows from Chg. in Curr. Assets & S/T Liab. ( + / - )",
-    "zh_full": "因流动资产和短期负债变化产生的现金流量 ( + / - )",
-    "zh_short": "流动资产变化现金流量 ( + / - )"
+    "en_full": "Cash Flows from Changes in Working Capital and Short-Term Liabilities ( + / - )",
+    "en_short": "Cash Flows from WC & ST Liab. ( + / - )",
+    "zh_full": "营运资本和短期负债变化的现金流量 ( + / - )",
+    "zh_short": "营运资本和短期负债变化 ( + / - )",
+    "de_full": "Cashflows aus der Veränderung der Umlaufvermögenswerte und kurzfristigen Verbindlichkeiten ( + / - )",
+    "de_short": "Cashflows Umlaufvermögenswerte ( + / - )",
+    "ru_full": "Потоки денежных средств от изменения оборотных активов и краткосрочных обязательств ( + / - )",
+    "ru_short": "Потоки от изменения оборотных активов ( + / - )"
   },
   "Zboží na cestě": {
-    "en_full": "Goods in Transit",
-    "en_short": "Goods in Trans.",
-    "zh_full": "在途商品",
-    "zh_short": "在途商品"
+    "en_full": "Inventory - Goods in Transit",
+    "en_short": "Inv. GIT",
+    "zh_full": "库存 - 在途商品",
+    "zh_short": "在途商品",
+    "de_full": "Waren im Transport",
+    "de_short": "W. im Tr.",
+    "ru_full": "Товары в пути",
+    "ru_short": "Тов. в пути"
   },
   "Pohledávky z neukončených finančních operací": {
     "en_full": "Receivables from Uncompleted Financial Operations",
     "en_short": "Receiv. from Uncomp. Fin. Ops.",
     "zh_full": "未完成金融业务的应收账款",
-    "zh_short": "未完成金融应收"
+    "zh_short": "未完成金融应收",
+    "de_full": "Forderungen aus unvollendeten Finanzgeschäften",
+    "de_short": "Forder. unvoll. Finanzg.",
+    "ru_full": "Дебиторская задолженность по незавершенным финансовым операциям",
+    "ru_short": "Деб. зад. по незав. фин. оп."
   },
   "Jiné cenné papíry": {
-    "en_full": "Other Marketable Securities",
-    "en_short": "Other Mkt. Sec.",
-    "zh_full": "其他有价证券",
-    "zh_short": "其他证券"
+    "en_full": "Other Securities",
+    "en_short": "Other Secs",
+    "zh_full": "其他证券",
+    "zh_short": "其他证券",
+    "de_full": "Andere Wertpapiere",
+    "de_short": "AndWP",
+    "ru_full": "Другие ценные бумаги",
+    "ru_short": "ДрЦБ"
   },
   "Dodatečné odvody daně z příjmů": {
     "en_full": "Additional Income Tax Deductions",
-    "en_short": "Add. Inc. Tax Ded.",
+    "en_short": "Addl. Inc. Tax Ded.",
     "zh_full": "额外所得税扣除",
-    "zh_short": "额外所得税"
+    "zh_short": "额外所得税扣除",
+    "de_full": "Zusätzliche Einkommenssteuerabzüge",
+    "de_short": "Zus. ESt-Abz.",
+    "ru_full": "Дополнительные удержания подоходного налога",
+    "ru_short": "Доп. удр. под. н."
   },
   "Zaměstnanci": {
     "en_full": "Employees",
-    "en_short": "Emp.",
-    "zh_full": "员工",
-    "zh_short": "员"
+    "en_short": "Emp",
+    "zh_full": "雇员",
+    "zh_short": "雇员",
+    "de_full": "Personal",
+    "de_short": "Pers.",
+    "ru_full": "Персонал",
+    "ru_short": "Перс."
   },
   "Výnosy ze sdílené daně z příjmů právnických osob": {
-    "en_full": "Revenues from Shared Income Tax on Legal Entities",
-    "en_short": "Rev. Shared Inc. Tax",
-    "zh_full": "共享法人所得税收入",
-    "zh_short": "共享法人税"
+    "en_full": "Revenues from Shared Corporate Income Tax",
+    "en_short": "Shared CIT Revenues",
+    "zh_full": "共享企业所得税收入",
+    "zh_short": "共享企税收入",
+    "de_full": "Einnahmen aus der geteilten Einkommensteuer von juristischen Personen",
+    "de_short": "Einn. geteilte Eink. Steuer jur. Pers.",
+    "ru_full": "Доходы от общей подоходной налога юридических лиц",
+    "ru_short": "Дох. общ. подох. налог юр. лиц"
   },
   "Účty státních finančních aktiv": {
-    "en_full": "State Financial Assets Accounts",
-    "en_short": "St. Fin. Assets",
+    "en_full": "Accounts for State Financial Assets",
+    "en_short": "State Fin Accts",
     "zh_full": "国家金融资产账户",
-    "zh_short": "国家金融资产"
+    "zh_short": "国家金融账户",
+    "de_full": "Konten staatlicher Finanzanlagen",
+    "de_short": "StFinAktKt",
+    "ru_full": "Счета государственных финансовых активов",
+    "ru_short": "СчГФА"
   },
   "Příjmové a výdajové účty rozpočtového hospodaření ( + / - )": {
-    "en_full": "Revenue and Expense Accounts of Budgetary Management",
-    "en_short": "Rev. & Exp. Acc. Budget",
-    "zh_full": "预算管理收入和支出账户",
-    "zh_short": "预算收支"
+    "en_full": "Revenue and Expenditure Accounts of Budgetary Management ( + / - )",
+    "en_short": "Budgetary Rev & Exp ( + / - )",
+    "zh_full": "预算管理的收入和支出账户 ( + / - )",
+    "zh_short": "预算收入与支出 ( + / - )",
+    "de_full": "Einnahmen- und Ausgabenkonten des Haushalts ( + / - )",
+    "de_short": "Einn. u. Ausg. Konten Haush. ( + / - )",
+    "ru_full": "Доходные и расходные счета бюджетного управления ( + / - )",
+    "ru_short": "Дох. и расх. счета бюджета ( + / - )"
   },
   "Dlouhodobé směnky k úhradě": {
     "en_full": "Long-term Bills Payable",
-    "en_short": "L/T Bills Pay.",
+    "en_short": "LT Bills Pay.",
     "zh_full": "长期应付票据",
-    "zh_short": "长期应付"
+    "zh_short": "长期应付票据",
+    "de_full": "Langfristige Wechsel zur Bezahlung",
+    "de_short": "Langfr. Wechsel zur Bezahl.",
+    "ru_full": "Долгосрочные векселя к оплате",
+    "ru_short": "Долгоср. векселя к оплате"
   },
   "Majetkové účasti v osobách s rozhodujícím vlivem": {
     "en_full": "Investments in Associates with Controlling Influence",
-    "en_short": "Ctrl. Invest. Assoc.",
-    "zh_full": "对具有控制权的联营企业的投资",
-    "zh_short": "控制联营投资"
+    "en_short": "Ctrl. Inf. Invest.",
+    "zh_full": "对具有决定性影响的联营企业的投资",
+    "zh_short": "控制性联营投资",
+    "de_full": "Beteiligungen an Gesellschaften mit wesentlichen Einfluss",
+    "de_short": "Beteil. mit wes. Einfluss",
+    "ru_full": "Инвестиции в лица с решающим влиянием",
+    "ru_short": "Инв. в лиц с решающим влиянием"
   },
   "Náklady příštích období": {
-    "en_full": "Deferred Expenses",
-    "en_short": "Def. Exp.",
-    "zh_full": "递延费用",
-    "zh_short": "递延费"
+    "en_full": "Prepaid Expenses",
+    "en_short": "Prepaid Exp.",
+    "zh_full": "预付费用",
+    "zh_short": "预付费用",
+    "de_full": "Kosten für zukünftige Perioden",
+    "de_short": "Kosten zuk. Per.",
+    "ru_full": "Расходы будущих периодов",
+    "ru_short": "Расх. буд. пер."
   },
   "Náklady ze sdílené daně z přidané hodnoty": {
     "en_full": "Expenses from Shared Value Added Tax",
     "en_short": "Exp. Shared VAT",
     "zh_full": "共享增值税费用",
-    "zh_short": "共享增值税"
+    "zh_short": "共享增值税费",
+    "de_full": "Kosten aus der geteilten Mehrwertsteuer",
+    "de_short": "Kosten aus geteilten MwSt.",
+    "ru_full": "Расходы из совместно используемого налога на добавленную стоимость",
+    "ru_short": "Расх. из совм. НДС"
   },
   "Stavby": {
-    "en_full": "Construction in Progress",
-    "en_short": "CIP",
-    "zh_full": "在建工程",
-    "zh_short": "在建"
+    "en_full": "Buildings",
+    "en_short": "Buildings",
+    "zh_full": "建筑物",
+    "zh_short": "建筑物",
+    "de_full": "Bauten",
+    "de_short": "Bauten",
+    "ru_full": "Здания",
+    "ru_short": "Здания"
   },
   "Tvorba a zúčtování opravných položek": {
     "en_full": "Creation and Settlement of Adjusting Items",
-    "en_short": "Adj. Items",
-    "zh_full": "调整事项的产生与结算",
-    "zh_short": "调整事项"
+    "en_short": "Adj. Items Creation & Settl.",
+    "zh_full": "调整项目的形成与结算",
+    "zh_short": "调整项目形成与结算",
+    "de_full": "Bildung und Abwicklung von Korrekturposten",
+    "de_short": "KorrPostBildAbw",
+    "ru_full": "Создание и списание корректирующих записей",
+    "ru_short": "СоздСписКорр"
   },
   "Změna stavu opravných položek": {
-    "en_full": "Change in Status of Adjusting Items",
-    "en_short": "Adj. Status",
-    "zh_full": "调整事项状态的变更",
-    "zh_short": "调整状态"
+    "en_full": "Change in the Status of Corrective Items",
+    "en_short": "Change in Corr. Items",
+    "zh_full": "调整项目状态的变化",
+    "zh_short": "调整项目变化",
+    "de_full": "Änderung des Status der Rechtspositionen",
+    "de_short": "Änderung Rechtspositionen",
+    "ru_full": "Изменение состояния правовых статей",
+    "ru_short": "Изменение правовых статей"
   },
   "Přijaté návratné finanční výpomoci krátkodobé": {
-    "en_full": "Short-term Receivable Financial Assistance",
-    "en_short": "S/T Fin. Assist.",
-    "zh_full": "短期应收财政补助",
-    "zh_short": "短期应收补助"
+    "en_full": "Short-term Received Reimbursable Financial Assistance",
+    "en_short": "SRRA",
+    "zh_full": "短期收到的可偿还财务援助",
+    "zh_short": "短期可偿还财务援助",
+    "de_full": "Erhaltene rückzahlbare kurzfristige Finanzhilfen",
+    "de_short": "Erh. rückz. kurzfr. Finanzh.",
+    "ru_full": "Полученные возвратные краткосрочные финансовые субсидии",
+    "ru_short": "Получ. возвр. кратк. фин. субс."
   },
   "Jiné závazky vůči zaměstnancům": {
     "en_full": "Other Liabilities to Employees",
-    "en_short": "Other Emp. Liab.",
-    "zh_full": "其他对员工的负债",
-    "zh_short": "其他员工负债"
+    "en_short": "Other Emp Liab",
+    "zh_full": "对雇员的其他负债",
+    "zh_short": "其他雇员负债",
+    "de_full": "Andere Verbindlichkeiten gegenüber Mitarbeitern",
+    "de_short": "Andere Verbindl. gegenüber Mitarb.",
+    "ru_full": "Прочие обязательства перед персоналом",
+    "ru_short": "Прочие обяз. перед перс."
   },
   "Náklady z činnosti": {
-    "en_full": "Operating Expenses",
-    "en_short": "Op. Exp.",
-    "zh_full": "经营费用",
-    "zh_short": "经营费"
+    "en_full": "Expenses from Operations",
+    "en_short": "EFO",
+    "zh_full": "经营活动费用",
+    "zh_short": "经营费用",
+    "de_full": "Kosten aus der Tätigkeit",
+    "de_short": "Kosten Tätigkeit",
+    "ru_full": "Расходы от деятельности",
+    "ru_short": "Расх. от деят."
   },
   "Dlouhodobý nehmotný majetek určený k prodeji": {
     "en_full": "Long-term Intangible Assets Held for Sale",
-    "en_short": "L/T Intang. Assets for Sale",
-    "zh_full": "持有待售的长期无形资产",
-    "zh_short": "待售长期无形"
+    "en_short": "L-T Intangibles for Sale",
+    "zh_full": "待售的长期无形资产",
+    "zh_short": "待售长期无形资产",
+    "de_full": "Langfristige immaterielle Vermögenswerte zur Veräußerung bestimmt",
+    "de_short": "Langfr. imm. Verm. z. Veräuß.",
+    "ru_full": "Долгосрочные нематериальные активы, предназначенные для продажи",
+    "ru_short": "Долг. немат. акт. для прод."
   },
   "Důchodové spoření": {
     "en_full": "Pension Savings",
     "en_short": "Pens. Sav.",
     "zh_full": "养老金储蓄",
-    "zh_short": "养老金储蓄"
+    "zh_short": "养老金储",
+    "de_full": "Altersvorsorge",
+    "de_short": "AV",
+    "ru_full": "Пенсионные накопления",
+    "ru_short": "ПН"
   },
   "Dlouhodobý finanční majetek": {
     "en_full": "Long-term Financial Assets",
-    "en_short": "L/T Fin. Assets",
+    "en_short": "LT Fin. Assets",
     "zh_full": "长期金融资产",
-    "zh_short": "长金资"
+    "zh_short": "长期金融资产",
+    "de_full": "Langfristige Finanzanlagen",
+    "de_short": "Langfr. Finanzanl.",
+    "ru_full": "Долгосрочные финансовые активы",
+    "ru_short": "Долг. фин. активы"
   },
   "Ostatní pohledávky ze správy daní": {
     "en_full": "Other Tax Receivables",
     "en_short": "Other Tax Rec.",
     "zh_full": "其他税收债权",
-    "zh_short": "其他税债"
+    "zh_short": "其他税债",
+    "de_full": "Sonstige Forderungen aus Steuerverwaltung",
+    "de_short": "Sonst. Forder. Steuerverw.",
+    "ru_full": "Прочая дебиторская задолженность по налоговой администрации",
+    "ru_short": "Проч. деб. зад. по налог. адм."
   },
   "Pokladna": {
     "en_full": "Cash on Hand",
-    "en_short": "Cash on Hand",
+    "en_short": "Cash",
     "zh_full": "库存现金",
-    "zh_short": "库存现金"
+    "zh_short": "现金",
+    "de_full": "Kasse",
+    "de_short": "Kasse",
+    "ru_full": "Касса",
+    "ru_short": "Касса"
   },
   "Závazky z finančního zajištění": {
-    "en_full": "Liabilities from Financial Guarantees",
-    "en_short": "Fin. Guar. Liab.",
+    "en_full": "Liabilities from Financial Security",
+    "en_short": "Fin. Sec. Liab.",
     "zh_full": "金融担保负债",
-    "zh_short": "金融担保负债"
+    "zh_short": "金融担保负债",
+    "de_full": "Verbindlichkeiten aus Finanzgarantien",
+    "de_short": "VFG",
+    "ru_full": "Обязательства по финансовым гарантиям",
+    "ru_short": "ОПФГ"
   },
   "Dlouhodobý nehmotný majetek": {
-    "en_full": "Long-term Intangible Assets",
-    "en_short": "L/T Int. Assets",
+    "en_full": "Intangible Assets - Long-term",
+    "en_short": "LTIA",
     "zh_full": "长期无形资产",
-    "zh_short": "长无形资"
+    "zh_short": "长无形",
+    "de_full": "Langfristige immaterielle Vermögenswerte",
+    "de_short": "Langfrist. ImmV",
+    "ru_full": "Долгосрочные нематериальные активы",
+    "ru_short": "ДНМатАкт"
   },
   "Software": {
     "en_full": "Software",
-    "en_short": "Software",
+    "en_short": "SW",
     "zh_full": "软件",
-    "zh_short": "软件"
+    "zh_short": "软件",
+    "de_full": "Software",
+    "de_short": "SW",
+    "ru_full": "Программное обеспечение",
+    "ru_short": "ПО"
   },
   "Smluvní pokuty a úroky z prodlení": {
     "en_full": "Contract Penalties and Delay Interest",
-    "en_short": "Cont. Pen. & Del. Int.",
-    "zh_full": "合同违约金及迟延利息",
-    "zh_short": "合同违约金及迟延利息"
+    "en_short": "CnPI",
+    "zh_full": "合同罚金和迟延利息",
+    "zh_short": "合同罚息",
+    "de_full": "Vertragsstrafen und Zinsen für Verzögerung",
+    "de_short": "Vertragsstr. u. Zinsen",
+    "ru_full": "Штрафы по договорам и проценты за просрочку",
+    "ru_short": "Штрафы и % за проср."
   },
   "Výdaje na pořízení dlouhodobých aktiv": {
     "en_full": "Expenditure on Acquisition of Long-term Assets",
-    "en_short": "Exp. on Acq. L/T Assets",
+    "en_short": "Expenditure LT Assets",
     "zh_full": "长期资产购置支出",
-    "zh_short": "长资产购置支出"
+    "zh_short": "长期资产支出",
+    "de_full": "Ausgaben für die Erwerbung von langfristigen Anlagen",
+    "de_short": "Erwerb langfr. Anlagen",
+    "ru_full": "Расходы на приобретение долгосрочных активов",
+    "ru_short": "Приобр. долг. активов"
   },
   "Krátkodobé poskytnuté zálohy": {
     "en_full": "Short-term Advances Provided",
-    "en_short": "S/T Adv.",
-    "zh_full": "短期预付款",
-    "zh_short": "短期预付"
+    "en_short": "S/T Adv Prov",
+    "zh_full": "提供的短期预付款",
+    "zh_short": "提供的短期预付",
+    "de_full": "Kurzfristige vorgezahlte Anzahlungen",
+    "de_short": "Kurzfr. Vorgez. Anzahl.",
+    "ru_full": "Краткосрочные авансы, предоставленные",
+    "ru_short": "Краткоср. авансы"
   },
   "Celková změna stavu peněžních prostředků": {
-    "en_full": "Total Change in Cash and Cash Equivalents",
-    "en_short": "Total Cash Chg.",
-    "zh_full": "现金及现金等价物的总变动",
-    "zh_short": "现金总变动"
+    "en_full": "Total Change in the Status of Cash and Cash Equivalents",
+    "en_short": "Total Change in Cash",
+    "zh_full": "现金及现金等价物状况的总变动",
+    "zh_short": "现金状况总变动",
+    "de_full": "Gesamtveränderung des Geldbestands",
+    "de_short": "Gesamtveränderung Geldbestand",
+    "ru_full": "Общее изменение состояния денежных средств",
+    "ru_short": "Общ. изм. сост. ден. средств"
   },
   "Běžné účty fondů organizačních složek státu": {
-    "en_full": "Current Bank Accounts of State Budgetary Organizations",
-    "en_short": "SBO Curr. Acc.",
-    "zh_full": "国家预算单位的银行存款",
-    "zh_short": "预算单位存款"
+    "en_full": "Current Bank Accounts of State Organizational Unit Funds",
+    "en_short": "CBA SOUF",
+    "zh_full": "国家组织单位基金银行存款",
+    "zh_short": "国组基银存",
+    "de_full": "Girokonten der Fonds der staatlichen Organisationsstrukturen",
+    "de_short": "Giro Fonds OS",
+    "ru_full": "Текущие счета фондов организационных структур государства",
+    "ru_short": "Тек. счета фондов ОСГ"
   },
   "Spotřeba materiálu": {
-    "en_full": "Consumption of Materials",
-    "en_short": "Mat. Cons.",
+    "en_full": "Material Consumption",
+    "en_short": "MC",
     "zh_full": "材料消耗",
-    "zh_short": "材料消耗"
+    "zh_short": "材料消耗",
+    "de_full": "Materialverbrauch",
+    "de_short": "Mat. Verbrauch",
+    "ru_full": "Потребление материалов",
+    "ru_short": "Потр. мат."
   },
   "Výsledek hospodaření běžného účetního období": {
-    "en_full": "Result of Operations for the Regular Accounting Period",
-    "en_short": "Reg. Period Res.",
-    "zh_full": "常规会计期间的经营成果",
-    "zh_short": "常规经营成果"
+    "en_full": "Operating Result of the Current Financial Year",
+    "en_short": "Curr. Year Op. Result",
+    "zh_full": "当前财政年度经营成果",
+    "zh_short": "当前年度经营成果",
+    "de_full": "Ergebnis des laufenden Buchhaltezeitraums",
+    "de_short": "Ergebnis lauf. Periode",
+    "ru_full": "Результат управления текущего отчетного периода",
+    "ru_short": "Резултат текущего периода"
   },
   "Náklady z přecenění reálnou hodnotou": {
     "en_full": "Costs from Revaluation to Fair Value",
     "en_short": "Reval. Costs",
     "zh_full": "按公允价值重新计量的成本",
-    "zh_short": "公允价值重估成本"
+    "zh_short": "公允价值重估成本",
+    "de_full": "Kosten der Anpassung an den realen Wert",
+    "de_short": "Anpass. Kosten",
+    "ru_full": "Расходы на переоценку до реальной стоимости",
+    "ru_short": "Переоцен. расходы"
   },
   "Nehmotné výsledky výzkumu a vývoje": {
-    "en_full": "Intangible Results of Research and Development",
-    "en_short": "R&D Intang.",
-    "zh_full": "研究与开发的无形成果",
-    "zh_short": "研发无形成果"
+    "en_full": "Intangible Assets - Research and Development",
+    "en_short": "R&D IA",
+    "zh_full": "无形资产 - 研发",
+    "zh_short": "研发无形",
+    "de_full": "Immaterielle Ergebnisse der Forschung und Entwicklung",
+    "de_short": "Imm. F&E",
+    "ru_full": "Нематериальные результаты исследований и разработок",
+    "ru_short": "НРиР"
   },
   "Ostatní dlouhodobý hmotný majetek": {
     "en_full": "Other Long-term Tangible Assets",
-    "en_short": "Other L/T PPE",
+    "en_short": "Other LT Tang. Assets",
     "zh_full": "其他长期有形资产",
-    "zh_short": "其他长期有形"
+    "zh_short": "其他长期资产",
+    "de_full": "Sonstige langfristige Sachanlagen",
+    "de_short": "Sonst. langfr. Sachanl.",
+    "ru_full": "Прочие долгосрочные материальные активы",
+    "ru_short": "Проч. долг. мат. активы"
   },
   "Zisk (ztráta) z prodeje dlouhodobého majetku": {
-    "en_full": "Gain (Loss) on Sale of Long-term Assets",
-    "en_short": "Gain (Loss) on L/T Assets",
-    "zh_full": "长期资产出售损益",
-    "zh_short": "长资产出售损益"
+    "en_full": "Gain (Loss) from Sale of Long-Term Assets",
+    "en_short": "Gain (Loss) from LT Asset Sale",
+    "zh_full": "出售长期资产的收益（损失）",
+    "zh_short": "出售长期资产收益",
+    "de_full": "Gewinn (Verlust) aus dem Verkauf von langfristigen Vermögenswerten",
+    "de_short": "Gewinn (Verlust) langfr. Vermögenswerte",
+    "ru_full": "Прибыль (убыток) от продажи долгосрочных активов",
+    "ru_short": "Прибыль (убыток) долгоср. активов"
   },
   "Dlouhodobé pohledávky z ručení": {
-    "en_full": "Long-term Receivables from Guarantees",
-    "en_short": "L/T Guar. Rec.",
-    "zh_full": "长期担保应收款项",
-    "zh_short": "长期担保应收"
+    "en_full": "Long-term Claims from Guarantees",
+    "en_short": "LCTG",
+    "zh_full": "长期担保债权",
+    "zh_short": "长期担保",
+    "de_full": "Langfristige Forderungen aus Bürgschaften",
+    "de_short": "Langfr. Forder. Bürg.",
+    "ru_full": "Долгосрочные требования по гарантиям",
+    "ru_short": "Долг. тр. гар."
   },
   "Účet hospodaření státního rozpočtu": {
     "en_full": "State Budget Management Account",
-    "en_short": "State Budget Mgmt Acc.",
+    "en_short": "SBMA",
     "zh_full": "国家预算管理账户",
-    "zh_short": "国家预算管理账"
+    "zh_short": "国预算账",
+    "de_full": "Haushaltskonto des Staatshaushalts",
+    "de_short": "Haushaltskonto Staat",
+    "ru_full": "Счет управления государственного бюджета",
+    "ru_short": "Счет управления госбюджета"
   },
   "Krátkodobé poskytnuté zálohy na transfery": {
     "en_full": "Short-term Advances for Transfers",
-    "en_short": "S/T Trans. Adv.",
-    "zh_full": "短期转移预付款",
-    "zh_short": "短期转移预付"
+    "en_short": "Short-term Transfer Advances",
+    "zh_full": "短期预付转移款项",
+    "zh_short": "短期预付转移",
+    "de_full": "Kurzfristige vorgezahlte Transferzahlungen",
+    "de_short": "Kurzfr. vorgez. Transf.",
+    "ru_full": "Краткосрочные авансы на трансферы",
+    "ru_short": "Кратк. авансы на транс."
   },
   "Tvorba a zúčtování rezerv": {
     "en_full": "Creation and Settlement of Provisions",
     "en_short": "Prov. Creation & Settl.",
     "zh_full": "预计负债的形成与结算",
-    "zh_short": "预计负债形成与结算"
+    "zh_short": "预计负债形成与结算",
+    "de_full": "Bildung und Abwicklung von Rückstellungen",
+    "de_short": "RückstBildAbw",
+    "ru_full": "Создание и списание резервов",
+    "ru_short": "СоздСписРез"
   },
   "Ostatní krátkodobé pohledávky": {
     "en_full": "Other Short-term Receivables",
-    "en_short": "Other S/T Rec.",
+    "en_short": "Oth S/T Rec",
     "zh_full": "其他短期应收款项",
-    "zh_short": "其他短期应收"
+    "zh_short": "其他短期应收",
+    "de_full": "Sonstige kurzfristige Forderungen",
+    "de_short": "Sonst. kurzfr. Forder.",
+    "ru_full": "Прочая краткосрочная дебиторская задолженность",
+    "ru_short": "Проч. кратк. деб. зад."
   },
   "Spotřeba energie": {
     "en_full": "Energy Consumption",
-    "en_short": "Energy Cons.",
+    "en_short": "EnCn",
     "zh_full": "能源消耗",
-    "zh_short": "能源消耗"
+    "zh_short": "能消",
+    "de_full": "Energieverbrauch",
+    "de_short": "Energiev.",
+    "ru_full": "Потребление энергии",
+    "ru_short": "Потр. энергии"
   },
   "Náklady na transfery": {
     "en_full": "Transfer Costs",
     "en_short": "Trans. Costs",
     "zh_full": "转移成本",
-    "zh_short": "转移成本"
+    "zh_short": "转移成本",
+    "de_full": "Transferkosten",
+    "de_short": "Transf. Kosten",
+    "ru_full": "Расходы на переводы",
+    "ru_short": "Перевод. расходы"
   },
   "Prodaný dlouhodobý nehmotný majetek": {
-    "en_full": "Disposal of Long-term Intangible Assets",
-    "en_short": "Disp. L/T Intang.",
-    "zh_full": "长期无形资产处置",
-    "zh_short": "长无形处置"
+    "en_full": "Sales of Long-term Intangible Assets",
+    "en_short": "Sales LTA Int.",
+    "zh_full": "销售长期无形资产",
+    "zh_short": "销售长期无形资产",
+    "de_full": "Verkauf von langfristigen immateriellen Vermögenswerten",
+    "de_short": "VerkLfmImV",
+    "ru_full": "Продажа долгосрочных нематериальных активов",
+    "ru_short": "ПродДлНмАкт"
   },
   "Příjmový účet organizačních složek státu": {
-    "en_full": "Revenue Account of State Budgetary Organizations",
-    "en_short": "Rev. Acc. OSS",
-    "zh_full": "国家预算单位收入账户",
-    "zh_short": "预算单位收入"
+    "en_full": "Revenue Account of State Organizational Units",
+    "en_short": "State Org. Units Rev. Acct.",
+    "zh_full": "国家组织单位收入账户",
+    "zh_short": "国家组织收入账",
+    "de_full": "Einnahmenkonto der staatlichen Organisationseinheiten",
+    "de_short": "E-Konto Org. Einheiten",
+    "ru_full": "Доходный счет организационных структур государства",
+    "ru_short": "Д-счет орг. структур"
   },
   "Výnosy z ostatních daní a poplatků": {
     "en_full": "Revenue from Other Taxes and Fees",
-    "en_short": "Rev. Other Taxes",
-    "zh_full": "其他税款和费用收入",
-    "zh_short": "其他税费收入"
+    "en_short": "Other Tax Revenue",
+    "zh_full": "其他税和费收入",
+    "zh_short": "其他税收入",
+    "de_full": "Einnahmen aus anderen Steuern und Gebühren",
+    "de_short": "AndStGebEinn",
+    "ru_full": "Доходы от других налогов и сборов",
+    "ru_short": "ДохПрочНалСбор"
   },
   "Ostatní dlouhodobé závazky": {
     "en_full": "Other Long-term Liabilities",
-    "en_short": "Other L/T Liab.",
+    "en_short": "Other LT Liab.",
     "zh_full": "其他长期负债",
-    "zh_short": "其他长期负债"
+    "zh_short": "其他长期负债",
+    "de_full": "Andere langfristige Verbindlichkeiten",
+    "de_short": "Andere langfr. Verbindl.",
+    "ru_full": "Прочие долгосрочные обязательства",
+    "ru_short": "Прочие долгоср. обяз."
   },
   "Fond odměn": {
     "en_full": "Compensation Fund",
     "en_short": "Comp. Fund",
     "zh_full": "薪酬基金",
-    "zh_short": "薪酬基金"
+    "zh_short": "薪酬基金",
+    "de_full": "Fonds für Vergütungen",
+    "de_short": "Fonds Vergütungen",
+    "ru_full": "Фонд вознаграждений",
+    "ru_short": "Фонд вознагр."
   },
   "Náklady ze sdílené daně z příjmů právnických osob": {
-    "en_full": "Costs from Shared Corporate Income Tax",
-    "en_short": "Costs Shared Corp. Tax",
-    "zh_full": "共享企业所得税成本",
-    "zh_short": "共享企业税成本"
+    "en_full": "Expenses from Shared Corporate Income Tax",
+    "en_short": "Exp. Shared Corp. Inc. Tax",
+    "zh_full": "共享法人所得税费用",
+    "zh_short": "共享法人所得税费",
+    "de_full": "Kosten aus der geteilten Einkommensteuer von juristischen Personen",
+    "de_short": "Kosten aus geteilten Einkommensteuern jur. Pers.",
+    "ru_full": "Расходы из совместно используемого налога на доходы юридических лиц",
+    "ru_short": "Расх. из совм. налога на доходы юр. лиц"
   },
   "Stav peněžních prostředků k 1. lednu": {
-    "en_full": "Cash Position as of January 1st",
-    "en_short": "Cash Pos. Jan 1",
-    "zh_full": "1月1日现金状况",
-    "zh_short": "1月1日现金"
+    "en_full": "Status of Cash and Cash Equivalents as of January 1",
+    "en_short": "Cash Status as of Jan 1",
+    "zh_full": "1月1日的现金及现金等价物状况",
+    "zh_short": "1月1日现金状况",
+    "de_full": "Geldbestand zum 1. Januar",
+    "de_short": "Geldbestand 1. Jan.",
+    "ru_full": "Состояние денежных средств на 1 января",
+    "ru_short": "Состояние ден. средств 1 янв."
   },
   "Jiné sociální pojištění": {
     "en_full": "Other Social Insurance",
-    "en_short": "Other Soc. Ins.",
+    "en_short": "Other Soc Ins",
     "zh_full": "其他社会保险",
-    "zh_short": "其他社保"
+    "zh_short": "其他社保",
+    "de_full": "Andere Sozialversicherungsbeiträge",
+    "de_short": "Andere Sozialv.",
+    "ru_full": "Прочие страховые взносы",
+    "ru_short": "Проч. страх. взн."
   },
   "Kurzové zisky": {
     "en_full": "Foreign Exchange Gains",
     "en_short": "FX Gains",
     "zh_full": "外汇收益",
-    "zh_short": "汇兑收益"
+    "zh_short": "汇兑收益",
+    "de_full": "Wechselkursgewinne",
+    "de_short": "Wkg. Gew.",
+    "ru_full": "Валютные доходы",
+    "ru_short": "Вал. дох."
   },
   "Výnosy z ostatních sdílených daní a poplatků": {
-    "en_full": "Revenue from Other Shared Taxes and Fees",
-    "en_short": "Other Shared Tax Rev.",
+    "en_full": "Revenues from Other Shared Taxes and Fees",
+    "en_short": "Rev. from Other Shared Taxes",
     "zh_full": "其他共享税和费用收入",
-    "zh_short": "其他共享税收入"
+    "zh_short": "其他共享税收入",
+    "de_full": "Einnahmen aus anderen geteilten Steuern und Gebühren",
+    "de_short": "Einn. andere geteilte Steuern/Geb.",
+    "ru_full": "Доходы от других общих налогов и сборов",
+    "ru_short": "Дох. другие общ. налоги/сборы"
   },
   "Změna stavu dlouhodobých závazků ( + / - )": {
-    "en_full": "Change in Long-Term Liabilities ( + / - )",
-    "en_short": "L/T Liab. Chg.",
-    "zh_full": "长期负债变动 ( + / - )",
-    "zh_short": "长期负债变动"
+    "en_full": "Change in the Status of Long-term Liabilities ( + / - )",
+    "en_short": "Change in LTL",
+    "zh_full": "长期负债状况的变动 ( + / - )",
+    "zh_short": "长期负债变动",
+    "de_full": "Veränderung des langfristigen Verbindlichkeiten ( + / - )",
+    "de_short": "Veränderung Lfr. Verbindl. ( + / - )",
+    "ru_full": "Изменение состояния долгосрочных обязательств ( + / - )",
+    "ru_short": "Изм. сост. дл. обяз. ( + / - )"
   },
   "Výnosy ze správních poplatků": {
-    "en_full": "Revenue from Administrative Fees",
-    "en_short": "Admin. Fee Rev.",
+    "en_full": "Administrative Fees Income",
+    "en_short": "Admin Fees",
     "zh_full": "行政费用收入",
-    "zh_short": "行政费收入"
+    "zh_short": "行政费用收入",
+    "de_full": "Einnahmen aus Verwaltungsgebühren",
+    "de_short": "Einn. Verwaltungsg.",
+    "ru_full": "Доходы от административных сборов",
+    "ru_short": "Дох. адм. сборов"
   },
   "Kulturní předměty": {
     "en_full": "Cultural Assets",
     "en_short": "Cultural Assets",
     "zh_full": "文化资产",
-    "zh_short": "文化资产"
+    "zh_short": "文化资产",
+    "de_full": "Kulturelle Gegenstände",
+    "de_short": "Kult. Gegenst.",
+    "ru_full": "Культурные объекты",
+    "ru_short": "Культ. об."
   },
   "Transfery na pořízení dlouhodobého majetku": {
-    "en_full": "Transfers for Acquisition of Long-Term Assets",
-    "en_short": "L/T Asset Acq. Trans.",
+    "en_full": "Transfers for Acquisition of Long-term Assets",
+    "en_short": "Transfers for Long-term Assets",
     "zh_full": "长期资产购置转移",
-    "zh_short": "长期资产购置"
+    "zh_short": "长期资产转移",
+    "de_full": "Transfers für die Erwerbung von langfristigen Vermögenswerten",
+    "de_short": "TfE",
+    "ru_full": "Переводы на приобретение долгосрочных активов",
+    "ru_short": "ППДА"
   },
   "Jiné daně a poplatky": {
     "en_full": "Other Taxes and Fees",
-    "en_short": "Other Taxes & Fees",
+    "en_short": "OTxF",
     "zh_full": "其他税和费用",
-    "zh_short": "其他税费用"
+    "zh_short": "其他税费",
+    "de_full": "Andere Steuern und Gebühren",
+    "de_short": "And. Steuern",
+    "ru_full": "Другие налоги и сборы",
+    "ru_short": "Др. налоги"
   },
   "Dlouhodobé pohledávky z postoupených úvěrů": {
-    "en_full": "Long-Term Receivables from Assigned Loans",
-    "en_short": "L/T Rec. from Loans",
-    "zh_full": "长期应收已分配贷款",
-    "zh_short": "长期应收贷款"
+    "en_full": "Long-term Claims from Assigned Loans",
+    "en_short": "LCLAL",
+    "zh_full": "长期转让贷款债权",
+    "zh_short": "长期转让贷款",
+    "de_full": "Langfristige Forderungen aus abgetretenen Krediten",
+    "de_short": "Langfr. Forder. abg. Kred.",
+    "ru_full": "Долгосрочные требования по переданным кредитам",
+    "ru_short": "Долг. тр. перед. кр."
   },
   "Výnosy z prodeje cenných papírů a podílů": {
-    "en_full": "Gains from Sale of Financial Instruments and Equity Investments",
-    "en_short": "Gains on Sale of Fin. Inst. & Eq. Inv.",
-    "zh_full": "出售金融工具和股权投资的收益",
-    "zh_short": "出售金融工具及股权投资收益"
+    "en_full": "Revenue from Sale of Securities and Shares",
+    "en_short": "Securities Sales",
+    "zh_full": "出售证券和股份收入",
+    "zh_short": "出售证券和股份收入",
+    "de_full": "Einnahmen aus dem Verkauf von Wertpapieren und Anteilen",
+    "de_short": "Einn. Verk. Wp. u. Ant.",
+    "ru_full": "Доходы от продажи ценных бумаг и долей",
+    "ru_short": "Дох. прод. цб. и д."
   },
   "Opravy minulého účetního období": {
     "en_full": "Adjustments for Prior Period",
     "en_short": "Prior Period Adj.",
     "zh_full": "前期调整",
-    "zh_short": "前期调"
+    "zh_short": "前期调整",
+    "de_full": "Korrekturen des letzten Geschäftsjahres",
+    "de_short": "Korr. letz. GJ",
+    "ru_full": "Исправления прошлого отчетного периода",
+    "ru_short": "Испр. прошл. отч. периода"
   },
   "Stav peněžních prostředků k rozvahovému dni": {
-    "en_full": "Cash and Cash Equivalents at the Balance Sheet Date",
-    "en_short": "Cash & Cash Eq. at Bal. Sheet Date",
-    "zh_full": "资产负债表日的现金及现金等价物",
-    "zh_short": "资产负债表日现金及现金等价物"
+    "en_full": "Cash Position at the Balance Sheet Date",
+    "en_short": "Cash Pos. (Bal. Sheet Date}",
+    "zh_full": "资产负债表日的现金状况",
+    "zh_short": "现金状况(资产负债表日）",
+    "de_full": "Geldbestand zum Bilanzstichtag",
+    "de_short": "Geldbestand Bilanzstag",
+    "ru_full": "Состояние денежных средств на дату баланса",
+    "ru_short": "Состояние ден. средств на дату бал."
   },
   "Ostatní dlouhodobý finanční majetek": {
     "en_full": "Other Long-term Financial Assets",
-    "en_short": "Other L/T Fin. Assets",
+    "en_short": "Other Long-term FA",
     "zh_full": "其他长期金融资产",
-    "zh_short": "其他长金"
+    "zh_short": "其他长期金融",
+    "de_full": "Sonstige langfristige Finanzanlagen",
+    "de_short": "Sonst. langfr. Finanzanl.",
+    "ru_full": "Прочие долгосрочные финансовые активы",
+    "ru_short": "Проч. долг. фин. акт."
   },
   "Výnosy z místních poplatků": {
-    "en_full": "Revenues from Local Fees",
-    "en_short": "Local Fees Rev.",
-    "zh_full": "地方收费收入",
-    "zh_short": "地方收费"
+    "en_full": "Local Fees Income",
+    "en_short": "Local Fees",
+    "zh_full": "地方费用收入",
+    "zh_short": "地方费用收入",
+    "de_full": "Einnahmen aus lokalen Gebühren",
+    "de_short": "Einn. lok. Geb.",
+    "ru_full": "Доходы от местных сборов",
+    "ru_short": "Дох. мест. сб."
   },
   "Výnosy vybraných ústředních vládních institucí z transferů": {
-    "en_full": "Revenues from Transfers by Selected Central Government Institutions",
-    "en_short": "Transfers Rev. from Sel. Cent. Gov. Inst.",
-    "zh_full": "选定中央政府机构的转移收入",
-    "zh_short": "选定中央政府转移收入"
+    "en_full": "Revenue from Transfers to Selected Central Government Institutions",
+    "en_short": "Transfers to Central Gov. Inst.",
+    "zh_full": "对选定中央政府机构的转移收入",
+    "zh_short": "中央政府转移收入",
+    "de_full": "Einnahmen aus Transfers ausgewählter zentraler Regierungseinrichtungen",
+    "de_short": "ZentrRegTransfEinn",
+    "ru_full": "Доходы от трансфертов отдельных центральных государственных учреждений",
+    "ru_short": "ДохТрансЦентрГос"
   },
   "Dlouhodobé poskytnuté zálohy na transfery": {
     "en_full": "Long-term Advances for Transfers",
-    "en_short": "L/T Advances for Transfers",
+    "en_short": "LTAT",
     "zh_full": "长期转移预付款",
-    "zh_short": "长期转移预付"
+    "zh_short": "长期转移预付",
+    "de_full": "Langfristige vorgeschossene Anzahlungen für Transfers",
+    "de_short": "Langfr. vorg. Anz. Trans.",
+    "ru_full": "Долгосрочные авансы, предоставленные на трансферы",
+    "ru_short": "Долг. ав. пр. транс."
   },
   "Eskontované krátkodobé dluhopisy (směnky)": {
     "en_full": "Discounted Short-term Debt Instruments (Bills of Exchange}",
-    "en_short": "Disc. S/T Debt Inst. (Bills of Exch.)",
-    "zh_full": "贴现短期债务工具（汇票）",
-    "zh_short": "贴现短期债务工具（汇票）"
+    "en_short": "Disc ST Debt Inst (Bills}",
+    "zh_full": "已贴现短期债务工具（汇票）",
+    "zh_short": "已贴现短期债务（汇票）",
+    "de_full": "Eskontierte kurzfristige Schuldscheine (Wechsel)'",
+    "de_short": "Eskont. kurzfr. Schuldscheine",
+    "ru_full": "Эсконтированные краткосрочные облигации (векселя)'",
+    "ru_short": "Эсконт. краткоср. облигации"
   },
   "Dlouhodobé půjčky": {
     "en_full": "Long-term Loans",
-    "en_short": "L/T Loans",
-    "zh_full": "长期借款",
-    "zh_short": "长借"
+    "en_short": "Long-term Loans",
+    "zh_full": "长期贷款",
+    "zh_short": "长期贷款",
+    "de_full": "Langfristige Darlehen",
+    "de_short": "Langfr. Darl.",
+    "ru_full": "Долгосрочные займы",
+    "ru_short": "Долг. займы"
   },
   "Opravy předcházejících účetních období": {
-    "en_full": "Prior Period Adjustments",
-    "en_short": "PPA",
-    "zh_full": "前期差错更正",
-    "zh_short": "前期更正"
+    "en_full": "Adjustments for Prior Periods",
+    "en_short": "Adj. for Prior Periods",
+    "zh_full": "前期调整",
+    "zh_short": "前期调整",
+    "de_full": "Korrekturen aus vorherigen Buchungsjahren",
+    "de_short": "Korr. vorg. Buchj.",
+    "ru_full": "Исправления за предыдущие отчетные периоды",
+    "ru_short": "Испр. пред. отчет. пери."
   },
   "Náklady z vyřazených pohledávek": {
-    "en_full": "Costs of Written-off Receivables",
-    "en_short": "W/O Costs",
-    "zh_full": "已核销应收款项的损失",
-    "zh_short": "已核销损失"
+    "en_full": "Costs from Written-off Receivables",
+    "en_short": "Costs from W/O Receivables",
+    "zh_full": "已注销应收账款的成本",
+    "zh_short": "已注销应收账款成本",
+    "de_full": "Kosten aus der Beseitigung von Forderungen",
+    "de_short": "Kosten Beseitigung Forderungen",
+    "ru_full": "Расходы по выбытию дебиторской задолженности",
+    "ru_short": "Расх. выбытие деб. зад."
   },
   "Výnosy z podílů na zisku": {
     "en_full": "Income from Share of Profits",
-    "en_short": "Share Profits",
-    "zh_full": "利润分配收入",
-    "zh_short": "利润分配"
+    "en_short": "Inc. from Prof. Share",
+    "zh_full": "利润份额收入",
+    "zh_short": "利润份额收入",
+    "de_full": "Erträge aus Anteilen am Gewinn",
+    "de_short": "Erträge Anteile am Gewinn",
+    "ru_full": "Доходы от долей в прибыли",
+    "ru_short": "Доходы от долей"
   },
   "Manka a škody": {
-    "en_full": "Shortages and Damages",
-    "en_short": "Shortages",
-    "zh_full": "短缺和毁损",
-    "zh_short": "短缺毁损"
+    "en_full": "Shortages and Losses",
+    "en_short": "Shorts & Losses",
+    "zh_full": "短缺和损失",
+    "zh_short": "短缺损失",
+    "de_full": "Mangel und Schäden",
+    "de_short": "Mangel u. Schäden",
+    "ru_full": "Недостачи и убытки",
+    "ru_short": "Недост. и убытки"
   },
   "Výnosy vybraných místních vládních institucí z transferů": {
-    "en_full": "Transfer Income of Selected Local Government Institutions",
-    "en_short": "Local Gov. Transfers",
-    "zh_full": "选定地方政府机构的转移收入",
-    "zh_short": "地方转移"
+    "en_full": "Revenues of Selected Local Government Institutions from Transfers",
+    "en_short": "Local Govt. Transfer Revenues",
+    "zh_full": "地方预算单位转移收入",
+    "zh_short": "地方转移收入",
+    "de_full": "Einnahmen aus Transfers ausgewählter lokaler Regierungseinrichtungen",
+    "de_short": "LokRegTransfEinn",
+    "ru_full": "Доходы от трансфертов отдельных местных государственных учреждений",
+    "ru_short": "ДохТрансМестнГос"
   },
   "Dluhové cenné papíry držené do splatnosti": {
     "en_full": "Held-to-Maturity Debt Securities",
-    "en_short": "H/T Debt Sec.",
-    "zh_full": "持有至到期投资",
-    "zh_short": "持有至到期"
+    "en_short": "Held-to-Maturity Debt",
+    "zh_full": "持有至到期的债务证券",
+    "zh_short": "持有至到期债务",
+    "de_full": "Schuldverschreibungen bis zur Fälligkeit gehalten",
+    "de_short": "Schuldverschr. bis Fällig.",
+    "ru_full": "Облигации, удерживаемые до погашения",
+    "ru_short": "Облиг. до погаш."
   },
   "Výnosy z činnosti": {
-    "en_full": "Operating Income",
-    "en_short": "Op. Income",
-    "zh_full": "经营收入",
-    "zh_short": "经营收入"
+    "en_full": "Revenues from Operations",
+    "en_short": "Op. Rev.",
+    "zh_full": "经营活动收入",
+    "zh_short": "经营活动收入",
+    "de_full": "Einnahmen aus der Tätigkeit",
+    "de_short": "Einn. a. Tät.",
+    "ru_full": "Доходы от деятельности",
+    "ru_short": "Дох. от д."
   },
   "Zásoby": {
     "en_full": "Inventories",
     "en_short": "Inv.",
     "zh_full": "存货",
-    "zh_short": "存货"
+    "zh_short": "存货",
+    "de_full": "Vorräte",
+    "de_short": "Vorr.",
+    "ru_full": "Запасы",
+    "ru_short": "Зап."
   },
   "Výsledek hospodaření předcházejících účetních období": {
-    "en_full": "Results of Operations from Prior Periods",
-    "en_short": "Prior Period Results",
-    "zh_full": "前期经营成果",
-    "zh_short": "前期成果"
+    "en_full": "Operating Result of Prior Financial Years",
+    "en_short": "Prior Years Op. Result",
+    "zh_full": "以前财政年度经营成果",
+    "zh_short": "以前年度经营成果",
+    "de_full": "Ergebnis der Haushaltsführung früherer Buchhaltezeitraume",
+    "de_short": "Ergebnis früherer Perioden",
+    "ru_full": "Результат управления предыдущих отчетных периодов",
+    "ru_short": "Резултат предыдущих периодов"
   },
   "Pozemky": {
     "en_full": "Land",
     "en_short": "Land",
     "zh_full": "土地",
-    "zh_short": "土地"
+    "zh_short": "土地",
+    "de_full": "Grundstücke",
+    "de_short": "Grundst.",
+    "ru_full": "Земельные участки",
+    "ru_short": "Зем. уч."
   },
   "Daň silniční": {
     "en_full": "Road Tax",
-    "en_short": "Road Tax",
+    "en_short": "RdTx",
     "zh_full": "道路税",
-    "zh_short": "道路税"
+    "zh_short": "道税",
+    "de_full": "Straßensteuer",
+    "de_short": "Str. Steuer",
+    "ru_full": "Транспортный налог",
+    "ru_short": "Трансп. налог"
   },
   "Výnosy z majetkových daní": {
     "en_full": "Revenue from Property Taxes",
-    "en_short": "Prop. Tax Rev.",
+    "en_short": "Property Tax Revenue",
     "zh_full": "财产税收入",
-    "zh_short": "财税收入"
+    "zh_short": "财产税收入",
+    "de_full": "Einnahmen aus der Vermögenssteuer",
+    "de_short": "Einn. VmSt",
+    "ru_full": "Доходы от налога на имущество",
+    "ru_short": "Дох. НИ"
   },
   "Opravy a udržování": {
     "en_full": "Repairs and Maintenance",
-    "en_short": "Rep. & Maint.",
+    "en_short": "Repairs & Maint.",
     "zh_full": "修理和维护",
-    "zh_short": "修理维护"
+    "zh_short": "修理维护",
+    "de_full": "Reparaturen und Wartung",
+    "de_short": "Repar. und Wart.",
+    "ru_full": "Ремонт и обслуживание",
+    "ru_short": "Ремонт и обсл."
   },
   "Ostatní dlouhodobý nehmotný majetek": {
-    "en_full": "Other Intangible Assets",
-    "en_short": "Other Intang.",
-    "zh_full": "其他无形资产",
-    "zh_short": "其他无形"
+    "en_full": "Other Long-term Intangible Assets",
+    "en_short": "OLIA",
+    "zh_full": "其他长期无形资产",
+    "zh_short": "其他长无形",
+    "de_full": "Sonstige langfristige immaterielle Vermögenswerte",
+    "de_short": "SonstLImmV",
+    "ru_full": "Прочие долгосрочные нематериальные активы",
+    "ru_short": "ПрДНМатАкт"
   },
   "Náklady vybraných ústředních vládních institucí na předfinancování transferů": {
-    "en_full": "Costs of Selected Central Government Institutions for Pre-financing Transfers",
-    "en_short": "Pre-fin. Trans. Costs",
-    "zh_full": "选定中央政府机构预融资转移的成本",
-    "zh_short": "预融资转移成本"
+    "en_full": "Pre-financing Transfer Costs of Selected Central Government Institutions",
+    "en_short": "Pre-fin. Trans. Costs (Cent. Gov.)",
+    "zh_full": "中央政府选定机构的预融资转移费用",
+    "zh_short": "中央预融资费用",
+    "de_full": "Kosten ausgewählter zentraler Regierungsinstitutionen für die Vorausfinanzierung von Transfers",
+    "de_short": "Kosten zent. Inst. für Vorausfinanz. Transfers",
+    "ru_full": "Расходы выбранных центральных государственных учреждений на предфинансирование трансфертов",
+    "ru_short": "Расх. центр. учр. на предфин. трансф."
   },
   "Výnosy z daně z přidané hodnoty": {
     "en_full": "Revenue from Value Added Tax",
-    "en_short": "VAT Rev.",
+    "en_short": "VAT Revenue",
     "zh_full": "增值税收入",
-    "zh_short": "增值税"
+    "zh_short": "增值税收入",
+    "de_full": "Einnahmen aus der Umsatzsteuer",
+    "de_short": "Einn. USt",
+    "ru_full": "Доходы от налога на добавленную стоимость",
+    "ru_short": "Дох. НДС"
   },
   "Výnosy vybraných ústředních vládních institucí z předfinancování transferů": {
-    "en_full": "Revenue from Pre-financing of Transfers by Selected Central Government Institutions",
-    "en_short": "Pre-fin. Trans. Rev.",
-    "zh_full": "中央政府机构预融资转移收入",
-    "zh_short": "预融资转移"
+    "en_full": "Revenues of Selected Central Government Institutions from Advance Transfer Financing",
+    "en_short": "Central Govt. Advance Transfer Revenues",
+    "zh_full": "中央预算单位预拨转移收入",
+    "zh_short": "中央预拨转移收入",
+    "de_full": "Einnahmen aus Vorfinanzierung von Transfers ausgewählter zentraler Regierungseinrichtungen",
+    "de_short": "ZentrRegVorfinTransfEinn",
+    "ru_full": "Доходы от предфинансирования трансфертов отдельных центральных государственных учреждений",
+    "ru_short": "ДохПрефинТрансЦентрГос"
   },
   "Pohledávky z exekuce a ostatního nakládání s cizím majetkem": {
     "en_full": "Receivables from Execution and Other Management of Foreign Assets",
     "en_short": "Exec. & Mgmt. Rec.",
     "zh_full": "执行及管理外来资产应收款项",
-    "zh_short": "执行应收"
+    "zh_short": "执行应收",
+    "de_full": "Forderungen aus Vollstreckung und anderer Verwaltung fremden Vermögens",
+    "de_short": "Forder. aus Vollstr. u. Verw.",
+    "ru_full": "Дебиторская задолженность по исполнительному производству и управлению чужим имуществом",
+    "ru_short": "Деб. зад. по исп. произ. и упр. чуж. им."
   },
   "Krátkodobé závazky": {
     "en_full": "Short-term Liabilities",
-    "en_short": "S/T Liab.",
+    "en_short": "ST Liab.",
     "zh_full": "短期负债",
-    "zh_short": "短期负债"
+    "zh_short": "短期负债",
+    "de_full": "Kurzfristige Verbindlichkeiten",
+    "de_short": "Kurzfr. Verbindl.",
+    "ru_full": "Краткосрочные обязательства",
+    "ru_short": "Краткоср. обяз."
   },
   "Odpisy dlouhodobého majetku": {
-    "en_full": "Amortization of Long-term Assets",
-    "en_short": "L/T Asset Amort.",
-    "zh_full": "长期资产摊销",
-    "zh_short": "长期摊销"
+    "en_full": "Write-offs of Long-term Assets",
+    "en_short": "Write-offs LTA",
+    "zh_full": "长期资产减值",
+    "zh_short": "长期资产减值",
+    "de_full": "Abschreibung von langfristigen Vermögenswerten",
+    "de_short": "AbschLfmV",
+    "ru_full": "Амортизация долгосрочных активов",
+    "ru_short": "АмортДлАкт"
   },
   "Dlouhodobý hmotný majetek": {
     "en_full": "Long-term Tangible Assets",
-    "en_short": "L/T Tang. Assets",
+    "en_short": "L-T Tangibles",
     "zh_full": "长期有形资产",
-    "zh_short": "长期有形"
+    "zh_short": "长期有形资产",
+    "de_full": "Langfristige materielle Vermögenswerte",
+    "de_short": "Langfr. mat. Verm.",
+    "ru_full": "Долгосрочные материальные активы",
+    "ru_short": "Долг. мат. акт."
   },
   "Investiční transfery": {
+    "de_full": "Investitionstransfers",
+    "de_short": "Inv. Transf.",
     "en_full": "Investment Transfers",
-    "en_short": "Inv. Trans.",
+    "en_short": "Inv. Transfers",
     "zh_full": "投资转移",
-    "zh_short": "投资转移"
+    "zh_short": "投资转移",
+    "ru_full": "Инвестиционные трансферы",
+    "ru_short": "Инв. трансф."
   },
   "Závazky z vratek nepřímých daní": {
-    "en_full": "Liabilities from Refunds of Indirect Taxes",
-    "en_short": "Ind. Tax Ref. Liab.",
-    "zh_full": "间接税退款负债",
-    "zh_short": "间接税退款"
+    "en_full": "Liabilities from VAT Refunds",
+    "en_short": "VAT Refunds Liab.",
+    "zh_full": "增值税退税负债",
+    "zh_short": "增值税退税负债",
+    "de_full": "Verbindlichkeiten aus der Erstattung indirekter Steuern",
+    "de_short": "Verbindl. Erstatt. indir. Steuern",
+    "ru_full": "Обязательства по возврату косвенных налогов",
+    "ru_short": "Обязат. по возвр. косв. налогов"
   },
   "Úroky": {
     "en_full": "Interest Income",
     "en_short": "Int Inc",
     "zh_full": "利息收入",
-    "zh_short": "利息"
+    "zh_short": "利息",
+    "de_full": "Zinsen",
+    "de_short": "Zinsen",
+    "ru_full": "Проценты",
+    "ru_short": "Проценты"
   },
   "Prodané pozemky": {
-    "en_full": "Proceeds from Sale of Land",
-    "en_short": "Sale Land",
-    "zh_full": "土地出售收入",
-    "zh_short": "土地出售"
+    "en_full": "Sales of Land",
+    "en_short": "Sales Land",
+    "zh_full": "销售土地",
+    "zh_short": "销售土地",
+    "de_full": "Verkauf von Grundstücken",
+    "de_short": "VerkGrund",
+    "ru_full": "Продажа земельных участков",
+    "ru_short": "ПродЗемУчаст"
   },
   "Jiné pokuty a penále": {
-    "en_full": "Other Fines and Penalties",
-    "en_short": "Other Fines",
-    "zh_full": "其他罚款和罚金",
-    "zh_short": "其他罚款"
+    "en_full": "Other Penalties and Fines",
+    "en_short": "OPnF",
+    "zh_full": "其他罚金和罚款",
+    "zh_short": "其他罚金",
+    "de_full": "Andere Strafen und Bußgelder",
+    "de_short": "And. Strafen",
+    "ru_full": "Другие штрафы и пени",
+    "ru_short": "Др. штрафы и пени"
   },
   "Stálá aktiva": {
     "en_full": "Fixed Assets",
     "en_short": "FA",
     "zh_full": "固定资产",
-    "zh_short": "固资"
+    "zh_short": "固资",
+    "de_full": "Anlagevermögen",
+    "de_short": "AnlageV",
+    "ru_full": "Инвестиционные активы",
+    "ru_short": "ИнвАкт"
   },
   "Výnosy z přecenění reálnou hodnotou": {
     "en_full": "Gains from Revaluation to Fair Value",
-    "en_short": "Reval Gains",
+    "en_short": "Reval. Gains",
     "zh_full": "公允价值重估收益",
-    "zh_short": "公允重估"
+    "zh_short": "公允重估收益",
+    "de_full": "Einnahmen aus der Neubewertung auf den realen Wert",
+    "de_short": "Einn. Neubew. real. W.",
+    "ru_full": "Доходы от переоценки по справедливой стоимости",
+    "ru_short": "Дох. переоц. справ. ст."
   },
   "Peněžní toky z dlouhodobých aktiv": {
     "en_full": "Cash Flows from Long-term Assets",
-    "en_short": "L/T Asset CF",
-    "zh_full": "长期资产现金流量",
-    "zh_short": "长期资产现金流"
+    "en_short": "Cash Flows LT Assets",
+    "zh_full": "长期资产的现金流量",
+    "zh_short": "长期资产现金流",
+    "de_full": "Cashflows aus langfristigen Anlagen",
+    "de_short": "Cashflows langfr. Anlagen",
+    "ru_full": "Денежные потоки от долгосрочных активов",
+    "ru_short": "Ден. потоки от долг. активов"
   },
   "Účty pro sdílení daní a pro dělenou správu": {
     "en_full": "Accounts for Tax Sharing and Joint Administration",
-    "en_short": "Tax Share Acct",
+    "en_short": "Tax Sharing & Joint Admin Accts",
     "zh_full": "税收共享和共同管理账户",
-    "zh_short": "税收共享"
+    "zh_short": "税收共享账户",
+    "de_full": "Konten für die Steuerabgeltung und geteilte Verwaltung",
+    "de_short": "StAbgKt",
+    "ru_full": "Счета для распределения налогов и совместного управления",
+    "ru_short": "СчРаспНал"
   },
   "Příjmy z prodeje majetku Státního pozemkového úřadu": {
-    "en_full": "Proceeds from Sale of Assets of the State Land Office",
-    "en_short": "Sale SLO Assets",
-    "zh_full": "国家土地局资产出售收入",
-    "zh_short": "国家土地局出售"
+    "en_full": "Revenue from Sale of State Land Office Property",
+    "en_short": "Revenue Sale Land Office",
+    "zh_full": "国家土地局财产出售收入",
+    "zh_short": "国家土地局财产出售收入",
+    "de_full": "Einnahmen aus dem Verkauf von Vermögenswerten des Staatlichen Bodenamts",
+    "de_short": "Einn. Verk. Verm. Bodenamt",
+    "ru_full": "Доходы от продажи имущества Государственного земельного управления",
+    "ru_short": "Дох. прод. им. ГЗУ"
   },
   "Jiné výnosy z vlastních výkonů": {
-    "en_full": "Other Income from Own Activities",
-    "en_short": "Other Own Act. Inc.",
+    "en_full": "Other Own Performance Income",
+    "en_short": "Other Perf. Inc.",
     "zh_full": "其他自身活动收入",
-    "zh_short": "其他自活收入"
+    "zh_short": "其他自身活动收入",
+    "de_full": "Andere Einnahmen aus eigenen Leistungen",
+    "de_short": "And. Einn. eig. Leist.",
+    "ru_full": "Прочие доходы от собственной деятельности",
+    "ru_short": "Проч. дох. соб. деят."
   },
   "Jiné krátkodobé půjčky": {
-    "en_full": "Other Short-Term Loans",
-    "en_short": "Other S/T Loans",
+    "en_full": "Other Short-term Loans",
+    "en_short": "Other Short-term Loans",
     "zh_full": "其他短期借款",
-    "zh_short": "其他短期借"
+    "zh_short": "其他短期借款",
+    "de_full": "Andere kurzfristige Kredite",
+    "de_short": "And. kurzfr. Kred.",
+    "ru_full": "Прочие краткосрочные займы",
+    "ru_short": "Проч. кратк. займы"
   },
   "Změna stavu zásob vlastní výroby": {
-    "en_full": "Change in Inventories of Goods Produced",
-    "en_short": "Chg. in Prod. Inv.",
+    "en_full": "Change in Stock of Own Production",
+    "en_short": "Chg. Own Prod. Stock",
     "zh_full": "自产存货变动",
-    "zh_short": "自产存货变"
+    "zh_short": "自产存货变动",
+    "de_full": "Änderung des Bestands von selbst hergestellten Vorräten",
+    "de_short": "Änd. Bestand selbst. Vorr.",
+    "ru_full": "Изменение запасов собственного производства",
+    "ru_short": "Изм. запасов собств. произв."
   },
   "Pohledávky ze správy daní": {
     "en_full": "Receivables from Tax Administration",
-    "en_short": "Tax Admin. Rec.",
-    "zh_full": "税务管理应收款",
-    "zh_short": "税务应收"
+    "en_short": "Tax Admin. Receivables",
+    "zh_full": "税务管理应收账款",
+    "zh_short": "税务应收款",
+    "de_full": "Forderungen aus der Steuerverwaltung",
+    "de_short": "FSV",
+    "ru_full": "Задолженность по налоговой администрации",
+    "ru_short": "ЗНА"
   },
   "Polotovary vlastní výroby": {
-    "en_full": "Work in Progress of Own Production",
-    "en_short": "WIP Own Prod.",
-    "zh_full": "自产半成品",
-    "zh_short": "自产半成"
+    "en_full": "Semi-finished Goods (Own Production}",
+    "en_short": "Semi-finished (Own Prod.)",
+    "zh_full": "自制半成品",
+    "zh_short": "自制半成品",
+    "de_full": "Halbfabrikate eigener Herstellung",
+    "de_short": "Hbf. eig. Herst.",
+    "ru_full": "Полуфабрикаты собственного производства",
+    "ru_short": "Полуф. собст. произ."
   },
   "Náklady na reprezentaci": {
     "en_full": "Representation Expenses",
-    "en_short": "Rep. Exp.",
+    "en_short": "Rep Exp",
     "zh_full": "代表费用",
-    "zh_short": "代表费"
+    "zh_short": "代表费",
+    "de_full": "Kosten für Repräsentation",
+    "de_short": "Kosten Repräsent.",
+    "ru_full": "Расходы на представительские цели",
+    "ru_short": "Расх. на представ."
   },
   "Náklady z drobného dlouhodobého majetku": {
-    "en_full": "Expenses from Minor Long-Term Assets",
-    "en_short": "Exp. from Min. L/T Assets",
-    "zh_full": "小额长期资产费用",
-    "zh_short": "小额长期费"
+    "en_full": "Costs from Minor Long-term Assets",
+    "en_short": "Costs from Minor L-T Assets",
+    "zh_full": "小额长期资产的成本",
+    "zh_short": "小额长期资产成本",
+    "de_full": "Kosten aus geringfügigem langfristigem Vermögen",
+    "de_short": "Kosten geringf. langfr. Verm.",
+    "ru_full": "Расходы по мелкому долгосрочному имуществу",
+    "ru_short": "Расх. мелк. долг. имущ."
   },
   "Pohledávky z finančního zajištění": {
     "en_full": "Receivables from Financial Guarantees",
     "en_short": "Fin. Guar. Rec.",
     "zh_full": "金融担保应收款",
-    "zh_short": "金融担保应收"
+    "zh_short": "金融担保应收",
+    "de_full": "Forderungen aus Finanzierungssicherheiten",
+    "de_short": "Forder. Finanzsicherh.",
+    "ru_full": "Дебиторская задолженность по финансовому обеспечению",
+    "ru_short": "Деб. зад. по фин. обес."
   },
   "Výnosy ze sdílené daně z příjmů fyzických osob": {
-    "en_full": "Revenue from Shared Income Tax on Individuals",
-    "en_short": "Rev. Shared Inc. Tax",
+    "en_full": "Revenues from Shared Personal Income Tax",
+    "en_short": "Shared PIT Revenues",
     "zh_full": "共享个人所得税收入",
-    "zh_short": "共享个税收入"
+    "zh_short": "共享个税收入",
+    "de_full": "Einnahmen aus der geteilten Einkommensteuer von natürlichen Personen",
+    "de_short": "Einn. geteilte Eink. Steuer nat. Pers.",
+    "ru_full": "Доходы от общей подоходной налога физических лиц",
+    "ru_short": "Дох. общ. подох. налог физ. лиц"
   },
   "Aktivace vnitroorganizačních služeb": {
-    "en_full": "Activation of Internal Organizational Services",
-    "en_short": "Act. Int. Org. Serv.",
-    "zh_full": "内部组织服务激活",
-    "zh_short": "内部服务激活"
+    "en_full": "Activation of Internal Services",
+    "en_short": "Int Serv Act",
+    "zh_full": "内部服务激活",
+    "zh_short": "内服激活",
+    "de_full": "Aktivierung interner Dienstleistungen",
+    "de_short": "Aktiv. intern. Dienstl.",
+    "ru_full": "Активизация внутренних услуг",
+    "ru_short": "Актив. внутр. усл."
   },
   "Finanční náklady": {
     "en_full": "Financial Expenses",
     "en_short": "Fin. Exp.",
     "zh_full": "财务费用",
-    "zh_short": "财务费"
+    "zh_short": "财务费",
+    "de_full": "Finanzkosten",
+    "de_short": "Fin. Kosten",
+    "ru_full": "Финансовые расходы",
+    "ru_short": "Фин. расходы"
   },
   "Jiné pohledávky z hlavní činnosti": {
     "en_full": "Other Receivables from Main Activities",
-    "en_short": "Other Rec. Main Act.",
-    "zh_full": "主营业务其他应收款",
-    "zh_short": "主营业务其他应收"
+    "en_short": "Oth Rec Main Act",
+    "zh_full": "其他主营业务应收款项",
+    "zh_short": "其他主营业务应收",
+    "de_full": "Andere Forderungen aus der Haupttätigkeit",
+    "de_short": "Andere Forder. H-Tät.",
+    "ru_full": "Прочие дебиторская задолженность от основной деятельности",
+    "ru_short": "Проч. деб. зад. осн. д-ти"
   },
   "Ceniny": {
     "en_full": "Cash Equivalents (Vouchers/Stamps}",
-    "en_short": "Cash Eqv. (Vch./Stm.)",
+    "en_short": "CE (V/S}",
     "zh_full": "有价票证",
-    "zh_short": "有价票证"
+    "zh_short": "有价票",
+    "de_full": "Wertpapiere (Gutschein/Marken}",
+    "de_short": "Wertpapiere",
+    "ru_full": "Ценные бумаги (ваучеры/марки}",
+    "ru_short": "Ценные бумаги"
   },
   "Závazky z řízení likvidity státní pokladny a státního dluhu": {
-    "en_full": "Liabilities from State Treasury and State Debt Management",
-    "en_short": "Liab. St. Treas. & Debt Mgmt.",
-    "zh_full": "国家金库和国家债务管理负债",
-    "zh_short": "国库债务管理负债"
+    "en_full": "Obligations from State Treasury and State Debt Liquidity Management",
+    "en_short": "State Treasury & Debt Oblig.",
+    "zh_full": "国家金库和国家债务流动性管理义务",
+    "zh_short": "国库债务义务",
+    "de_full": "Verbindlichkeiten aus der Liquiditätssteuerung der Staatsschatzkanzlei und der Staatsschulden",
+    "de_short": "VLSS",
+    "ru_full": "Обязательства по управлению ликвидностью государственной казны и государственного долга",
+    "ru_short": "ОПУЛГКГД"
   },
   "Poskytnuté zálohy na dlouhodobý finanční majetek": {
-    "en_full": "Advances Provided for Long-term Financial Assets",
-    "en_short": "Adv. Long-term Fin. Assets",
+    "en_full": "Advances for Long-term Financial Assets",
+    "en_short": "Adv. Long-term FA",
     "zh_full": "长期金融资产预付款",
-    "zh_short": "长期金融资产预付"
+    "zh_short": "长期金融预付",
+    "de_full": "Vorauszahlungen für langfristige Finanzanlagen",
+    "de_short": "Vorauszahl. f. langfr. Finanzanl.",
+    "ru_full": "Авансовые платежи за долгосрочные финансовые активы",
+    "ru_short": "Аванс. плаш. за долг. фин. акт."
   },
   "Ostatní výnosy z činnosti": {
-    "en_full": "Other Income from Operations",
-    "en_short": "Other Op. Inc.",
+    "en_full": "Other Operating Revenues",
+    "en_short": "Other Op. Rev.",
     "zh_full": "其他业务收入",
-    "zh_short": "其他业务收入"
+    "zh_short": "其他业务收入",
+    "de_full": "Sonstige Einnahmen aus der Tätigkeit",
+    "de_short": "Sonst. Einn. Tät.",
+    "ru_full": "Прочие доходы от деятельности",
+    "ru_short": "Проч. дох. деят."
   },
   "Náklady vybraných ústředních vládních institucí na transfery": {
-    "en_full": "Expenses of Selected Central Government Institutions for Transfers",
-    "en_short": "Sel. CG Inst. Trans. Exp.",
-    "zh_full": "选定中央政府机构的转移支出",
-    "zh_short": "选定中央转移支出"
+    "en_full": "Transfer Costs of Selected Central Government Institutions",
+    "en_short": "Trans. Costs (Cent. Gov.)",
+    "zh_full": "中央政府选定机构的转移费用",
+    "zh_short": "中央转移费用",
+    "de_full": "Kosten ausgewählter zentraler Regierungsinstitutionen für Transfers",
+    "de_short": "Kosten zent. Inst. für Transfers",
+    "ru_full": "Расходы выбранных центральных государственных учреждений на трансферты",
+    "ru_short": "Расх. центр. учр. на трансф."
   },
   "Ostatní": {
+    "de_full": "Sonstige",
+    "de_short": "Sonstige",
     "en_full": "Other",
     "en_short": "Other",
     "zh_full": "其他",
-    "zh_short": "其他"
+    "zh_short": "其他",
+    "ru_full": "Прочие",
+    "ru_short": "Прочие"
   },
   "Zaplacená daň z příjmů včetně doměrků ( - )": {
-    "en_full": "Income Tax Paid Including Housing Benefits ( - )",
-    "en_short": "Inc. Tax Paid (incl. Hous. Ben.)",
-    "zh_full": "已支付的所得税（包括住房补贴）",
-    "zh_short": "已付所得税（含住房补贴）"
+    "en_full": "Income Tax Paid Including Withholding Tax ( - )",
+    "en_short": "Inc. Tax Paid ( - )",
+    "zh_full": "已支付的所得税（包括预扣税） ( - )",
+    "zh_short": "已支付所得税 ( - )",
+    "de_full": "Zahlung der Einkommenssteuer einschließlich Vergütungen ( - )",
+    "de_short": "Zahlung Einkommenssteuer ( - )",
+    "ru_full": "Уплата налога на доходы, включая компенсации ( - )",
+    "ru_short": "Уплата налога на доходы ( - )"
   },
   "Oceňovací rozdíly u cenných papírů a podílů": {
-    "en_full": "Fair Value Adjustments for Financial Instruments and Equity Investments",
-    "en_short": "FV Adj. Fin. Inst. & Eq. Inv.",
-    "zh_full": "金融工具和股权投资的公允价值变动",
-    "zh_short": "金融工具及股权投资公允价值变动"
+    "en_full": "Revaluation Differences for Securities and Shares",
+    "en_short": "Reval. Diff. (Sec. & Shares}",
+    "zh_full": "证券和股份的重估差异",
+    "zh_short": "证券重估",
+    "de_full": "Wertänderungen von Wertpapieren und Anteilen",
+    "de_short": "Wertänder. WP/An.",
+    "ru_full": "Оценочные разницы по ценным бумагам и долям",
+    "ru_short": "Оц. разн. ЦБ/доли"
   },
   "Oceňovací rozdíly u majetku určeného k prodeji": {
-    "en_full": "Fair Value Adjustments for Assets Held for Sale",
-    "en_short": "FV Adj. Assets for Sale",
-    "zh_full": "持有待售资产的公允价值变动",
-    "zh_short": "持有待售资产公允价值变动"
+    "en_full": "Revaluation Differences for Assets Held for Sale",
+    "en_short": "Reval. Diff. (Assets for Sale}",
+    "zh_full": "待售资产的重估差异",
+    "zh_short": "待售重估",
+    "de_full": "Wertanpassungen bei Verkaufsbestimmten Vermögensgegenständen",
+    "de_short": "Wertanp. Verk. Verm.",
+    "ru_full": "Переоценка активов, предназначенных для продажи",
+    "ru_short": "Переоценка прод. акт."
   },
   "Pohledávky za zaměstnanci": {
-    "en_full": "Employee Receivables",
-    "en_short": "Emp. Rec.",
-    "zh_full": "员工应收款项",
-    "zh_short": "员工应收"
+    "en_full": "Receivables from Employees",
+    "en_short": "Rec Emp",
+    "zh_full": "来自员工的应收款项",
+    "zh_short": "来自员工的应收",
+    "de_full": "Forderungen an Mitarbeiter",
+    "de_short": "Forder. Mitarb.",
+    "ru_full": "Требования к сотрудникам",
+    "ru_short": "Треб. сотруд."
   },
   "Výrobky": {
-    "en_full": "Inventories",
-    "en_short": "Inv.",
-    "zh_full": "存货",
-    "zh_short": "存货"
+    "en_full": "Inventory - Finished Goods",
+    "en_short": "Inv. FG",
+    "zh_full": "库存 - 成品",
+    "zh_short": "库存成品",
+    "de_full": "Erzeugnisse",
+    "de_short": "Erz.",
+    "ru_full": "Производимая продукция",
+    "ru_short": "Продукция"
   },
   "Běžný účet": {
     "en_full": "Current Bank Account",
     "en_short": "Curr. Bank Acc.",
     "zh_full": "银行存款",
-    "zh_short": "银行存款"
+    "zh_short": "银行存款",
+    "de_full": "Girokonto",
+    "de_short": "Giro",
+    "ru_full": "Текущий счет",
+    "ru_short": "ТекСч"
   },
   "Příjmy příštích období": {
-    "en_full": "Revenue from Future Periods",
-    "en_short": "Rev. Fut. Per.",
-    "zh_full": "未来期间收入",
-    "zh_short": "未来收入"
+    "en_full": "Unearned Revenue",
+    "en_short": "Unearned Rev.",
+    "zh_full": "递延收入",
+    "zh_short": "递延收入",
+    "de_full": "Einnahmen für zukünftige Perioden",
+    "de_short": "Einnahm. zuk. Per.",
+    "ru_full": "Доходы будущих периодов",
+    "ru_short": "Дох. буд. пер."
   },
   "Výnosy z prodeje dlouhodobého hmotného majetku kromě pozemků": {
     "en_full": "Proceeds from Sale of Long-term Tangible Assets (excluding Land}",
-    "en_short": "Proc. Sale L/T Tang. (excl. Land}",
-    "zh_full": "出售长期有形资产（不含土地）的收益",
-    "zh_short": "出售长期有形资产"
+    "en_short": "Sale of L-T Tang. (excl. Land}",
+    "zh_full": "长期有形资产销售收入（不含土地）",
+    "zh_short": "长期有形资产收入（不含土地）",
+    "de_full": "Einnahmen aus dem Verkauf von langfristigen tangiblen Vermögenswerten außer Grundstücken",
+    "de_short": "Einn. Verk. langfr. tang. Verm. außer Grundst.",
+    "ru_full": "Доходы от продажи долгосрочных материальных активов, кроме земель",
+    "ru_short": "Дох. прод. долг. мат. акт. кр. зем."
   },
   "Pořizovaný dlouhodobý finanční majetek": {
     "en_full": "Acquisition of Long-term Financial Assets",
-    "en_short": "Acq. L/T Fin. Assets",
-    "zh_full": "长期金融资产的购置",
-    "zh_short": "购置长期金融资产"
+    "en_short": "Acq. Long-term FA",
+    "zh_full": "购置长期金融资产",
+    "zh_short": "购置长期金融",
+    "de_full": "Erworbenes langfristiges Finanzvermögen",
+    "de_short": "Erw. langfr. Finanzverm.",
+    "ru_full": "Приобретаемые долгосрочные финансовые активы",
+    "ru_short": "Приобр. долг. фин. акт."
   },
   "Náklady ze sdílené daně z příjmů fyzických osob": {
-    "en_full": "Costs from Shared Income Tax on Individuals",
-    "en_short": "Costs Shared Inc. Tax Ind.",
-    "zh_full": "共享个人所得税的成本",
-    "zh_short": "共享个税成本"
+    "en_full": "Costs from Shared Personal Income Tax",
+    "en_short": "Shared PIT Costs",
+    "zh_full": "共享个人所得税",
+    "zh_short": "共享个税",
+    "de_full": "Kosten aus der geteilten Einkommensteuer von natürlichen Personen",
+    "de_short": "Kosten aus geteilten Einkommensteuern nat. Pers.",
+    "ru_full": "Расходы из совместно используемого налога на доходы физических лиц",
+    "ru_short": "Расх. из совм. налога на доходы физ. лиц"
   },
   "Náklady vybraných místních vládních institucí na transfery": {
-    "en_full": "Costs of Selected Local Government Institutions for Transfers",
-    "en_short": "Costs Sel. Loc. Gov. Trans.",
-    "zh_full": "选定地方政府机构的转移成本",
-    "zh_short": "选定地方转移成本"
+    "en_full": "Transfer Costs of Selected Local Government Institutions",
+    "en_short": "Trans. Costs (Local Gov.)",
+    "zh_full": "地方政府选定机构的转移费用",
+    "zh_short": "地方转移费用",
+    "de_full": "Kosten ausgewählter lokaler Regierungsinstitutionen für Transfers",
+    "de_short": "Kosten lok. Inst. für Transfers",
+    "ru_full": "Расходы выбранных местных государственных учреждений на трансферты",
+    "ru_short": "Расх. местн. учр. на трансф."
   },
   "Výnosy ze sdílené daně z přidané hodnoty": {
-    "en_full": "Revenue from Shared Value Added Tax",
-    "en_short": "Rev. Shared VAT",
+    "en_full": "Revenues from Shared Value Added Tax",
+    "en_short": "Shared VAT Revenues",
     "zh_full": "共享增值税收入",
-    "zh_short": "共享增值税"
+    "zh_short": "共享增值税",
+    "de_full": "Einnahmen aus der geteilten Mehrwertsteuer",
+    "de_short": "Einn. geteilte MwSt.",
+    "ru_full": "Доходы от общей налога на добавленную стоимость",
+    "ru_short": "Дох. общ. НДС"
   },
   "Finanční výnosy": {
     "en_full": "Financial Income",
     "en_short": "Fin. Inc.",
     "zh_full": "财务收入",
-    "zh_short": "财务收入"
+    "zh_short": "财务收入",
+    "de_full": "Finanzierungseinnahmen",
+    "de_short": "Fin. Einn.",
+    "ru_full": "Финансовые доходы",
+    "ru_short": "Фин. дох."
   },
   "Běžný účet FKSP": {
     "en_full": "Current Bank Account FKSP",
-    "en_short": "Curr. Bank Acc. FKSP",
-    "zh_full": "FKSP银行存款",
-    "zh_short": "FKSP银行存款"
+    "en_short": "CBA FKSP",
+    "zh_full": "银行存款 FKSP",
+    "zh_short": "银存 FKSP",
+    "de_full": "Girokonto FKSP",
+    "de_short": "Giro FKSP",
+    "ru_full": "Текущий счет FKSP",
+    "ru_short": "Тек. счет FKSP"
   },
   "Příjmy z prodeje dlouhodobých aktiv": {
-    "en_full": "Proceeds from Sale of Long-term Assets",
-    "en_short": "Proc. from Sale L/T Assets",
-    "zh_full": "出售长期资产的收入",
-    "zh_short": "出售长资产收入"
+    "en_full": "Revenue from Sale of Long-term Assets",
+    "en_short": "Revenue Sale LT Assets",
+    "zh_full": "长期资产出售收入",
+    "zh_short": "长期资产出售收入",
+    "de_full": "Einnahmen aus dem Verkauf von langfristigen Vermögenswerten",
+    "de_short": "Einn. Verk. langfr. Verm.",
+    "ru_full": "Доходы от продажи долгосрочных активов",
+    "ru_short": "Дох. прод. долг. акт."
   },
   "Dodavatelé": {
-    "en_full": "Trade Payables",
-    "en_short": "Trade Pay.",
-    "zh_full": "应付账款",
-    "zh_short": "应付"
+    "en_full": "Suppliers",
+    "en_short": "Suppliers",
+    "zh_full": "供应商",
+    "zh_short": "供应商",
+    "de_full": "Lieferanten",
+    "de_short": "Liefer.",
+    "ru_full": "Поставщики",
+    "ru_short": "Постав."
   },
   "Ostatní peněžní toky z dlouhodobých aktiv ( + / - )": {
     "en_full": "Other Cash Flows from Long-term Assets ( + / - )",
-    "en_short": "Other Cash Flows L/T Assets ( + / - )",
-    "zh_full": "其他长期资产的现金流量 ( + / - )",
-    "zh_short": "其他长资产现金流 ( + / - )"
+    "en_short": "Other CF from LTA",
+    "zh_full": "长期资产的其他现金流量 ( + / - )",
+    "zh_short": "长期资产其他CF",
+    "de_full": "Sonstige Geldströme aus langfristigen Vermögenswerten ( + / - )",
+    "de_short": "Sonst. Geldstr. langfr. Verm. ( + / - )",
+    "ru_full": "Прочие денежные потоки от долгосрочных активов ( + / - )",
+    "ru_short": "Проч. д. п. от долг. акт. ( + / - )"
   },
   "Výnosy ze sdílených daní a poplatků": {
-    "en_full": "Revenue from Shared Taxes and Fees",
-    "en_short": "Rev. from Shared Taxes & Fees",
-    "zh_full": "共享税和费用的收入",
-    "zh_short": "共享税收入"
+    "en_full": "Revenues from Shared Taxes and Fees",
+    "en_short": "Shared Tax & Fee Revenues",
+    "zh_full": "共享税及费用收入",
+    "zh_short": "共享税收入",
+    "de_full": "Einnahmen aus geteilten Steuern und Gebühren",
+    "de_short": "GeteilStGebEinn",
+    "ru_full": "Доходы от совместных налогов и сборов",
+    "ru_short": "ДохСовмНалСбор"
   },
   "Krátkodobé pohledávky z postoupených úvěrů": {
     "en_full": "Short-term Receivables from Assigned Loans",
-    "en_short": "S/T Rec. from Assigned Loans",
-    "zh_full": "转让贷款的短期应收款项",
-    "zh_short": "转让贷款应收"
+    "en_short": "S/T Rec Ass Loans",
+    "zh_full": "来自已转让贷款的短期应收款项",
+    "zh_short": "来自已转让贷款的短期应收",
+    "de_full": "Kurzfristige Forderungen aus übertragenen Krediten",
+    "de_short": "Kurzfr. Forder. übr. Kredit.",
+    "ru_full": "Краткосрочные требования по переданным кредитам",
+    "ru_short": "Кратк. треб. перед. кред."
   },
   "Krátkodobý finanční majetek": {
     "en_full": "Short-term Financial Assets",
-    "en_short": "S/T Fin. Assets",
+    "en_short": "S/T Fin Assets",
     "zh_full": "短期金融资产",
-    "zh_short": "短期金融资产"
+    "zh_short": "短期金融资产",
+    "de_full": "Kurzfristige finanzielle Vermögenswerte",
+    "de_short": "Kurzfr. Fin. Verm.",
+    "ru_full": "Краткосрочные финансовые активы",
+    "ru_short": "Кратк. фин. активы"
   },
   "Dlouhodobé poskytnuté zálohy": {
     "en_full": "Long-term Advances Provided",
-    "en_short": "L/T Advances Provided",
-    "zh_full": "提供的长期预付款",
-    "zh_short": "长期预付款"
+    "en_short": "LTAP",
+    "zh_full": "长期预付款",
+    "zh_short": "长期预付",
+    "de_full": "Langfristige vorgeschossene Anzahlungen",
+    "de_short": "Langfr. vorg. Anz.",
+    "ru_full": "Долгосрочные авансы, предоставленные",
+    "ru_short": "Долг. ав. пр."
   },
   "Jmění účetní jednotky": {
-    "en_full": "Net Assets of the Accounting Unit",
-    "en_short": "Net Assets Acct. Unit",
-    "zh_full": "会计单位的净资产",
-    "zh_short": "会计单位净资产"
+    "en_full": "Net Assets of Accounting Units",
+    "en_short": "Net Assets",
+    "zh_full": "会计单位净资产",
+    "zh_short": "净资产",
+    "de_full": "Vermögen der Buchhaltungseinheit",
+    "de_short": "VU",
+    "ru_full": "Имущество бухгалтерской единицы",
+    "ru_short": "ИБЕ"
   },
   "Zákonné sociální pojištění": {
     "en_full": "Statutory Social Insurance",
-    "en_short": "Soc. Ins.",
+    "en_short": "Stat Soc Ins",
     "zh_full": "法定社会保险",
-    "zh_short": "社保"
+    "zh_short": "法定社保",
+    "de_full": "Rechtliches Sozialversicherungsbeiträge",
+    "de_short": "Rechtl. Sozialv.",
+    "ru_full": "Обязательные страховые взносы",
+    "ru_short": "Обяз. страх. взн."
   },
   "Materiál na skladě": {
-    "en_full": "Inventory",
-    "en_short": "Inv.",
+    "en_full": "Material in Stock",
+    "en_short": "Mat. in Stock",
     "zh_full": "库存材料",
-    "zh_short": "库存"
+    "zh_short": "库存材料",
+    "de_full": "Material auf Lager",
+    "de_short": "Mat. auf L.",
+    "ru_full": "Материал на складе",
+    "ru_short": "Мат. на скл."
   },
   "Přijaté zálohy daní": {
     "en_full": "Advance Tax Payments Received",
-    "en_short": "Adv. Tax Rec.",
+    "en_short": "Adv Tax Rec",
     "zh_full": "收到的预缴税款",
-    "zh_short": "预缴税款"
+    "zh_short": "预缴税款",
+    "de_full": "Erhaltene Steuervorschüsse",
+    "de_short": "Erhalt. Steuervorsch.",
+    "ru_full": "Полученные авансы по налогам",
+    "ru_short": "Получ. авансы по налогам"
   },
   "Krátkodobé přijaté zálohy": {
-    "en_full": "Short-term Advances Received",
-    "en_short": "S/T Adv. Rec.",
-    "zh_full": "收到的短期预付款",
-    "zh_short": "短期预付"
+    "en_full": "Short-term Received Advances",
+    "en_short": "SRA",
+    "zh_full": "短期收到的预付款",
+    "zh_short": "短期预收款",
+    "de_full": "Kurzfristige erhaltenen Anzahlungen",
+    "de_short": "Kurzfr. erhalt. Anzahl.",
+    "ru_full": "Краткосрочные полученные авансы",
+    "ru_short": "Кратк. получ. авансы"
   },
   "Ostatní příjmy z prodeje dlouhodobých aktiv": {
-    "en_full": "Other Income from Sale of Long-term Assets",
-    "en_short": "Other Inc. from L/T Asset Sale",
-    "zh_full": "其他长期资产处置收入",
-    "zh_short": "其他长期处置收入"
+    "en_full": "Other Revenue from Sale of Long-term Assets",
+    "en_short": "Other Revenue LT Assets",
+    "zh_full": "其他长期资产出售收入",
+    "zh_short": "其他长期资产收入",
+    "de_full": "Sonstige Einnahmen aus dem Verkauf von langfristigen Vermögenswerten",
+    "de_short": "Sonst. Einn. Verk. langfr. Verm.",
+    "ru_full": "Прочие доходы от продажи долгосрочных активов",
+    "ru_short": "Проч. дох. прод. долг. акт."
   },
   "Opravy předchozích účetních období": {
     "en_full": "Adjustments for Prior Periods",
-    "en_short": "Prior Period Adj.",
-    "zh_full": "前期差错更正",
-    "zh_short": "前期更正"
+    "en_short": "Prior Periods Adj.",
+    "zh_full": "前期调整",
+    "zh_short": "前期调整",
+    "de_full": "Korrekturen früherer Geschäftsjahre",
+    "de_short": "Korr. früher. GJ",
+    "ru_full": "Исправления предыдущих отчетных периодов",
+    "ru_short": "Испр. пред. отч. периодов"
   },
   "Peníze na cestě": {
     "en_full": "Cash in Transit",
-    "en_short": "Cash in Trans.",
+    "en_short": "CIT",
     "zh_full": "在途资金",
-    "zh_short": "在途资金"
+    "zh_short": "在途资",
+    "de_full": "Unterwegs befindliche Gelder",
+    "de_short": "Unterwegs Geld",
+    "ru_full": "Деньги в пути",
+    "ru_short": "Деньги в пути"
   },
   "Výnosy z prodeje vlastních výrobků": {
-    "en_full": "Revenue from Sale of Own Products",
-    "en_short": "Rev. from Own Prod. Sale",
-    "zh_full": "自产产品销售收入",
-    "zh_short": "自产销售收入"
+    "en_full": "Revenues from Sale of Own Products",
+    "en_short": "Rev. Sale Own Prod.",
+    "zh_full": "销售自产产品收入",
+    "zh_short": "销售自产产品收入",
+    "de_full": "Einnahmen aus dem Verkauf eigener Produkte",
+    "de_short": "Einn. a. V. e. Pr.",
+    "ru_full": "Доходы от продажи собственной продукции",
+    "ru_short": "Дох. от пр. с. пр."
   },
   "Výnosy ze soudních poplatků": {
-    "en_full": "Revenue from Court Fees",
-    "en_short": "Rev. Ct. Fees",
+    "en_full": "Court Fees Income",
+    "en_short": "Court Fees",
     "zh_full": "法院费用收入",
-    "zh_short": "法院费"
+    "zh_short": "法院费用收入",
+    "de_full": "Einnahmen aus Gerichtsgebühren",
+    "de_short": "Einn. Ger. Geb.",
+    "ru_full": "Доходы от судебных сборов",
+    "ru_short": "Дох. суд. сб."
   },
   "Dlouhodobé přijaté zálohy na transfery": {
-    "en_full": "Long-term Advance Payments Received for Transfers",
-    "en_short": "L/T Adv. Rec. Trans.",
-    "zh_full": "长期收到的转移预付款",
-    "zh_short": "长期预收转移"
+    "en_full": "Long-term Received Advances for Transfers",
+    "en_short": "LT Rec. Adv. for Trans.",
+    "zh_full": "长期预收款-转移",
+    "zh_short": "长期预收转移",
+    "de_full": "Langfristige erhaltenen Anzahlungen für Transfers",
+    "de_short": "Langfr. erhalt. Anzahl. für Transf.",
+    "ru_full": "Долгосрочные полученные авансы на трансферы",
+    "ru_short": "Долгоср. получ. авансы на трансф."
   },
   "VÝSLEDEK HOSPODAŘENÍ": {
     "en_full": "Operating Result",
-    "en_short": "Op. Res.",
+    "en_short": "Op. Result",
     "zh_full": "经营成果",
-    "zh_short": "经营成果"
+    "zh_short": "经营成果",
+    "de_full": "Ergebnis der Haushaltsführung",
+    "de_short": "Ergebnis Haushaltsf.",
+    "ru_full": "Результат хозяйствования",
+    "ru_short": "Рез. хозяйствования"
   },
   "Jmění účetní jednotky a upravující položky": {
-    "en_full": "Equity of the Accounting Unit and Adjusting Items",
-    "en_short": "Eq. Acct. Unit & Adj. Items",
+    "en_full": "Net Assets of Accounting Units and Adjusting Items",
+    "en_short": "Net Assets & Adj. Items",
     "zh_full": "会计单位净资产及调整项目",
-    "zh_short": "单位净资产及调整"
+    "zh_short": "净资产及调整",
+    "de_full": "Vermögen der Buchhaltungseinheit und anpassende Posten",
+    "de_short": "VUaAP",
+    "ru_full": "Имущество бухгалтерской единицы и корректирующие статьи",
+    "ru_short": "ИБЕиКС"
   },
   "Závazky z exekuce a ostatního nakládání s cizím majetkem": {
-    "en_full": "Liabilities from Execution and Other Management of Foreign Assets",
-    "en_short": "Liab. Exec. & Mgmt. Cizí",
-    "zh_full": "执行及管理外来资产的负债",
-    "zh_short": "执行管理负债"
+    "en_full": "Liabilities from Enforcement and Other Management of Foreign Assets",
+    "en_short": "Enf. & Mgmt. Liab.",
+    "zh_full": "强制执行和管理外来资产的负债",
+    "zh_short": "强制执行和管理负债",
+    "de_full": "Verbindlichkeiten aus Vollstreckung und anderer Verwaltung fremden Vermögens",
+    "de_short": "Verbindl. Vollstreck. u. Verwaltung fremd. Verm.",
+    "ru_full": "Обязательства по исполнительному производству и другому управлению чужим имуществом",
+    "ru_short": "Обязат. по исполн. произ. и управл. чуж. имущ."
   },
   "Dary a jiná bezúplatná předání": {
-    "en_full": "Donations and Other Grants",
-    "en_short": "Don. & Grants",
-    "zh_full": "捐赠及其他无偿转让",
-    "zh_short": "捐赠及无偿"
+    "en_full": "Donations and Other Free Transfers",
+    "en_short": "DnFT",
+    "zh_full": "捐赠和其他无偿转让",
+    "zh_short": "捐赠无偿",
+    "de_full": "Spenden und andere kostenlose Übertragungen",
+    "de_short": "Spenden u. k. Übertr.",
+    "ru_full": "Дары и другие безвозмездные передачи",
+    "ru_short": "Дары и б.в. передачи"
   },
   "Dluhové cenné papíry k obchodování": {
-    "en_full": "Debt Securities for Trading",
-    "en_short": "Debt Sec. Trade",
+    "en_full": "Trading Debt Securities",
+    "en_short": "Trading Debt Secs",
     "zh_full": "交易性债务证券",
-    "zh_short": "交易债务"
+    "zh_short": "交易债务证券",
+    "de_full": "Handelsanleihen",
+    "de_short": "HdlAnl",
+    "ru_full": "Облигации для торговли",
+    "ru_short": "ОблТорг"
   },
   "Nedokončený dlouhodobý nehmotný majetek": {
     "en_full": "Incomplete Long-term Intangible Assets",
-    "en_short": "Inc. L/T Int. Assets",
+    "en_short": "Inc. L-T Intangibles",
     "zh_full": "未完成的长期无形资产",
-    "zh_short": "未完成长期无形"
+    "zh_short": "未完长期无形资产",
+    "de_full": "Unvollendete langfristige immaterielle Vermögenswerte",
+    "de_short": "Unvoll. langfr. imm. Verm.",
+    "ru_full": "Незавершенные долгосрочные нематериальные активы",
+    "ru_short": "Незав. долг. немат. акт."
   },
   "Změna stavu krátkodobého finančního majetku": {
-    "en_full": "Change in Short-term Financial Assets",
-    "en_short": "Chg. S/T Fin. Assets",
-    "zh_full": "短期金融资产变动",
-    "zh_short": "短期金融资产变动"
+    "en_full": "Change in Short-Term Financial Assets",
+    "en_short": "Change in ST Fin. Assets",
+    "zh_full": "短期金融资产的变化",
+    "zh_short": "短期金融资产变化",
+    "de_full": "Veränderung des Bestands von kurzfristigen Finanzanlagen",
+    "de_short": "Veränderung kurzfr. Finanzanlagen",
+    "ru_full": "Изменение остатков краткосрочных финансовых активов",
+    "ru_short": "Изм. краткоср. фин. активов"
   },
   "Výnosy z prodeje pozemků": {
-    "en_full": "Revenue from Sale of Land",
-    "en_short": "Rev. from Land Sale",
+    "en_full": "Proceeds from Sale of Land",
+    "en_short": "Sale of Land",
     "zh_full": "土地销售收入",
-    "zh_short": "土地销售收入"
+    "zh_short": "土地销售收入",
+    "de_full": "Einnahmen aus dem Verkauf von Grundstücken",
+    "de_short": "Einn. Verk. Grundst.",
+    "ru_full": "Доходы от продажи земель",
+    "ru_short": "Дох. прод. зем."
   },
   "Ostatní fondy": {
     "en_full": "Other Funds",
     "en_short": "Other Funds",
     "zh_full": "其他基金",
-    "zh_short": "其他基金"
+    "zh_short": "其他基金",
+    "de_full": "Andere Fonds",
+    "de_short": "Andere Fonds",
+    "ru_full": "Прочие фонды",
+    "ru_short": "Прочие фонды"
   },
   "Poskytnuté zálohy na dlouhodobý hmotný majetek": {
-    "en_full": "Advances for Long-term Property, Plant, and Equipment",
-    "en_short": "Adv. for L/T PPE",
-    "zh_full": "长期资产预付款",
-    "zh_short": "长期资产预付款"
+    "en_full": "Advances for Long-term Tangible Assets",
+    "en_short": "Adv. for LT Tang. Assets",
+    "zh_full": "长期有形资产预付款",
+    "zh_short": "长期资产预付款",
+    "de_full": "Gezahlte Anzahlungen für langfristige Sachanlagen",
+    "de_short": "Gez. Anzahl. langfr. Sachanl.",
+    "ru_full": "Предоплаты по долгосрочным материальным активам",
+    "ru_short": "Предопл. долг. мат. активам"
   },
   "Jiné sociální náklady": {
-    "en_full": "Other Social Expenses",
-    "en_short": "Other Soc. Exp.",
+    "en_full": "Other Social Costs",
+    "en_short": "Other Soc Costs",
     "zh_full": "其他社会费用",
-    "zh_short": "其他社会费用"
+    "zh_short": "其他社费",
+    "de_full": "Andere Sozialkosten",
+    "de_short": "Andere Sozialk.",
+    "ru_full": "Прочие социальные расходы",
+    "ru_short": "Проч. соц. расходы"
   },
   "Výnosy z transferů": {
     "en_full": "Revenue from Transfers",
-    "en_short": "Rev. from Transfers",
+    "en_short": "Transfer Revenue",
     "zh_full": "转移收入",
-    "zh_short": "转移收入"
+    "zh_short": "转移收入",
+    "de_full": "Einnahmen aus Transfers",
+    "de_short": "TransfEinn",
+    "ru_full": "Доходы от трансфертов",
+    "ru_short": "ДохТранс"
   },
   "Základní běžný účet územních samosprávných celků": {
     "en_full": "Basic Current Bank Account of Local Government Units",
-    "en_short": "Basic Curr. Acct. of LGUs",
+    "en_short": "BCBA LGU",
     "zh_full": "地方政府单位基本银行存款",
-    "zh_short": "地方政府单位基本银行存款"
+    "zh_short": "地基银存",
+    "de_full": "Grundgirokonto der lokalen Selbstverwaltungsgebiete",
+    "de_short": "Grundgiro LSG",
+    "ru_full": "Основной текущий счет местных самоуправлений",
+    "ru_short": "Осн. тек. счет МС"
   },
   "Prodaný materiál": {
-    "en_full": "Sold Materials",
-    "en_short": "Sold Mater.",
-    "zh_full": "已售材料",
-    "zh_short": "已售材料"
+    "en_full": "Sales of Materials",
+    "en_short": "Sales Mat.",
+    "zh_full": "销售材料",
+    "zh_short": "销售材料",
+    "de_full": "Verkaufter Materialien",
+    "de_short": "Verk. Material",
+    "ru_full": "Проданные материалы",
+    "ru_short": "Прод. материалы"
   },
   "Zboží na skladě": {
-    "en_full": "Inventory",
-    "en_short": "Inv.",
-    "zh_full": "存货",
-    "zh_short": "存货"
+    "en_full": "Inventory - Goods in Storage",
+    "en_short": "Inv. GIS",
+    "zh_full": "库存 - 仓储商品",
+    "zh_short": "仓储商品",
+    "de_full": "Lagerbestand",
+    "de_short": "Lager",
+    "ru_full": "Товары на складе",
+    "ru_short": "Тов. на скл."
   },
   "Dlouhodobé závazky z ručení": {
-    "en_full": "Long-term Provisions for Guarantees",
-    "en_short": "L/T Prov. Guar.",
-    "zh_full": "长期预计负债（担保）",
-    "zh_short": "长预计（担保）"
+    "en_full": "Long-term Liabilities from Guarantees",
+    "en_short": "LT Liab. from Guar.",
+    "zh_full": "长期负债-担保",
+    "zh_short": "长期担保负债",
+    "de_full": "Langfristige Verbindlichkeiten aus Bürgschaften",
+    "de_short": "Langfr. Verbindl. aus Bürgs.",
+    "ru_full": "Долгосрочные обязательства по гарантиям",
+    "ru_short": "Долгоср. обяз. по гаран."
   },
   "Bezúplatné převody": {
-    "en_full": "Non-reciprocal Transfers",
-    "en_short": "Non-recip. Trans.",
-    "zh_full": "无偿划拨",
-    "zh_short": "无偿划拨"
+    "de_full": "Freiwillige Übertragungen",
+    "de_short": "Freiwill. Übertr.",
+    "en_full": "Grants",
+    "en_short": "Grants",
+    "zh_full": "无偿转让",
+    "zh_short": "无偿转让",
+    "ru_full": "Безвозмездные переводы",
+    "ru_short": "Безвозм. пер."
   },
   "Peněžní toky z vlastního kapitálu, dlouhodobých závazků a dlouhodobých pohledávek": {
     "en_full": "Cash Flows from Own Capital, Long-term Liabilities, and Long-term Receivables",
-    "en_short": "Cash Flows Own Cap., L/T Liab., L/T Rec.",
-    "zh_full": "来自自有资本、长期负债和长期应收款的现金流量",
-    "zh_short": "自有资本、长期负债、长期应收现金流量"
+    "en_short": "CF from OCL & LTR",
+    "zh_full": "自有资本、长期负债和长期应收款的现金流量",
+    "zh_short": "自有资本等CF",
+    "de_full": "Geldströme aus Eigenkapital, langfristigen Verbindlichkeiten und langfristigen Forderungen",
+    "de_short": "Geldstr. Eig. Kap., langfr. Verbindl., langfr. Forder.",
+    "ru_full": "Денежные потоки от собственного капитала, долгосрочных обязательств и долгосрочных требований",
+    "ru_short": "Д. п. от собст. кап., долг. обл. и долг. тр."
   },
   "Aktivace dlouhodobého majetku": {
     "en_full": "Capitalization of Long-term Assets",
-    "en_short": "Cap. L/T Assets",
+    "en_short": "Cap. of L-T Assets",
     "zh_full": "长期资产的资本化",
-    "zh_short": "长资资本化"
+    "zh_short": "长期资产资本化",
+    "de_full": "Kapitalisierung von langfristigem Vermögen",
+    "de_short": "Kapitalisierung langfr. Verm.",
+    "ru_full": "Капитализация долгосрочного имущества",
+    "ru_short": "Капитализация долг. имущ."
   },
   "Agregované příjmy a výdaje předcházejících účetních období": {
-    "en_full": "Aggregated Revenues and Expenses from Prior Accounting Periods",
-    "en_short": "Agg. Rev. & Exp. Prior Periods",
-    "zh_full": "前期会计期间的汇总收入和费用",
-    "zh_short": "前期汇总收入费用"
+    "en_full": "Aggregated Revenues and Expenditures of Prior Accounting Periods",
+    "en_short": "ARPEP",
+    "zh_full": "前期会计期间的汇总收入和支出",
+    "zh_short": "前期汇总收支",
+    "de_full": "Aggregierte Einnahmen und Ausgaben aus vorherigen Buchungsjahren",
+    "de_short": "Aggr. Einn. u. Ausg. v. J.",
+    "ru_full": "Агрегированные доходы и расходы предыдущих отчетных периодов",
+    "ru_short": "Агр. д. и р. пр. п."
   },
   "Krátkodobé závazky z ručení": {
-    "en_full": "Short-term Provisions for Guarantees",
-    "en_short": "S/T Prov. Guar.",
-    "zh_full": "短期预计负债（担保）",
-    "zh_short": "短预计（担保）"
+    "en_full": "Short-term Liabilities from Guarantees",
+    "en_short": "Short-term Guar. Liab.",
+    "zh_full": "短期担保负债",
+    "zh_short": "短期担保负债",
+    "de_full": "Kurzfristige Verpflichtungen aus Bürgschaften",
+    "de_short": "Kurzfr. Verpf. Bürgs.",
+    "ru_full": "Краткосрочные обязательства по гарантиям",
+    "ru_short": "Кратк. обяз. гарантий"
   },
   "Závazky z neukončených finančních operací": {
     "en_full": "Liabilities from Uncompleted Financial Operations",
-    "en_short": "Liab. Uncomp. Fin. Ops.",
-    "zh_full": "未完成财务操作的负债",
-    "zh_short": "未完成财务负债"
+    "en_short": "Uncomp. Fin. Op. Liab.",
+    "zh_full": "未完成金融操作负债",
+    "zh_short": "未完成金融操作负债",
+    "de_full": "Verbindlichkeiten aus unvollendeten Finanzoperationen",
+    "de_short": "VUF",
+    "ru_full": "Обязательства по незавершенным финансовым операциям",
+    "ru_short": "ОПНФО"
   },
   "Směnky k úhradě": {
     "en_full": "Bills Payable",
     "en_short": "B/P",
     "zh_full": "应付票据",
-    "zh_short": "应付票据"
+    "zh_short": "应付票据",
+    "de_full": "Zu bezahlende Wechsel",
+    "de_short": "Zu bez. Wechsel",
+    "ru_full": "Векселя к оплате",
+    "ru_short": "Векс. к опл."
   },
   "Oceňovací rozdíly při prvotním použití metody": {
-    "en_full": "Revaluation Differences on Initial Application of a Method",
-    "en_short": "Reval. Diff.",
-    "zh_full": "首次采用方法时的重估差异",
-    "zh_short": "首次重估差异"
+    "en_full": "Revaluation Differences on Initial Application of Method",
+    "en_short": "Reval. Diff. on Init. App.",
+    "zh_full": "首次应用方法时的重估差异",
+    "zh_short": "首次重估差异",
+    "de_full": "Bewertungsunterschiede bei der Erstanzwendung der Methode",
+    "de_short": "BUEM",
+    "ru_full": "Оценочные разницы при первом применении метода",
+    "ru_short": "ОРППМ"
   },
   "Ostatní krátkodobé závazky": {
-    "en_full": "Other Short-Term Liabilities",
-    "en_short": "Other S/T Liab.",
+    "en_full": "Other Short-term Liabilities",
+    "en_short": "Other Short-term Liab.",
     "zh_full": "其他短期负债",
-    "zh_short": "其他短期负债"
+    "zh_short": "其他短期负债",
+    "de_full": "Andere kurzfristige Verbindlichkeiten",
+    "de_short": "And. kurzfr. Verbindl.",
+    "ru_full": "Прочие краткосрочные обязательства",
+    "ru_short": "Проч. кратк. обяз."
   },
   "Výnosy z prodeje materiálu": {
-    "en_full": "Gains from Sale of Materials",
-    "en_short": "Gains on Mat. Sale",
-    "zh_full": "材料销售收益",
-    "zh_short": "材料销售收益"
+    "en_full": "Proceeds from Sale of Materials",
+    "en_short": "Sale of Mats.",
+    "zh_full": "材料销售收入",
+    "zh_short": "材料销售收入",
+    "de_full": "Einnahmen aus dem Verkauf von Materialien",
+    "de_short": "Einn. a. V. Mat.",
+    "ru_full": "Доходы от продажи материалов",
+    "ru_short": "Дох. от пр. мат."
   },
   "Drobný dlouhodobý nehmotný majetek": {
     "en_full": "Minor Long-term Intangible Assets",
-    "en_short": "Min. L/T Intang.",
+    "en_short": "MLTIA",
     "zh_full": "小额长期无形资产",
-    "zh_short": "小额长无形"
+    "zh_short": "小额长无形",
+    "de_full": "Kleinigkeiten langfristiger immaterieller Vermögenswerte",
+    "de_short": "KleinLImmV",
+    "ru_full": "Мелкие долгосрочные нематериальные активы",
+    "ru_short": "МДНМатАкт"
   },
   "Krátkodobé úvěry": {
     "en_full": "Short-term Loans",
-    "en_short": "S/T Loans",
-    "zh_full": "短期贷款",
-    "zh_short": "短期贷"
+    "en_short": "ST Loans",
+    "zh_full": "短期借款",
+    "zh_short": "短期借款",
+    "de_full": "Kurzfristige Kredite",
+    "de_short": "Kurzfr. Kred.",
+    "ru_full": "Краткосрочные кредиты",
+    "ru_short": "Краткоср. кред."
   },
   "Dlouhodobé pohledávky": {
     "en_full": "Long-term Receivables",
-    "en_short": "L/T Rec.",
+    "en_short": "Long-term Rec.",
     "zh_full": "长期应收款",
-    "zh_short": "长期应收"
+    "zh_short": "长期应收款",
+    "de_full": "Langfristige Forderungen",
+    "de_short": "Langfr. Forder.",
+    "ru_full": "Долгосрочные дебиторские задолженности",
+    "ru_short": "Долг. деб. зад."
   },
   "Vlastní kapitál celkem": {
-    "en_full": "Total Equity / Net Assets",
-    "en_short": "Tot. Eq.",
-    "zh_full": "所有者权益合计",
-    "zh_short": "所有者权益"
+    "en_full": "Total Equity",
+    "en_short": "Total Eq.",
+    "zh_full": "所有者权益总计",
+    "zh_short": "所有者权益总计",
+    "de_full": "Eigenkapital insgesamt",
+    "de_short": "Eigenkap. ges.",
+    "ru_full": "Общий собственный капитал",
+    "ru_short": "Общ. собст. кап."
   },
   "Pohledávky za eskontované cenné papíry": {
-    "en_full": "Receivables from Discounted Securities",
-    "en_short": "Rec. from Disc. Sec.",
-    "zh_full": "贴现证券应收款",
-    "zh_short": "贴现证券应收"
+    "en_full": "Claims from Discounted Securities",
+    "en_short": "Discounted Securities Claims",
+    "zh_full": "贴现有价证券应收款项",
+    "zh_short": "贴现有价证券应收",
+    "de_full": "Forderungen aus eskontierten Wertpapieren",
+    "de_short": "Forder. aus Eskont.",
+    "ru_full": "Дебиторская задолженность по эсконтированным ценным бумагам",
+    "ru_short": "Деб. зад. по эсконт. цб"
   },
   "Zúčtování z přerozdělování daní": {
     "en_full": "Settlement from Tax Redistribution",
     "en_short": "Settlement from Tax Redist.",
     "zh_full": "税收再分配结算",
-    "zh_short": "税收再分配"
+    "zh_short": "税收再分配",
+    "de_full": "Abrechnung der Steuerumverteilung",
+    "de_short": "Steuerumv. Abrechn.",
+    "ru_full": "Расчеты по перераспределению налогов",
+    "ru_short": "Расч. по перерасп. налогов"
   },
   "Zvláštní výdajový účet": {
     "en_full": "Special Expenditure Account",
-    "en_short": "Spec. Exp. Acc.",
+    "en_short": "SEA",
     "zh_full": "特别支出账户",
-    "zh_short": "特别支出"
+    "zh_short": "特支账",
+    "de_full": "Sonderausgabenkonto",
+    "de_short": "Sonder-Ausgabenkonto",
+    "ru_full": "Специальный расходный счет",
+    "ru_short": "Спец-расходный счет"
   },
   "Ostatní závazky ze správy daní": {
-    "en_full": "Other Tax Administration Liabilities",
+    "en_full": "Other Liabilities from Tax Administration",
     "en_short": "Other Tax Admin. Liab.",
     "zh_full": "其他税收管理负债",
-    "zh_short": "其他税收负债"
+    "zh_short": "其他税收管理负债",
+    "de_full": "Weitere Verbindlichkeiten aus der Steuerverwaltung",
+    "de_short": "Weitere Steuerverbindl.",
+    "ru_full": "Прочие обязательства по управлению налогами",
+    "ru_short": "Проч. налог. обяз."
   },
   "Samostatné hmotné movité věci a soubory hmotných movitých věcí": {
     "en_full": "Tangible Movable Property and Collections of Tangible Movable Property",
     "en_short": "Tang. Movable Prop.",
     "zh_full": "有形动产及有形动产集合",
-    "zh_short": "有形动产"
+    "zh_short": "有形动产",
+    "de_full": "Einzelne bewegliche Sachanlagen und Gruppen von beweglichen Sachanlagen",
+    "de_short": "Einzelne/Gruppen bew. Sachanl.",
+    "ru_full": "Отдельные движимые материальные активы и группы движимых материальных активов",
+    "ru_short": "Отд. движ. мат. активы/группы"
   },
   "Změna stavu krátkodobých závazků": {
-    "en_full": "Change in Status of Short-Term Liabilities",
-    "en_short": "S/T Liab. Change",
-    "zh_full": "短期负债状态变动",
-    "zh_short": "短期负债变动"
+    "en_full": "Change in Short-Term Liabilities",
+    "en_short": "Change in ST Liab.",
+    "zh_full": "短期负债的变化",
+    "zh_short": "短期负债变化",
+    "de_full": "Veränderung des Bestands von kurzfristigen Verbindlichkeiten",
+    "de_short": "Veränderung kurzfr. Verbindl.",
+    "ru_full": "Изменение остатков краткосрочных обязательств",
+    "ru_short": "Изм. краткоср. обяз."
   },
   "Dlouhodobé úvěry": {
-    "en_full": "Long-Term Loans",
-    "en_short": "L/T Loans",
+    "en_full": "Long-term Loans",
+    "en_short": "LTLn",
     "zh_full": "长期借款",
-    "zh_short": "长期借款"
+    "zh_short": "长期借款",
+    "de_full": "Langfristige Kredite",
+    "de_short": "Lfr. Kred.",
+    "ru_full": "Долгосрочные кредиты",
+    "ru_short": "Долг. кред."
   },
   "Prodaný dlouhodobý hmotný majetek": {
-    "en_full": "Sold Long-Term Tangible Assets",
-    "en_short": "Sold L/T Tang. Assets",
-    "zh_full": "已售长期有形资产",
-    "zh_short": "已售长期资产"
+    "en_full": "Sales of Long-term Tangible Assets",
+    "en_short": "Sales LTA Tang.",
+    "zh_full": "销售长期有形资产",
+    "zh_short": "销售长期有形资产",
+    "de_full": "Verkauf von langfristigen materiellen Vermögenswerten",
+    "de_short": "VerkLfmMV",
+    "ru_full": "Продажа долгосрочных материальных активов",
+    "ru_short": "ПродДлМатАкт"
   },
   "Opravné položky k pohledávkám": {
-    "en_full": "Adjusting Items to Receivables",
-    "en_short": "Adj. Rec.",
-    "zh_full": "应收账款调整项目",
-    "zh_short": "应收调整"
+    "en_full": "Adjustments to Receivables",
+    "en_short": "Adj. to Rec.",
+    "zh_full": "应收账款调整",
+    "zh_short": "应收调整",
+    "de_full": "Korrigierende Posten zu Forderungen",
+    "de_short": "Korr. Posten Forder.",
+    "ru_full": "Корректирующие статьи к дебиторской задолженности",
+    "ru_short": "Корр. ст. деб. зад."
   },
   "Pohledávky za osobami mimo vybrané vládní instituce": {
     "en_full": "Receivables from Persons Outside Selected Government Institutions",
-    "en_short": "Ext. Gov. Rec.",
-    "zh_full": "非选定政府机构人员的应收账款",
-    "zh_short": "非政府应收"
+    "en_short": "Receivables (Non-Gov.)",
+    "zh_full": "对非选定政府机构人员的应收账款",
+    "zh_short": "非政府应收款",
+    "de_full": "Forderungen an Personen außerhalb ausgewählter staatlicher Einrichtungen",
+    "de_short": "FAA",
+    "ru_full": "Задолженность лицам, не являющимся выбранными государственными учреждениями",
+    "ru_short": "ЗЛВ"
   },
   "Cestovné": {
     "en_full": "Travel Expenses",
     "en_short": "Travel Exp.",
     "zh_full": "差旅费",
-    "zh_short": "差旅费"
+    "zh_short": "差旅费",
+    "de_full": "Reisekosten",
+    "de_short": "Reisek.",
+    "ru_full": "Расходы на командировки",
+    "ru_short": "Команд. расходы"
   },
   "Vlastní kapitál": {
-    "en_full": "Equity / Net Assets",
+    "en_full": "Equity",
     "en_short": "Equity",
-    "zh_full": "所有者权益 / 净资产",
-    "zh_short": "所有者权益"
+    "zh_full": "所有者权益",
+    "zh_short": "所有者权益",
+    "de_full": "Eigenkapital",
+    "de_short": "EK",
+    "ru_full": "Собственный капитал",
+    "ru_short": "СК"
   },
   "Zdravotní pojištění": {
-    "en_full": "Health Insurance",
-    "en_short": "Health Ins.",
-    "zh_full": "健康保险",
-    "zh_short": "健保"
+    "en_full": "Health Insurance Contributions",
+    "en_short": "HIC",
+    "zh_full": "医疗保险费",
+    "zh_short": "医保费",
+    "de_full": "Krankenversicherung",
+    "de_short": "Krank. V.",
+    "ru_full": "Страхование здоровья",
+    "ru_short": "Стр. зд."
   },
   "Krátkodobé pohledávky z ručení": {
     "en_full": "Short-term Receivables from Guarantees",
     "en_short": "S/T Guar. Rec.",
     "zh_full": "短期担保应收款项",
-    "zh_short": "短期担保应收"
+    "zh_short": "短期担保应收",
+    "de_full": "Kurzfristige Forderungen aus Bürgschaften",
+    "de_short": "Kurzfr. Forder. Bürgs.",
+    "ru_full": "Краткосрочная дебиторская задолженность по гарантиям",
+    "ru_short": "Кратк. деб. зад. по гаран."
   },
   "Výnosy z energetických daní": {
-    "en_full": "Revenues from Energy Taxes",
-    "en_short": "Energy Tax Rev.",
+    "en_full": "Revenue from Energy Taxes",
+    "en_short": "Energy Tax Revenue",
     "zh_full": "能源税收入",
-    "zh_short": "能源税收"
+    "zh_short": "能源税收入",
+    "de_full": "Einnahmen aus Energiesteuern",
+    "de_short": "EnergieStEinn",
+    "ru_full": "Доходы от налогов на энергию",
+    "ru_short": "ДохНалЭнерг"
   },
   "Výdaje příštích období": {
     "en_full": "Expenditures for Future Periods",
-    "en_short": "Future Exp.",
+    "en_short": "Future Period Exp.",
     "zh_full": "未来期间支出",
-    "zh_short": "未来支出"
+    "zh_short": "未来支出",
+    "de_full": "Ausgaben für zukünftige Perioden",
+    "de_short": "Ausg. zuk. Per.",
+    "ru_full": "Расходы будущих периодов",
+    "ru_short": "Расх. буд. пер."
   },
   "Pohledávky za vybranými ústředními vládními institucemi": {
     "en_full": "Receivables from Selected Central Government Institutions",
-    "en_short": "Sel. Cent. Gov. Rec.",
-    "zh_full": "选定中央政府机构应收款项",
-    "zh_short": "选定中央应收"
+    "en_short": "Receivables (Central Gov.)",
+    "zh_full": "对选定中央政府机构的应收账款",
+    "zh_short": "中央政府应收款",
+    "de_full": "Forderungen an ausgewählte zentrale staatliche Einrichtungen",
+    "de_short": "FAZ",
+    "ru_full": "Задолженность выбранным центральным государственным учреждениям",
+    "ru_short": "ЗЦГ"
   },
   "Závazky z dělené správy": {
-    "en_full": "Liabilities from Shared Administration",
-    "en_short": "Shared Admin. Liab.",
+    "en_full": "Liabilities from Joint Management",
+    "en_short": "LFJM",
     "zh_full": "共同管理负债",
-    "zh_short": "共同管理负债"
+    "zh_short": "共管负债",
+    "de_full": "Verbindlichkeiten aus geteiltem Management",
+    "de_short": "Verbindl. geteil. Mgmt.",
+    "ru_full": "Обязательства по разделенному управлению",
+    "ru_short": "Обязат. раздел. упр."
   },
   "Výnosy z daně silniční": {
-    "en_full": "Revenues from Road Taxes",
-    "en_short": "Road Tax Rev.",
+    "en_full": "Revenue from Road Tax",
+    "en_short": "Road Tax Revenue",
     "zh_full": "道路税收入",
-    "zh_short": "道路税收"
+    "zh_short": "道路税收入",
+    "de_full": "Einnahmen aus der Straßensteuer",
+    "de_short": "StrStEinn",
+    "ru_full": "Доходы от дорожного налога",
+    "ru_short": "ДохДорНал"
   },
   "Pasiva celkem": {
     "en_full": "Total Liabilities",
-    "en_short": "Total Liab.",
+    "en_short": "TL",
     "zh_full": "总负债",
-    "zh_short": "总负债"
+    "zh_short": "总负债",
+    "de_full": "Gesamtpassiva",
+    "de_short": "Ges. Passiva",
+    "ru_full": "Общие пассивы",
+    "ru_short": "Общ. пассивы"
   },
   "Příjmy z prodeje dlouhodobého majetku určeného k prodeji": {
-    "en_full": "Proceeds from the Sale of Non-current Assets Held for Sale",
-    "en_short": "Proceeds from Sale of NCAHFS",
-    "zh_full": "出售非流动资产持有待售的收入",
-    "zh_short": "出售待售非流动资产收入"
+    "en_full": "Revenue from Sale of Long-term Assets Held for Sale",
+    "en_short": "Revenue Sale LT Assets Held",
+    "zh_full": "待售长期资产出售收入",
+    "zh_short": "待售长期资产收入",
+    "de_full": "Einnahmen aus dem Verkauf von langfristigen Vermögenswerten, die zum Verkauf bestimmt sind",
+    "de_short": "Einn. Verk. langfr. Verm. z. Verk.",
+    "ru_full": "Доходы от продажи долгосрочных активов, предназначенных для продажи",
+    "ru_short": "Дох. прод. долг. акт. для прод."
   },
   "Pohledávky z přerozdělovaných daní": {
     "en_full": "Receivables from Reallocated Taxes",
-    "en_short": "Receivables from Realloc. Taxes",
-    "zh_full": "再分配税款的应收账款",
-    "zh_short": "再分配税款应收"
+    "en_short": "Rec Realloc Taxes",
+    "zh_full": "来自再分配税的应收款项",
+    "zh_short": "来自再分配税的应收",
+    "de_full": "Forderungen aus umverteilen Steuern",
+    "de_short": "Forder. umv. Steuern",
+    "ru_full": "Требования по перераспределенным налогам",
+    "ru_short": "Треб. перерасп. налог."
   },
   "Běžné účty státních fondů": {
     "en_full": "Current Bank Accounts of State Funds",
-    "en_short": "Curr. Bank Acc. of State Funds",
-    "zh_full": "国家基金的银行存款",
-    "zh_short": "国家基金银行存款"
+    "en_short": "CBA SF",
+    "zh_full": "国家基金银行存款",
+    "zh_short": "国基金银存",
+    "de_full": "Girokonten der staatlichen Fonds",
+    "de_short": "Giro StF",
+    "ru_full": "Текущие счета государственных фондов",
+    "ru_short": "Тек. счета ГФ"
   },
   "Úpravy o nepeněžní operace ( + / - )": {
-    "en_full": "Adjustments for Non-cash Transactions ( + / - )",
-    "en_short": "Adj. for Non-cash Trans. ( + / - )",
-    "zh_full": "非现金交易的调整 ( + / - )",
-    "zh_short": "非现金交易调整 ( + / - )"
+    "en_full": "Adjustments for Non-Cash Operations ( + / - )",
+    "en_short": "Adj. for Non-Cash Ops",
+    "zh_full": "非现金业务调整 ( + / - )",
+    "zh_short": "非现金业务调整",
+    "de_full": "Anpassungen für nicht monetäre Transaktionen ( + / - )",
+    "de_short": "Nicht-monetäre Anpassungen",
+    "ru_full": "Корректировки по немонетарным операциям ( + / - )",
+    "ru_short": "Немонетарные корректировки"
   },
   "Výnosy příštích období": {
-    "en_full": "Income of Future Periods",
-    "en_short": "Income of Fut. Periods",
-    "zh_full": "未来期间的收入",
-    "zh_short": "未来期间收入"
+    "en_full": "Revenues for Future Periods",
+    "en_short": "Future Period Rev.",
+    "zh_full": "未来期间收入",
+    "zh_short": "未来收入",
+    "de_full": "Einnahmen für zukünftige Perioden",
+    "de_short": "Einn. zuk. Per.",
+    "ru_full": "Доходы будущих периодов",
+    "ru_short": "Дох. буд. пер."
   },
   "Poskytnuté návratné finanční výpomoci dlouhodobé": {
-    "en_full": "Long-term Recourse Financial Assistance Provided",
-    "en_short": "L/T Recourse Fin. Assist. Provided",
-    "zh_full": "提供的长期有追索权财务援助",
-    "zh_short": "提供长期有追索权财务援助"
+    "en_full": "Long-term Reimbursable Financial Assistance Provided",
+    "en_short": "LTRFA",
+    "zh_full": "长期可偿还财务援助",
+    "zh_short": "长期可偿还援助",
+    "de_full": "Langfristige zurückerstattete finanzielle Hilfe",
+    "de_short": "Langfr. zrst. Fin. H.",
+    "ru_full": "Долгосрочная возвращаемая финансовая помощь",
+    "ru_short": "Долг. вр. фин. пом."
   },
   "Výnosy z vyřazených pohledávek": {
-    "en_full": "Income from Written-off Receivables",
-    "en_short": "Income from W/O Receivables",
-    "zh_full": "已核销应收账款的收入",
-    "zh_short": "已核销应收账款收入"
+    "en_full": "Recovery of Written-off Receivables",
+    "en_short": "Recov. W-off Rec.",
+    "zh_full": "已注销应收账款的收回",
+    "zh_short": "已注销应收收回",
+    "de_full": "Einnahmen aus der Beseitigung von Forderungen",
+    "de_short": "Einn. a. Beseit. F.",
+    "ru_full": "Доходы от списания дебиторской задолженности",
+    "ru_short": "Дох. от спис. д. з."
   },
   "Výnosy z daně z příjmů právnických osob": {
-    "en_full": "Income from Corporate Income Tax",
-    "en_short": "Income from Corp. Inc. Tax",
+    "en_full": "Revenue from Corporate Income Tax",
+    "en_short": "CIT Rev.",
     "zh_full": "企业所得税收入",
-    "zh_short": "企业所得税收入"
+    "zh_short": "企业所得税",
+    "de_full": "Einnahmen aus der Einkommensteuer von juristischen Personen",
+    "de_short": "Einn. ESt jur. Pers.",
+    "ru_full": "Доходы от налога на доходы юридических лиц",
+    "ru_short": "Дох. НДЮЛ"
   },
   "Závazky k vybraným místním vládním institucím": {
     "en_full": "Liabilities to Selected Local Government Institutions",
-    "en_short": "L/LGI",
+    "en_short": "Liab to Sel Loc Gov Inst",
     "zh_full": "对选定地方政府机构的负债",
-    "zh_short": "对选定地方负债"
+    "zh_short": "选定地方机构负债",
+    "de_full": "Verbindlichkeiten gegenüber ausgewählten lokalen Regierungsinstitutionen",
+    "de_short": "Verbindl. lokale Reg.-Inst.",
+    "ru_full": "Обязательства перед выбранными местными государственными учреждениями",
+    "ru_short": "Обязат. перед мест. гос. учр."
   },
   "Ostatní náklady z činnosti": {
-    "en_full": "Other Operating Expenses",
-    "en_short": "OPE",
-    "zh_full": "其他经营费用",
-    "zh_short": "其他经营费"
+    "en_full": "Other Operating Costs",
+    "en_short": "Other Op. Costs",
+    "zh_full": "其他运营成本",
+    "zh_short": "其他运营成本",
+    "de_full": "Sonstige Betriebskosten",
+    "de_short": "Sonst. Betriebskosten",
+    "ru_full": "Прочие операционные расходы",
+    "ru_short": "Проч. опер. расходы"
   },
   "Odběratelé": {
-    "en_full": "Customers",
-    "en_short": "Cust.",
-    "zh_full": "客户",
-    "zh_short": "客户"
+    "en_full": "Accounts Receivable - Customers",
+    "en_short": "AR Cust.",
+    "zh_full": "应收账款 - 客户",
+    "zh_short": "客户应收",
+    "de_full": "Debitor: Kunden",
+    "de_short": "Deb. K.",
+    "ru_full": "Дебиторы: покупатели",
+    "ru_short": "Деб. покуп."
   },
   "Snížení investičních transferů ve věcné a časové souvislosti": {
-    "en_full": "Reduction of Investment Transfers in Kind and Time",
-    "en_short": "RIT",
-    "zh_full": "投资转移减少（实物和时间）",
-    "zh_short": "投资转移减少"
+    "de_full": "Reduzierung der Investitionstransfers im Sach- und Zeitrahmen",
+    "de_short": "Red. Inv. Transf. (Sach/Zeitrahmen}",
+    "en_full": "Reduction of Investment Transfers in Context of Substance and Time",
+    "en_short": "Reduction of Inv. Transfers",
+    "zh_full": "在实质和时间上的投资转移减少",
+    "zh_short": "投资转移减少",
+    "ru_full": "Снижение инвестиционных трансферов в материальном и временном аспекте",
+    "ru_short": "Сниж. инв. трансф. (мат./врем.)"
   },
   "Fond kulturních a sociálních potřeb": {
     "en_full": "Fund for Cultural and Social Needs",
     "en_short": "FCSN",
     "zh_full": "文化和社会需求基金",
-    "zh_short": "文化社会基金"
+    "zh_short": "文化社会基金",
+    "de_full": "Fonds für kulturelle und soziale Bedürfnisse",
+    "de_short": "Fonds Kult. u. Soz.",
+    "ru_full": "Фонд культурных и социальных нужд",
+    "ru_short": "Фонд культ. и соц. нужд"
   },
   "Nedokončená výroba": {
     "en_full": "Work in Progress",
     "en_short": "WIP",
     "zh_full": "在产品",
-    "zh_short": "在产品"
+    "zh_short": "在产品",
+    "de_full": "Unfertige Produktion",
+    "de_short": "Unf. Prod.",
+    "ru_full": "Незавершенное производство",
+    "ru_short": "Незав. произ."
   },
   "Výnosy ze sociálního pojištění": {
-    "en_full": "Revenues from Social Insurance",
-    "en_short": "RSI",
+    "en_full": "Revenue from Social Insurance",
+    "en_short": "SI Rev.",
     "zh_full": "社会保险收入",
-    "zh_short": "社保收入"
+    "zh_short": "社保收入",
+    "de_full": "Einnahmen aus der Sozialversicherung",
+    "de_short": "Einn. Soz. V.",
+    "ru_full": "Доходы от страховых взносов на обязательное социальное страхование",
+    "ru_short": "Дох. СВ ОСС"
   },
   "Materiál na cestě": {
-    "en_full": "Materials in Transit",
-    "en_short": "MIT",
+    "en_full": "Material in Transit",
+    "en_short": "Mat. in Transit",
     "zh_full": "在途材料",
-    "zh_short": "在途材料"
+    "zh_short": "在途材料",
+    "de_full": "Material in der Lieferung",
+    "de_short": "Mat. in Lief.",
+    "ru_full": "Материал в пути",
+    "ru_short": "Мат. в пути"
   },
   "Tvorba fondů": {
     "en_full": "Creation of Funds",
     "en_short": "Fund Creation",
-    "zh_full": "基金的设立",
-    "zh_short": "基金设立"
+    "zh_full": "基金设立",
+    "zh_short": "基金设立",
+    "de_full": "Bildung von Fonds",
+    "de_short": "FondsBild",
+    "ru_full": "Создание фондов",
+    "ru_short": "СоздФонд"
   },
   "Poskytnuté návratné finanční výpomoci krátkodobé": {
-    "en_full": "Short-term Reimbursable Financial Assistance",
-    "en_short": "S/T Reimb. Fin. Assist.",
-    "zh_full": "短期可偿还财务援助",
-    "zh_short": "短期可偿还援助"
+    "en_full": "Short-term Reimbursable Financial Assistance Provided",
+    "en_short": "S/T Ref Fin Aid",
+    "zh_full": "提供的短期可偿还财务援助",
+    "zh_short": "提供的短期可偿还财务",
+    "de_full": "Kurzfristige zurückerstattete finanzielle Beihilfen",
+    "de_short": "Kurzfr. zrst. Fin. Beih.",
+    "ru_full": "Краткосрочные возвратные финансовые субсидии",
+    "ru_short": "Кратк. возвр. фин. субс."
   },
   "Cizí zdroje": {
     "en_full": "Liabilities",
-    "en_short": "Liab.",
+    "en_short": "Liab",
     "zh_full": "负债",
-    "zh_short": "负债"
+    "zh_short": "负债",
+    "de_full": "Verbindlichkeiten",
+    "de_short": "Verbindl.",
+    "ru_full": "Обязательства",
+    "ru_short": "Обяз."
   },
   "Pohledávky za vybranými místními vládními institucemi": {
     "en_full": "Receivables from Selected Local Government Institutions",
-    "en_short": "Receiv. from Sel. LG Inst.",
-    "zh_full": "来自选定地方政府机构的应收账款",
-    "zh_short": "选定地方政府应收"
+    "en_short": "Receivables (Local Gov.)",
+    "zh_full": "对选定地方政府机构的应收账款",
+    "zh_short": "地方政府应收款",
+    "de_full": "Forderungen an ausgewählte lokale staatliche Einrichtungen",
+    "de_short": "FAL",
+    "ru_full": "Задолженность выбранным местным государственным учреждениям",
+    "ru_short": "ЗМГ"
   },
   "Výnosy z daní a poplatků": {
     "en_full": "Revenue from Taxes and Fees",
-    "en_short": "Rev. from Taxes & Fees",
+    "en_short": "Tax & Fee Rev.",
     "zh_full": "税收和费用收入",
-    "zh_short": "税收费用收入"
+    "zh_short": "税费收入",
+    "de_full": "Einnahmen aus Steuern und Gebühren",
+    "de_short": "EUSG",
+    "ru_full": "Доходы от налогов и сборов",
+    "ru_short": "ДОТС"
   },
   "Pohledávky z vydaných dluhopisů": {
-    "en_full": "Receivables from Issued Bonds",
-    "en_short": "Receiv. from Bonds",
-    "zh_full": "发行债券的应收账款",
-    "zh_short": "发行债券应收"
+    "en_full": "Claims from Issued Bonds",
+    "en_short": "Issued Bonds Claims",
+    "zh_full": "发行债券应收款项",
+    "zh_short": "发行债券应收",
+    "de_full": "Forderungen aus ausgegebenen Anleihen",
+    "de_short": "Forder. aus Anl.",
+    "ru_full": "Дебиторская задолженность по выпущенным облигациям",
+    "ru_short": "Деб. зад. по обл."
   },
   "Termínované vklady dlouhodobé": {
     "en_full": "Long-term Time Deposits",
-    "en_short": "L/T Time Dep.",
+    "en_short": "Long-term TDs",
     "zh_full": "长期定期存款",
-    "zh_short": "长期定期"
+    "zh_short": "长期定期",
+    "de_full": "Langfristige terminierte Einlagen",
+    "de_short": "Langfr. termin. Einl.",
+    "ru_full": "Долгосрочные срочные вклады",
+    "ru_short": "Долг. ср. вкл."
   },
   "Pěstitelské celky trvalých porostů": {
-    "en_full": "Perennial Plantations",
-    "en_short": "Peren. Plant.",
-    "zh_full": "多年生种植园",
-    "zh_short": "多年生种植"
+    "en_full": "Perennial Crop Plantations",
+    "en_short": "Peren. Crop Plnt.",
+    "zh_full": "多年生作物种植园",
+    "zh_short": "多年生作物",
+    "de_full": "Pflanzbestände dauerhafter Bestände",
+    "de_short": "Pflanzbest. dauerh. Best.",
+    "ru_full": "Посадочные комплексы долгосрочных насаждений",
+    "ru_short": "Посад. компл. долг. насажд."
   },
   "Majetkové účasti v osobách s podstatným vlivem": {
-    "en_full": "Investments in Associates and Joint Ventures",
-    "en_short": "Inv. Assoc. & JVs",
-    "zh_full": "对联营企业和合营企业的投资",
-    "zh_short": "联营合营投资"
+    "en_full": "Investments in Associates with Significant Influence",
+    "en_short": "Signif. Inf. Invest.",
+    "zh_full": "对具有重大影响的联营企业的投资",
+    "zh_short": "重大影响投资",
+    "de_full": "Beteiligungen in Personen mit wesentlichen Einfluss",
+    "de_short": "Beteilig. mit Einfluss",
+    "ru_full": "Участие в лицах с существенным влиянием",
+    "ru_short": "Участие с влиянием"
   },
   "Dlouhodobé přijaté zálohy": {
-    "en_full": "Long-term Deposits Received",
-    "en_short": "L/T Dep. Rec.",
-    "zh_full": "长期收到的押金",
-    "zh_short": "长期押金"
+    "en_full": "Long-term Received Advances",
+    "en_short": "LT Rec. Advances",
+    "zh_full": "长期预收款",
+    "zh_short": "长期预收",
+    "de_full": "Langfristige erhaltene Anzahlungen",
+    "de_short": "Lfr. erhalt. Anzahl.",
+    "ru_full": "Долгосрочные полученные авансы",
+    "ru_short": "Долг. получ. авансы"
   },
   "Dlouhodobé závazky": {
     "en_full": "Long-term Liabilities",
-    "en_short": "L/T Liab.",
+    "en_short": "LTL",
     "zh_full": "长期负债",
-    "zh_short": "长期负债"
+    "zh_short": "长期负债",
+    "de_full": "Langfristige Verbindlichkeiten",
+    "de_short": "Lfr. Verbindl.",
+    "ru_full": "Долгосрочные обязательства",
+    "ru_short": "Долг. обяз."
   },
   "Sociální zabezpečení": {
-    "en_full": "Social Security",
-    "en_short": "Soc. Sec.",
-    "zh_full": "社会保障",
-    "zh_short": "社保"
+    "en_full": "Social Security Contributions",
+    "en_short": "SSC",
+    "zh_full": "社会保险费",
+    "zh_short": "社保费",
+    "de_full": "Sozialversicherung",
+    "de_short": "Soz. V.",
+    "ru_full": "Социальное обеспечение",
+    "ru_short": "Соц. обес."
   },
   "Náklady ze sdílených spotřebních daní": {
-    "en_full": "Costs from Shared Consumption Taxes",
-    "en_short": "Costs Shared Cons. Taxes",
-    "zh_full": "共享消费税成本",
-    "zh_short": "共享消费税"
+    "en_full": "Expenses from Shared Consumption Taxes",
+    "en_short": "Exp. Shared Cons. Taxes",
+    "zh_full": "共享消费税费用",
+    "zh_short": "共享消费税费",
+    "de_full": "Kosten aus geteilten Verbrauchsteuern",
+    "de_short": "Kosten aus geteilten Verbrauchsteuern",
+    "ru_full": "Расходы из совместно используемых потребительских налогов",
+    "ru_short": "Расх. из совм. потреб. налогов"
   },
   "Výsledek hospodaření": {
     "en_full": "Operating Result",
     "en_short": "Op. Result",
     "zh_full": "经营成果",
-    "zh_short": "经营成果"
+    "zh_short": "经营成果",
+    "de_full": "Ergebnis der Haushaltsführung",
+    "de_short": "Haushaltsergebnis",
+    "ru_full": "Результат управления",
+    "ru_short": "Резултат управления"
   },
   "Aktivace oběžného majetku": {
     "en_full": "Capitalization of Current Assets",
-    "en_short": "Cap. Curr. Assets",
-    "zh_full": "流动资产资本化",
-    "zh_short": "流动资产资本化"
+    "en_short": "Cap. of Curr. Assets",
+    "zh_full": "流动资产的资本化",
+    "zh_short": "流动资产资本化",
+    "de_full": "Kapitalisierung von Umlaufvermögen",
+    "de_short": "Kapitalisierung Umlaufv.",
+    "ru_full": "Капитализация оборотных активов",
+    "ru_short": "Капитализация обор. активов"
   },
   "Aktiva celkem": {
     "en_full": "Total Assets",
-    "en_short": "Total Assets",
+    "en_short": "TA",
     "zh_full": "总资产",
-    "zh_short": "总资产"
-  }
+    "zh_short": "总资产",
+    "de_full": "Gesamtanlagen",
+    "de_short": "Ges. Anl.",
+    "ru_full": "Общие активы",
+    "ru_short": "Общ. акт."
+  },
+  "Eskontované krátkodobé dluhopisy (směnky)': {": "Discounted Short-term Bonds (Bills of Exchange)', "
 }
