@@ -15,6 +15,6 @@ translation_cache_Qwen/
 # Outputs
 *.csv
 !CIS_POLVYK.CSV
-
+!*_sample.csv
 # VS Code / misc
 .vscode/
