@@ -31,6 +31,16 @@ Repo obsahuje jednoduché webové UI na jedné stránce: drag & drop upload (pod
 	- `uvicorn web.server:app --reload`
 	- Otevřete `http://127.0.0.1:8000`
 
+- Spuštění přes Docker:
+	- Build: `docker build -t erpnext-coa .`
+	- Run: `docker run --rm -p 8000:8000 erpnext-coa`
+	- Otevřete `http://127.0.0.1:8000`
+	- Pro překlady předejte proměnné prostředí (např. `--env-file .env`).
+
+- Spuštění přes Docker Compose:
+	- `docker compose up --build`
+	- Otevřete `http://127.0.0.1:8000`
+
 - Jedním klikem nasadit (full stack včetně Python backendu):
 	- [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter)
 

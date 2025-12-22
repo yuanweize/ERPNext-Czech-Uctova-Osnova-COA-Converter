@@ -1,0 +1,9 @@
+services:
+  erpnext-coa:
+    build: .
+    ports:
+      - "8000:8000"
+    # If you need translation providers, create a .env file and uncomment:
+    # env_file:
+    #   - .env
+    restart: unless-stopped

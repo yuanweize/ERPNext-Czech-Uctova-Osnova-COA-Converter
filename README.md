@@ -30,6 +30,16 @@ This repo includes a single-page web UI with drag & drop upload (supports `uctos
 	- `uvicorn web.server:app --reload`
 	- Open `http://127.0.0.1:8000`
 
+- Run with Docker:
+	- Build: `docker build -t erpnext-coa .`
+	- Run: `docker run --rm -p 8000:8000 erpnext-coa`
+	- Open `http://127.0.0.1:8000`
+	- If you need translation providers, pass env vars (for example `--env-file .env`).
+
+- Run with Docker Compose:
+	- `docker compose up --build`
+	- Open `http://127.0.0.1:8000`
+
 - Deploy (full stack, Python backend included):
 	- [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter)
 

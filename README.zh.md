@@ -31,6 +31,16 @@
 	- `uvicorn web.server:app --reload`
 	- 打开 `http://127.0.0.1:8000`
 
+- Docker 运行：
+	- 构建：`docker build -t erpnext-coa .`
+	- 启动：`docker run --rm -p 8000:8000 erpnext-coa`
+	- 打开 `http://127.0.0.1:8000`
+	- 如需调用翻译模型供应商，请通过环境变量注入（例如 `--env-file .env`）。
+
+- Docker Compose 运行：
+	- `docker compose up --build`
+	- 打开 `http://127.0.0.1:8000`
+
 - 一键部署（完整服务，含 Python 后端）：
 	- [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter)
 
