@@ -14,10 +14,10 @@ Convert the Czech public-sector Chart of Accounts (Směrná účtová osnova) in
 ## Samples
 These are committed examples you can open immediately (no API keys needed):
 
-- [erpnext_coa_CZ_sample.csv](erpnext_coa_CZ_sample.csv) — CZ only
-- [erpnext_coa_CZ_EN_sample.csv](erpnext_coa_CZ_EN_sample.csv) — CZ/EN
-- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
-- [erpnext_coa_CZ_ZH_RU_sample.csv](erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
+- [samples/erpnext_coa_CZ_sample.csv](samples/erpnext_coa_CZ_sample.csv) — CZ only
+- [samples/erpnext_coa_CZ_EN_sample.csv](samples/erpnext_coa_CZ_EN_sample.csv) — CZ/EN
+- [samples/erpnext_coa_CZ_DE_RU_sample.csv](samples/erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
+- [samples/erpnext_coa_CZ_ZH_RU_sample.csv](samples/erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
 
 ## Quick start
 ```bash

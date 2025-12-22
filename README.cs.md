@@ -12,10 +12,10 @@ Převod české směrné účtové osnovy (Směrná účtová osnova) do CSV, kt
 ## Ukázkové soubory
 Ukázkové CSV jsou součástí repozitáře (bez API klíčů):
 
-- [erpnext_coa_CZ_sample.csv](erpnext_coa_CZ_sample.csv) — pouze CZ
-- [erpnext_coa_CZ_EN_sample.csv](erpnext_coa_CZ_EN_sample.csv) — CZ/EN
-- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
-- [erpnext_coa_CZ_ZH_RU_sample.csv](erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
+- [samples/erpnext_coa_CZ_sample.csv](samples/erpnext_coa_CZ_sample.csv) — pouze CZ
+- [samples/erpnext_coa_CZ_EN_sample.csv](samples/erpnext_coa_CZ_EN_sample.csv) — CZ/EN
+- [samples/erpnext_coa_CZ_DE_RU_sample.csv](samples/erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
+- [samples/erpnext_coa_CZ_ZH_RU_sample.csv](samples/erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
 
 ## Rychlý start
 ```bash
