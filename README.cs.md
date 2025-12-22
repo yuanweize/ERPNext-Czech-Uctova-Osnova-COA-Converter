@@ -1,58 +1,67 @@
 # ERPNext Czech Účtová Osnova (COA Converter) (Čeština)
 
-- Účel: převod české směrné účtové osnovy (Směrná účtová osnova) do vícejazyčného CSV pro ERPNext (česky / anglicky / čínsky). Řeší kolize čísel účtů a limity délky názvů.
-- Vstup: oficiální XML `uctosnova.xml` (ukázka přiložena).
-- Výstup: `erpnext_coa_multilingual_YYYYMMDD_HHMM.csv` s časovým razítkem.
-- Překlady: SiliconFlow / OpenRouter / OpenAI / Gemini, terminologie IPSAS/CAS; cache, retry a offline režim (bez API) podporovány.
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+Převod české směrné účtové osnovy (Směrná účtová osnova) do CSV, které lze importovat do ERPNext.
+
+- Vstup: oficiální `uctosnova.xml`
+- Výstup: CSV se správnými kořeny (Asset/Liability/Equity/Income/Expense) a hierarchií
+- Volitelný překlad: CZ + až 2 cílové jazyky (cache / retry / offline)
 
 ## Ukázkové soubory
+Ukázkové CSV jsou součástí repozitáře (bez API klíčů):
+
 - [erpnext_coa_CZ_sample.csv](erpnext_coa_CZ_sample.csv) — pouze CZ
 - [erpnext_coa_CZ_EN_sample.csv](erpnext_coa_CZ_EN_sample.csv) — CZ/EN
-- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU (ukázka dvou cílových jazyků)
+- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
 - [erpnext_coa_CZ_ZH_RU_sample.csv](erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
 
 ## Rychlý start
-1) Vytvořte a aktivujte virtuální prostředí.
-2) `pip install -r requirements.txt`
-3) Zkopírujte `.env.example` na `.env`, nastavte `PROVIDER` (siliconflow|openrouter|openai|gemini) a vyplňte příslušný API klíč (nebo použijte `--offline`). Výchozí stav nepřekládá (jen čeština); pro překlad nastavte `TRANSLATE_ENABLED=true` a jazykové kódy.
-4) Spusťte:
 ```bash
-python erpnext_coa_translator.py
+python -m venv .venv
+.venv/Scripts/activate
+pip install -r requirements.txt
+python erpnext_coa_translator.py --offline
 ```
 
-## Konfigurace (.env)
-- `PROVIDER`: `siliconflow|openrouter|openai|gemini`
-- SiliconFlow: `SILICONFLOW_API_KEY`, `MODEL_ID` (výchozí `Qwen/Qwen2.5-72B-Instruct`)
-- OpenRouter: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (výchozí `openai/gpt-4o`)
-- OpenAI: `OPENAI_API_KEY`, `OPENAI_MODEL` (výchozí `gpt-4o-mini`)
-- Gemini: `GEMINI_API_KEY`, `GEMINI_MODEL` (výchozí `gemini-1.5-flash`)
-- Překlad: `TRANSLATE_ENABLED` (výchozí false pro čistě český výstup); `TRANSLATE_LANGS` (výchozí `en,zh`, pouze dva dvoupísmenné kódy). Příklady: `en,zh` -> cz/en/zh; `kr` -> cz/kr; `de,pl` -> cz/de/pl; více než dva kódy vyvolá chybu. Výstupní soubor nese jazykový tag, např. `erpnext_coa_CZ_EN_YYYYMMDD_HHMM.csv` (podtržítka kvůli kompatibilitě Windows).
-- Runtime: `MAX_WORKERS`, `BATCH_SIZE`, `CURRENCY`, `LIMIT`, `OUTPUT_PREFIX`
+Pro překlady: zkopírujte `.env.example` -> `.env`, nastavte `PROVIDER=...` a příslušný API klíč, pak `TRANSLATE_ENABLED=true`.
 
-## Datové zdroje
+## Pojmenování výstupů
+Generované výstupy jsou gitignore a mají časové razítko (na minutu):
+
+- Výchozí prefix: `OUTPUT_PREFIX=erpnext_coa_multilingual`
+- Jen CZ: `erpnext_coa_multilingual_CZ_YYYYMMDD_HHMM.csv`
+- S jazyky: `erpnext_coa_multilingual_CZ_EN_ZH_YYYYMMDD_HHMM.csv`
+
+Jazykové tagy jsou oddělené podtržítky kvůli Windows kompatibilitě.
+
+## Konfigurace (.env)
+| Proměnná | Význam |
+|---|---|
+| `PROVIDER` | `siliconflow\|openrouter\|openai\|gemini` |
+| `SILICONFLOW_API_KEY` / `MODEL_ID` | SiliconFlow klíč / model |
+| `OPENROUTER_API_KEY` / `OPENROUTER_MODEL` | OpenRouter klíč / model |
+| `OPENAI_API_KEY` / `OPENAI_MODEL` | OpenAI klíč / model |
+| `GEMINI_API_KEY` / `GEMINI_MODEL` | Gemini klíč / model (OpenAI kompatibilní endpoint) |
+| `TRANSLATE_ENABLED` | `true` zapne překlady (default `false`) |
+| `TRANSLATE_LANGS` | dvoupísmenné kódy, max 2 (default `en,zh`) |
+| `MAX_WORKERS` / `BATCH_SIZE` | paralelismus / dávkování |
+| `CURRENCY` | měna účtů (default `CZK`) |
+| `LIMIT` | limit délky názvu (default `131`) |
+| `OUTPUT_PREFIX` | prefix výstupního souboru |
+
+## Datové zdroje (oficiální)
 - CSV: https://monitor.statnipokladna.gov.cz/data/csv/CIS_POLVYK.CSV
 - XML: https://monitor.statnipokladna.gov.cz/data/xml/uctosnova.xml
 - XSD: https://monitor.statnipokladna.gov.cz/data/xsd/ciselniky/monitorUctosnova.xsd
-- Datový katalog (aktualizované odkazy): https://data.gov.cz/dataset?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F00006947%2F87ab86b58f0a0341acb8cb84ca4094fb
-
-## Poznámky
-- `translation_cache.json` ponechán jako ukázkový cache; `translation_cache_Qwen/` je ignorováno.
-- Licence MIT, viz LICENSE.
+- Datový katalog: https://data.gov.cz/dataset?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F00006947%2F87ab86b58f0a0341acb8cb84ca4094fb
 
 ## Technologický stack a návrh
-- Python 3.10+, `requests`, `dotenv`, `tqdm`, standardní knihovna; jednotné OpenAI-kompatibilní API volání.
-- Prompt: výstup čisté JSON, hlídání terminologie IPSAS/CAS, max 2 cílové jazyky pro předvídatelnost.
-- Odolnost: cache + exponenciální backoff + retry na chybějící termíny; offline režim padá na CZ/cache.
-- Zpracování dat: normalizace českých termínů, řešení duplicitních čísel účtů, limity délky jmen pro ERPNext.
-- Výstupy: Windows-safe názvy s jazykovými tagy, konfigurovatelná měna/limity, CSV s časovým razítkem pro audit.
+- Python 3.10+, minimum závislostí (`requests`, `python-dotenv`, volitelně `tqdm`).
+- Jeden integrační styl: OpenAI-kompatibilní chat API.
+- Cache + backoff + retry pro stabilní výstupy.
+- ERPNext specifika: hierarchie, duplicity čísel účtů, délkové limity.
 
-## Struktura projektu (Tree)
-- erpnext_coa_translator.py — hlavní skript pro překlad/generování
-- translation_cache.json — ukázková cache
-- CIS_POLVYK.CSV / uctosnova.xml — oficiální ukázková data
-- README.md / README.cs.md / README.zh.md — dokumentace EN/CZ/ZH
-- requirements.txt — závislosti
-- .env.example — šablona konfigurace
-- .gitignore — ignoruje venv, cache, časová razítka výstupů, dočasné složky
-- erpnext_coa_multilingual_YYYYMMDD_HHMM.csv — generovaný výstup (ignorován)
-- translation_cache_Qwen/ — dočasná cache (ignorováno)
+## Licence
+MIT, viz LICENSE.
