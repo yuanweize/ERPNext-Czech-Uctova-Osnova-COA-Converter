@@ -5,6 +5,12 @@
 - Výstup: `erpnext_coa_multilingual_YYYYMMDD_HHMM.csv` s časovým razítkem.
 - Překlady: SiliconFlow / OpenRouter / OpenAI / Gemini, terminologie IPSAS/CAS; cache, retry a offline režim (bez API) podporovány.
 
+## Ukázkové soubory
+- [erpnext_coa_CZ_sample.csv](erpnext_coa_CZ_sample.csv) — pouze CZ
+- [erpnext_coa_CZ_EN_sample.csv](erpnext_coa_CZ_EN_sample.csv) — CZ/EN
+- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU (ukázka dvou cílových jazyků)
+- [erpnext_coa_CZ_ZH_RU_sample.csv](erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
+
 ## Rychlý start
 1) Vytvořte a aktivujte virtuální prostředí.
 2) `pip install -r requirements.txt`
@@ -32,6 +38,13 @@ python erpnext_coa_translator.py
 ## Poznámky
 - `translation_cache.json` ponechán jako ukázkový cache; `translation_cache_Qwen/` je ignorováno.
 - Licence MIT, viz LICENSE.
+
+## Technologický stack a návrh
+- Python 3.10+, `requests`, `dotenv`, `tqdm`, standardní knihovna; jednotné OpenAI-kompatibilní API volání.
+- Prompt: výstup čisté JSON, hlídání terminologie IPSAS/CAS, max 2 cílové jazyky pro předvídatelnost.
+- Odolnost: cache + exponenciální backoff + retry na chybějící termíny; offline režim padá na CZ/cache.
+- Zpracování dat: normalizace českých termínů, řešení duplicitních čísel účtů, limity délky jmen pro ERPNext.
+- Výstupy: Windows-safe názvy s jazykovými tagy, konfigurovatelná měna/limity, CSV s časovým razítkem pro audit.
 
 ## Struktura projektu (Tree)
 - erpnext_coa_translator.py — hlavní skript pro překlad/generování

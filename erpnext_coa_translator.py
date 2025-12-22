@@ -270,7 +270,6 @@ def post_with_backoff(url, headers, payload, extract_fn):
         except Exception:
             time.sleep(backoff)
             backoff = min(backoff * 2, 30)
-def call_openai_compatible(batch_terms, target_langs, api_key, model, base_url, extra_headers=None):
     return None
 
 

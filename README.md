@@ -10,6 +10,12 @@ A small utility to convert the Czech public sector Chart of Accounts (Směrná �
 - Caching + retry with exponential backoff; optional offline mode (skip API, use cache/original CZ).
 - Timestamped outputs: `erpnext_coa_multilingual_YYYYMMDD_HHMM.csv`.
 
+## Samples
+- [erpnext_coa_CZ_sample.csv](erpnext_coa_CZ_sample.csv) — CZ only
+- [erpnext_coa_CZ_EN_sample.csv](erpnext_coa_CZ_EN_sample.csv) — CZ/EN
+- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU (example of two extra languages)
+- [erpnext_coa_CZ_ZH_RU_sample.csv](erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
+
 ## Data sources (official)
 - CSV: https://monitor.statnipokladna.gov.cz/data/csv/CIS_POLVYK.CSV
 - XML: https://monitor.statnipokladna.gov.cz/data/xml/uctosnova.xml
@@ -49,6 +55,13 @@ MIT. See [LICENSE](LICENSE).
 - `translation_cache_Qwen/` is ignored (scratch). Keep `translation_cache.json` as sample cache.
 - Example data `CIS_POLVYK.CSV` and `uctosnova.xml` are retained for reproducible demos.
 - Output files are timestamped; add preferred sample to docs if needed.
+
+## Tech stack & design
+- Python 3.10+, `requests`, `dotenv`, `tqdm`, stdlib only; OpenAI-compatible chat APIs for all providers.
+- Prompting: JSON-only responses, IPSAS/CAS terminology guardrails, two-language cap to keep outputs predictable.
+- Resilience: caching + exponential backoff + retry on missing terms; offline mode falls back to CZ/cache.
+- Data shaping: Czech term normalization, duplicate account number resolution, length-safe naming for ERPNext.
+- Outputs: Windows-safe language-tagged filenames, configurable currency/limits, timestamped CSV for audit.
 
 ## Project structure (tree)
 - erpnext_coa_translator.py — main translator/generator

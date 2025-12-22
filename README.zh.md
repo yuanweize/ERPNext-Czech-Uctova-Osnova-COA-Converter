@@ -5,6 +5,12 @@
 - 输出：`erpnext_coa_multilingual_YYYYMMDD_HHMM.csv`（带时间戳）。
 - 翻译：支持 SiliconFlow / OpenRouter / OpenAI / Gemini，IPSAS/CAS 术语优先；支持缓存、重试、离线模式（跳过 API）。
 
+## 示例文件
+- [erpnext_coa_CZ_sample.csv](erpnext_coa_CZ_sample.csv) — 仅 CZ
+- [erpnext_coa_CZ_EN_sample.csv](erpnext_coa_CZ_EN_sample.csv) — CZ/EN
+- [erpnext_coa_CZ_DE_RU_sample.csv](erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU（两种额外语言示例）
+- [erpnext_coa_CZ_ZH_RU_sample.csv](erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
+
 ## 快速开始
 1) 创建虚拟环境并激活。
 2) `pip install -r requirements.txt`
@@ -32,6 +38,13 @@ python erpnext_coa_translator.py
 ## 其它
 - `translation_cache.json` 保留做示例；`translation_cache_Qwen/` 已忽略。
 - MIT 许可证，见 LICENSE。
+
+## 技术栈与设计
+- Python 3.10+，`requests`、`dotenv`、`tqdm` 等轻量依赖；统一走 OpenAI 兼容的聊天接口。
+- 提示工程：强制 JSON 输出，IPSAS/CAS 术语护栏，最多 2 个目标语言确保可控。
+- 鲁棒性：缓存 + 指数退避 + 缺失项重试；离线模式回退到 CZ/缓存，避免半成品输出。
+- 数据整形：捷克术语规范化、合并二级缓存；解决科目号冲突与名称长度限制，保持 ERPNext 层级。
+- 输出：Windows 友好的语言标签文件名，可配置货币/长度上限，CSV 带时间戳便于审计。
 
 ## 项目结构（Tree）
 - erpnext_coa_translator.py：主转换与生成脚本
