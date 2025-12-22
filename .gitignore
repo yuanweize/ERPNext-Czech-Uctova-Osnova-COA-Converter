@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Environments
+.venv/
+.env
+
+# Translation caches
+translation_cache_Qwen/
+
+# Outputs
+erpnext_coa_multilingual_*.csv
+
+# VS Code / misc
+.vscode/
