@@ -46,7 +46,16 @@ Repo obsahuje jednoduché webové UI na jedné stránce: drag & drop upload (pod
 
 Poznámka:
 - Cloudflare Pages / EdgeOne / Vercel / Netlify jsou primárně pro statické weby, takže neumí přímo spustit tento Python backend (nelze jednou službou „upload → process → download“).
-- Další Docker platformy (umí spustit tento repozitář přes Docker): Railway https://railway.app/new , Koyeb https://app.koyeb.com/ , Fly.io https://fly.io/
+
+Další možnosti nasazení (Docker / Python backend):
+- Render (nejjednodušší): použijte tlačítko “Deploy to Render” výše
+- [![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?logo=railway&logoColor=white)](https://railway.app/new)
+- [![Deploy to Koyeb](https://img.shields.io/badge/Deploy%20to-Koyeb-121212?logo=koyeb&logoColor=white)](https://app.koyeb.com/)
+- [![Deploy to Fly.io](https://img.shields.io/badge/Deploy%20to-Fly.io-7B5CFF?logo=flydotio&logoColor=white)](https://fly.io/)
+
+Poznámka: Railway/Koyeb/Fly.io obvykle vyžadují pár kroků v konzoli (import z GitHubu + Docker build). Neexistuje jednotný standard „one-click clone“ URL jako u Render/Vercel/Netlify, proto tlačítka vedou na vstup pro vytvoření projektu.
+
+Pokud přesto chcete Cloudflare Pages / EdgeOne: frontend (statická stránka) nasadit na CF/EO, backend nasadit na Render/Railway a frontend nasměrovat na URL backendu.
 
 ## Struktura projektu
 
@@ -60,6 +69,7 @@ Poznámka:
 ├─ samples/                        # Ukázkové výstupy (commitované)
 ├─ requirements.txt                # Python závislosti (CLI + Web)
 ├─ Dockerfile                      # Docker běh (uvicorn)
+├─ docker-compose.yml              # Docker Compose (web server na :8000)
 ├─ render.yaml                     # Render deploy blueprint
 ├─ uctosnova.xml                   # Oficiální XML vstup (volitelné)
 ├─ CIS_POLVYK.CSV                  # Oficiální CSV vstup (volitelné)
@@ -72,6 +82,7 @@ Poznámka:
 - Názvy souborů nejsou omezené. Server rozpozná formát podle obsahu a validuje strukturu (XML musí obsahovat `<row>` a očekávaná pole; CSV musí odpovídat hlavičkám CIS_POLVYK). Neplatné soubory vrátí chybu parsování.
 - API klíče: UI je ukládá pouze v prohlížeči a posílá je pro konkrétní úlohu; server je neukládá na disk a po spuštění úlohy je z paměti odstraní.
 - Ochrana proti zneužití: `MAX_UPLOAD_MB`, `MAX_QUEUE`, `MAX_JOBS`, `JOB_TTL_SECONDS`.
+- Pokud jste někdy omylem commitli skutečný API klíč, ihned ho zneplatněte / otočte (rotate).
 
 ## Rychlý start
 ```bash

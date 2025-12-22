@@ -256,19 +256,17 @@ def load_cache():
                 normalized_cache.setdefault(nk, v)
 
             if os.path.exists(SECONDARY_CACHE_FILE):
-                try:
+                with contextlib.suppress(Exception):
                     with open(SECONDARY_CACHE_FILE, 'r', encoding='utf-8') as f2:
                         secondary_raw = json.load(f2)
                     for k, v in secondary_raw.items():
                         nk = normalize_term(k)
                         normalized_cache.setdefault(nk, v)
-                except:
-                    pass
 
             if changed:
                 save_cache(normalized_cache)
             return normalized_cache
-        except:
+        except Exception:
             return {}
     return {}
 
@@ -512,8 +510,7 @@ def process_input(input_file: str, offline: bool = False, output_dir: str = ""):
     try:
         all_rows = load_rows_auto(input_file)
     except Exception as e:
-        print(str(e))
-        return
+        raise RuntimeError(str(e))
 
     valid_rows = []
     unique_names = []
@@ -657,6 +654,7 @@ def process_input(input_file: str, offline: bool = False, output_dir: str = ""):
     print(f"✅ 完成！生成 {len(csv_rows)-6} 个会计科目")
     print(f"输出文件: {output_file}")
     print("-" * 30)
+    return output_file
 
 
 def parse_args():
@@ -672,4 +670,8 @@ if __name__ == "__main__":
     if TRANSLATE_ENABLED and provider_key_missing() and not args.offline:
         print("⚠️ Missing API key for provider, switching to offline mode (cache/CZ only)")
         args.offline = True
-    process_input(input_file=args.input, offline=args.offline, output_dir=args.output_dir)
+    try:
+        process_input(input_file=args.input, offline=args.offline, output_dir=args.output_dir)
+    except Exception as e:
+        print(f"❌ {e}")
+        sys.exit(1)

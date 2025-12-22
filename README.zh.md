@@ -69,6 +69,7 @@
 ├─ samples/                        # 仓库内置示例输出（可直接打开）
 ├─ requirements.txt                # Python 依赖（CLI + Web）
 ├─ Dockerfile                      # Docker 运行入口（uvicorn）
+├─ docker-compose.yml              # Docker Compose（Web 服务端口 :8000）
 ├─ render.yaml                     # Render 部署蓝图
 ├─ uctosnova.xml                   # 官方 XML 输入（可选）
 ├─ CIS_POLVYK.CSV                  # 官方 CSV 输入（可选）

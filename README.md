@@ -45,7 +45,16 @@ This repo includes a single-page web UI with drag & drop upload (supports `uctos
 
 Notes:
 - Cloudflare Pages / EdgeOne / Vercel / Netlify are mostly static hosting, so they can’t directly run this Python backend (no single-service “upload -> process -> download”).
-- More Docker-capable options (can run this repo via Docker): Railway https://railway.app/new , Koyeb https://app.koyeb.com/ , Fly.io https://fly.io/
+
+More deploy options (Docker / Python backend capable):
+- Render (fastest): use the “Deploy to Render” button above
+- [![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?logo=railway&logoColor=white)](https://railway.app/new)
+- [![Deploy to Koyeb](https://img.shields.io/badge/Deploy%20to-Koyeb-121212?logo=koyeb&logoColor=white)](https://app.koyeb.com/)
+- [![Deploy to Fly.io](https://img.shields.io/badge/Deploy%20to-Fly.io-7B5CFF?logo=flydotio&logoColor=white)](https://fly.io/)
+
+Note: Railway/Koyeb/Fly.io usually require a few console steps to “import from GitHub + build with Docker”. They don’t share a single standard “one-click clone” URL format like Render/Vercel/Netlify, so the buttons above link to the project creation entry points.
+
+If you still want Cloudflare Pages / EdgeOne: host the static frontend separately on CF/EO, deploy the backend on Render/Railway, and point the frontend to that backend URL.
 
 ## Project structure
 
@@ -59,6 +68,7 @@ Notes:
 ├─ samples/                        # Committed sample outputs (safe to open)
 ├─ requirements.txt                # Python deps (CLI + Web)
 ├─ Dockerfile                      # Container build/run (uvicorn)
+├─ docker-compose.yml              # Docker Compose (web server on :8000)
 ├─ render.yaml                     # Render deploy blueprint
 ├─ uctosnova.xml                   # Official XML input (optional to keep in repo)
 ├─ CIS_POLVYK.CSV                  # Official CSV input (optional to keep in repo)

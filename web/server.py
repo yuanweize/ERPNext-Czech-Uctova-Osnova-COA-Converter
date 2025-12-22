@@ -1,15 +1,16 @@
 import asyncio
 import contextlib
 import csv
+import io
 import json
 import os
 import shutil
 import tempfile
 import time
-import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
+from uuid import uuid4
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
@@ -34,7 +35,9 @@ class JobState:
     status: str  # queued|running|done|error
     created_at: float
     input_name: str
-    config: Dict[str, Any]
+    settings: Dict[str, Any]
+    input_ext: str
+    uploaded_bytes: Optional[bytes] = None
     output_path: Optional[str] = None
     work_dir: Optional[str] = None
     error: Optional[str] = None
@@ -118,8 +121,6 @@ def _detect_input_kind(content: bytes) -> Tuple[str, str]:
         text = content.decode("utf-8", errors="strict")
     except Exception:
         raise HTTPException(status_code=400, detail="Unsupported encoding: expected UTF-8")
-
-    import io
 
     reader = csv.DictReader(io.StringIO(text), delimiter=';')
     headers = reader.fieldnames or []
@@ -231,25 +232,24 @@ async def _worker_loop():
             tmp_dir = Path(tempfile.mkdtemp(prefix=f"erpnext_coa_{job.id}_"))
             job.work_dir = str(tmp_dir)
 
-            input_ext = str(job.config.get("_input_ext") or "")
+            input_ext = str(job.input_ext or "")
             stem = Path(job.input_name).stem or "input"
             safe_name = f"{stem}{input_ext}" if input_ext else stem
             input_path = tmp_dir / safe_name
             output_dir = tmp_dir / "out"
             output_dir.mkdir(parents=True, exist_ok=True)
 
-            # Restore uploaded content from saved bytes in job config
-            uploaded_bytes = job.config.get("_uploaded_bytes")
+            uploaded_bytes = job.uploaded_bytes
             if not isinstance(uploaded_bytes, (bytes, bytearray)):
                 raise RuntimeError("Missing uploaded file bytes")
             input_path.write_bytes(uploaded_bytes)
 
             # Do not keep bytes around after writing
-            job.config.pop("_uploaded_bytes", None)
+            job.uploaded_bytes = None
 
             api_key = str(job.api_key or "")
             job.api_key = None
-            cfg = dict(job.config.get("settings") or {})
+            cfg = dict(job.settings or {})
 
             _apply_runtime_config(cfg, api_key=api_key)
 
@@ -266,17 +266,14 @@ async def _worker_loop():
 
             # Run conversion in a thread to keep event loop responsive
             def _run():
-                converter.process_input(str(input_path), offline=offline, output_dir=str(output_dir))
+                return converter.process_input(str(input_path), offline=offline, output_dir=str(output_dir))
 
             loop = asyncio.get_running_loop()
-            await loop.run_in_executor(None, _run)
-
-            # Pick newest CSV from output_dir
-            csv_files = sorted(output_dir.glob("*.csv"), key=lambda p: p.stat().st_mtime, reverse=True)
-            if not csv_files:
+            output_path = await loop.run_in_executor(None, _run)
+            if not output_path:
                 raise RuntimeError("No output CSV produced")
 
-            job.output_path = str(csv_files[0])
+            job.output_path = str(output_path)
             job.status = "done"
             await _emit(job, {"type": "status", "status": job.status})
             await _emit(job, {"type": "result", "download_url": f"/api/jobs/{job.id}/download"})
@@ -336,20 +333,17 @@ async def create_job(
 
     kind, ext = _detect_input_kind(content)
 
-    job_id = uuid.uuid4().hex
+    job_id = uuid4().hex
     events = asyncio.Queue(maxsize=500)
 
     job = JobState(
         id=job_id,
         status="queued",
-        created_at=time.time(),
+        created_at=now,
         input_name=filename,
-        config={
-            "settings": settings,
-            "_uploaded_bytes": content,
-            "_input_kind": kind,
-            "_input_ext": ext,
-        },
+        settings=settings,
+        input_ext=ext,
+        uploaded_bytes=content,
         events=events,
         api_key=api_key,
     )
@@ -364,7 +358,7 @@ async def create_job(
         "events_url": f"/api/jobs/{job.id}/events",
         "download_url": f"/api/jobs/{job.id}/download",
         "input": job.input_name,
-        "config": _safe_config_for_storage(job.config.get("settings") or {}),
+        "config": _safe_config_for_storage(job.settings or {}),
     }
 
 
