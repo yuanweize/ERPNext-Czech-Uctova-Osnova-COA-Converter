@@ -7,7 +7,7 @@ English | [Čeština](README.cs.md) | [中文](README.zh.md)
 
 Convert the Czech public-sector Chart of Accounts (Směrná účtová osnova) into an ERPNext-ready CSV.
 
-- Input: official `uctosnova.xml`
+- Input: official `uctosnova.xml` or `CIS_POLVYK.CSV` (filename does not matter; format is validated by content)
 - Output: importable CSV with correct ERPNext roots and hierarchy
 - Optional LLM translation (CZ + up to 2 target languages) with caching and offline mode
 
@@ -19,12 +19,58 @@ These are committed examples you can open immediately (no API keys needed):
 - [samples/erpnext_coa_CZ_DE_RU_sample.csv](samples/erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
 - [samples/erpnext_coa_CZ_ZH_RU_sample.csv](samples/erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
 
+## Web UI (Localhost / Server)
+
+This repo includes a single-page web UI with drag & drop upload (supports `uctosnova.xml` and `CIS_POLVYK.CSV`), FIFO job queue, live progress (SSE), and a downloadable ERPNext CSV.
+
+![Web UI Screenshot](https://github.com/user-attachments/assets/bd357431-8886-494e-919f-ab248fed833f)
+
+- Run locally:
+	- `pip install -r requirements.txt`
+	- `uvicorn web.server:app --reload`
+	- Open `http://127.0.0.1:8000`
+
+- Deploy (full stack, Python backend included):
+	- [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter)
+
+Notes:
+- Cloudflare Pages / EdgeOne / Vercel / Netlify are mostly static hosting, so they can’t directly run this Python backend (no single-service “upload -> process -> download”).
+- More Docker-capable options (can run this repo via Docker): Railway https://railway.app/new , Koyeb https://app.koyeb.com/ , Fly.io https://fly.io/
+
+## Project structure
+
+```text
+.
+├─ erpnext_coa_translator.py        # CLI converter: XML/CSV -> ERPNext COA CSV (+ optional translation)
+├─ web/
+│  ├─ server.py                    # FastAPI backend: FIFO jobs, SSE progress, download endpoint
+│  └─ static/
+│     └─ index.html                # Single-page UI (drag&drop, queue, progress, download)
+├─ samples/                        # Committed sample outputs (safe to open)
+├─ requirements.txt                # Python deps (CLI + Web)
+├─ Dockerfile                      # Container build/run (uvicorn)
+├─ render.yaml                     # Render deploy blueprint
+├─ uctosnova.xml                   # Official XML input (optional to keep in repo)
+├─ CIS_POLVYK.CSV                  # Official CSV input (optional to keep in repo)
+├─ translation_cache.json          # Translation cache (used by CLI; can be regenerated)
+└─ README*.md                      # Docs (EN/CZ/ZH)
+```
+
+## Security
+
+- File names are NOT restricted. The server detects the format by content and validates structure (XML must contain `<row>` with expected fields; CSV must match CIS_POLVYK headers). Invalid files return a parsing error.
+- API keys: the Web UI stores your key in your browser storage and sends it per job; the server does not persist API keys to disk and clears the in-memory key after the job starts.
+- Upload limits & queue protection: configure via env vars: `MAX_UPLOAD_MB`, `MAX_QUEUE`, `MAX_JOBS`, `JOB_TTL_SECONDS`.
+- If you ever committed a real API key, rotate/revoke it immediately.
+
 ## Quick start
 ```bash
 python -m venv .venv
 .venv/Scripts/activate
 pip install -r requirements.txt
-python erpnext_coa_translator.py --offline
+python erpnext_coa_translator.py --input uctosnova.xml --offline
+# or: python erpnext_coa_translator.py --input CIS_POLVYK.CSV --offline
+# The CLI auto-detects XML vs CSV by content (filename/extension does not matter).
 ```
 
 To enable translation: copy `.env.example` -> `.env`, set `PROVIDER=...` and the matching API key, then set `TRANSLATE_ENABLED=true`.

@@ -3,9 +3,11 @@
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+[English](README.md) | Čeština | [中文](README.zh.md)
+
 Převod české směrné účtové osnovy (Směrná účtová osnova) do CSV, které lze importovat do ERPNext.
 
-- Vstup: oficiální `uctosnova.xml`
+- Vstup: oficiální `uctosnova.xml` nebo `CIS_POLVYK.CSV` (název souboru nehraje roli; formát se ověřuje podle obsahu)
 - Výstup: CSV se správnými kořeny (Asset/Liability/Equity/Income/Expense) a hierarchií
 - Volitelný překlad: CZ + až 2 cílové jazyky (cache / retry / offline)
 
@@ -17,12 +19,58 @@ Ukázkové CSV jsou součástí repozitáře (bez API klíčů):
 - [samples/erpnext_coa_CZ_DE_RU_sample.csv](samples/erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
 - [samples/erpnext_coa_CZ_ZH_RU_sample.csv](samples/erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
 
+
+## Web UI (localhost / server)
+
+Repo obsahuje jednoduché webové UI na jedné stránce: drag & drop upload (podporuje `uctosnova.xml` i `CIS_POLVYK.CSV`), FIFO frontu úloh, živý průběh (SSE) a stažení výsledného ERPNext CSV.
+
+![Screenshot Web UI](https://github.com/user-attachments/assets/bd357431-8886-494e-919f-ab248fed833f)
+
+- Lokálně:
+	- `pip install -r requirements.txt`
+	- `uvicorn web.server:app --reload`
+	- Otevřete `http://127.0.0.1:8000`
+
+- Jedním klikem nasadit (full stack včetně Python backendu):
+	- [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter)
+
+Poznámka:
+- Cloudflare Pages / EdgeOne / Vercel / Netlify jsou primárně pro statické weby, takže neumí přímo spustit tento Python backend (nelze jednou službou „upload → process → download“).
+- Další Docker platformy (umí spustit tento repozitář přes Docker): Railway https://railway.app/new , Koyeb https://app.koyeb.com/ , Fly.io https://fly.io/
+
+## Struktura projektu
+
+```text
+.
+├─ erpnext_coa_translator.py        # CLI převodník: XML/CSV -> ERPNext COA CSV (+ volitelný překlad)
+├─ web/
+│  ├─ server.py                    # FastAPI backend: FIFO úlohy, SSE průběh, stažení výsledku
+│  └─ static/
+│     └─ index.html                # Jednostránkové UI (drag&drop, fronta, průběh, download)
+├─ samples/                        # Ukázkové výstupy (commitované)
+├─ requirements.txt                # Python závislosti (CLI + Web)
+├─ Dockerfile                      # Docker běh (uvicorn)
+├─ render.yaml                     # Render deploy blueprint
+├─ uctosnova.xml                   # Oficiální XML vstup (volitelné)
+├─ CIS_POLVYK.CSV                  # Oficiální CSV vstup (volitelné)
+├─ translation_cache.json          # Cache překladů (pro CLI; lze znovu vygenerovat)
+└─ README*.md                      # Dokumentace (EN/CZ/ZH)
+```
+
+## Bezpečnost
+
+- Názvy souborů nejsou omezené. Server rozpozná formát podle obsahu a validuje strukturu (XML musí obsahovat `<row>` a očekávaná pole; CSV musí odpovídat hlavičkám CIS_POLVYK). Neplatné soubory vrátí chybu parsování.
+- API klíče: UI je ukládá pouze v prohlížeči a posílá je pro konkrétní úlohu; server je neukládá na disk a po spuštění úlohy je z paměti odstraní.
+- Ochrana proti zneužití: `MAX_UPLOAD_MB`, `MAX_QUEUE`, `MAX_JOBS`, `JOB_TTL_SECONDS`.
+
 ## Rychlý start
 ```bash
 python -m venv .venv
 .venv/Scripts/activate
 pip install -r requirements.txt
-python erpnext_coa_translator.py --offline
+python erpnext_coa_translator.py --input uctosnova.xml --offline
+# nebo: python erpnext_coa_translator.py --input CIS_POLVYK.CSV --offline
+# CLI rozpozná XML vs CSV podle obsahu (název/koncovka souboru není důležitá).
 ```
 
 Pro překlady: zkopírujte `.env.example` -> `.env`, nastavte `PROVIDER=...` a příslušný API klíč, pak `TRANSLATE_ENABLED=true`.

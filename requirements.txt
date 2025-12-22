@@ -1,3 +1,6 @@
 requests
 tqdm
 python-dotenv
+fastapi
+uvicorn
+python-multipart

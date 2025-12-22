@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: erpnext-coa-converter
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /

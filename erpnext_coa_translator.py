@@ -111,7 +111,7 @@ PROVIDERS = {
 }
 
 # Data files
-INPUT_FILE = os.path.join(CURRENT_DIR, 'uctosnova.xml')
+DEFAULT_INPUT_FILE = os.path.join(CURRENT_DIR, 'uctosnova.xml')
 CACHE_FILE = os.path.join(CURRENT_DIR, 'translation_cache.json')
 SECONDARY_CACHE_FILE = os.path.join(CURRENT_DIR, 'translation_cache_Qwen', 'translation_cache.json')
 
@@ -139,6 +139,107 @@ def get_node_text(node, tag_name):
     if element is not None and element.text is not None:
         return element.text.strip()
     return ""
+
+
+def _date_yyyymmdd_to_ddmmyyyy(s: str) -> str:
+    s = (s or "").strip().strip('"')
+    if not s:
+        return ""
+    if re.fullmatch(r"\d{8}", s):
+        return f"{s[6:8]}-{s[4:6]}-{s[0:4]}"
+    return s
+
+
+def _normalize_vykaz(v: str) -> str:
+    v = (v or "").strip().strip('"')
+    v = v.lstrip('0')
+    return v or "0"
+
+
+def load_rows_from_xml(input_file: str):
+    try:
+        tree = ET.parse(input_file)
+        root = tree.getroot()
+    except Exception as e:
+        raise RuntimeError(f"XML 解析失败: {e}")
+
+    rows = []
+    for row in root.findall('row'):
+        rows.append({
+            "vykaz": get_node_text(row, 'vykaz'),
+            "polvyk": get_node_text(row, 'polvyk'),
+            "polvyk_nazev": get_node_text(row, 'polvyk_nazev'),
+            "synuc": get_node_text(row, 'synuc'),
+            "end_date": get_node_text(row, 'end_date'),
+            "start_date": get_node_text(row, 'start_date'),
+        })
+    return rows
+
+
+def load_rows_from_cis_polvyk_csv(input_file: str):
+    # CIS_POLVYK.CSV is semicolon-delimited, fields are quoted.
+    # We map it to the same shape as XML rows.
+    rows = []
+    with open(input_file, 'r', encoding='utf-8', newline='') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        for r in reader:
+            vykaz = _normalize_vykaz(r.get('/BIC/ZC_VYKAZ Výkaz', ''))
+            polvyk = (r.get('/BIC/ZC_POLVYK Položka výkazu', '') or '').strip().strip('"')
+            synuc = (r.get('/BIC/ZC_SYNUC Syntetický účet', '') or '').strip().strip('"')
+            name = (r.get('TXTXL Dlouhý text', '') or '').strip().strip('"')
+            datefrom = _date_yyyymmdd_to_ddmmyyyy(r.get('DATEFROM Platí od', ''))
+            dateto_raw = (r.get('DATETO Platí do', '') or '').strip().strip('"')
+            dateto = _date_yyyymmdd_to_ddmmyyyy(dateto_raw)
+
+            rows.append({
+                "vykaz": vykaz,
+                "polvyk": polvyk,
+                "polvyk_nazev": name,
+                "synuc": synuc,
+                "start_date": datefrom,
+                "end_date": dateto or dateto_raw,
+            })
+    return rows
+
+
+def load_rows_auto(input_file: str):
+    ext = os.path.splitext(input_file)[1].lower()
+
+    def _sniff() -> str:
+        try:
+            with open(input_file, 'rb') as f:
+                head = f.read(4096).lstrip()
+        except Exception:
+            return ""
+        if head.startswith(b"<"):
+            return "xml"
+        return "csv"
+
+    # Prefer extension when provided, but fall back to content sniffing.
+    if ext == ".xml":
+        try:
+            return load_rows_from_xml(input_file)
+        except Exception:
+            # extension might be wrong
+            return load_rows_from_cis_polvyk_csv(input_file)
+    if ext == ".csv":
+        try:
+            return load_rows_from_cis_polvyk_csv(input_file)
+        except Exception:
+            return load_rows_from_xml(input_file)
+
+    kind = _sniff()
+    if kind == "xml":
+        return load_rows_from_xml(input_file)
+    if kind == "csv":
+        return load_rows_from_cis_polvyk_csv(input_file)
+    raise RuntimeError(f"Unsupported input type or unreadable file: {input_file}")
+
+
+def is_current_row(end_date: str) -> bool:
+    # XML uses 31-12-9999; CSV uses 99991231
+    s = str(end_date or "")
+    return ("9999" in s) or ("99991231" in s)
 
 
 def load_cache():
@@ -406,27 +507,26 @@ def provider_key_missing() -> bool:
     return not config.get("api_key")
 
 
-def process_xml(offline: bool = False, output_dir: str = ""):
-    print(f"1. 读取 XML: {INPUT_FILE}")
+def process_input(input_file: str, offline: bool = False, output_dir: str = ""):
+    print(f"1. 读取输入: {input_file}")
     try:
-        tree = ET.parse(INPUT_FILE)
-        root = tree.getroot()
+        all_rows = load_rows_auto(input_file)
     except Exception as e:
-        print(f"XML 解析失败: {e}")
+        print(str(e))
         return
 
     valid_rows = []
     unique_names = []
-    for row in root.findall('row'):
-        if '9999' in str(get_node_text(row, 'end_date')):
+    for row in all_rows:
+        if is_current_row(row.get('end_date')):
             valid_rows.append(row)
-            name = get_node_text(row, 'polvyk_nazev')
+            name = row.get('polvyk_nazev', '')
             norm_name = normalize_term(name)
             if norm_name:
                 unique_names.append(norm_name)
 
     unique_names = list(dict.fromkeys(unique_names))
-    valid_rows.sort(key=lambda x: len(get_node_text(x, 'polvyk')))
+    valid_rows.sort(key=lambda x: len((x.get('polvyk') or '')))
 
     cache = load_cache()
     target_langs = TARGET_LANGS
@@ -478,11 +578,11 @@ def process_xml(offline: bool = False, output_dir: str = ""):
     parent_map = {}
     used_account_numbers = set()
     for row in valid_rows:
-        vykaz = get_node_text(row, 'vykaz')
-        polvyk = get_node_text(row, 'polvyk')
-        name_cz = get_node_text(row, 'polvyk_nazev')
+        vykaz = str(row.get('vykaz', ''))
+        polvyk = str(row.get('polvyk', ''))
+        name_cz = str(row.get('polvyk_nazev', ''))
         norm_name_cz = normalize_term(name_cz)
-        synuc = get_node_text(row, 'synuc')
+        synuc = str(row.get('synuc', ''))
 
         if vykaz == '3' or not polvyk:
             continue
@@ -561,6 +661,7 @@ def process_xml(offline: bool = False, output_dir: str = ""):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Translate Czech COA to ERPNext multilingual CSV")
+    parser.add_argument("--input", default=DEFAULT_INPUT_FILE, help="输入文件路径：uctosnova.xml 或 CIS_POLVYK.CSV")
     parser.add_argument("--offline", action="store_true", help="离线模式：跳过 API 调用，缺失翻译将以原文写入")
     parser.add_argument("--output-dir", default="", help="自定义输出目录；默认当前目录")
     return parser.parse_args()
@@ -571,4 +672,4 @@ if __name__ == "__main__":
     if TRANSLATE_ENABLED and provider_key_missing() and not args.offline:
         print("⚠️ Missing API key for provider, switching to offline mode (cache/CZ only)")
         args.offline = True
-    process_xml(offline=args.offline, output_dir=args.output_dir)
+    process_input(input_file=args.input, offline=args.offline, output_dir=args.output_dir)

@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ERPNext COA Converter</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --border: rgba(255,255,255,0.12);
+      --accent: #6ee7ff;
+      --accent2: #a78bfa;
+      --good: #34d399;
+      --warn: #fbbf24;
+      --bad: #fb7185;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 25% 10%, rgba(167,139,250,0.22), transparent 60%),
+        radial-gradient(1000px 600px at 80% 30%, rgba(110,231,255,0.18), transparent 55%),
+        radial-gradient(900px 500px at 60% 90%, rgba(52,211,153,0.12), transparent 55%),
+        var(--bg);
+    }
+
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+
+    header{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:18px;
+      padding:18px 18px 0;
+    }
+
+    .brand{display:flex;flex-direction:column;gap:8px}
+    .title{font-size:26px;letter-spacing:.2px;font-weight:800}
+    .subtitle{color:var(--muted);line-height:1.4;max-width:720px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      padding:18px;
+    }
+
+    @media (max-width: 920px){
+      .grid{grid-template-columns: 1fr}
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .card h2{margin:0;font-size:14px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+    .card .content{padding:16px}
+
+    .drop{
+      border: 1px dashed rgba(255,255,255,0.22);
+      border-radius: 16px;
+      padding:18px;
+      background: rgba(255,255,255,0.03);
+      min-height: 152px;
+      display:flex;flex-direction:column;gap:10px;justify-content:center;
+    }
+    .drop.drag{border-color: rgba(110,231,255,0.7); background: rgba(110,231,255,0.08)}
+    .drop strong{font-size:15px}
+    .drop .hint{color:var(--muted);font-size:13px;line-height:1.35}
+
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .row > *{flex:1 1 auto}
+
+    label{display:block;color:var(--muted);font-size:12px;margin:10px 0 6px}
+    input, select{
+      width:100%;
+      padding:10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(10,14,30,0.55);
+      color: var(--text);
+      outline: none;
+    }
+
+    .btn{
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(110,231,255,0.35);
+      background: linear-gradient(180deg, rgba(110,231,255,0.22), rgba(110,231,255,0.12));
+      color: var(--text);
+      cursor:pointer;
+      font-weight: 700;
+    }
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+
+    .btn.secondary{
+      border: 1px solid rgba(167,139,250,0.35);
+      background: linear-gradient(180deg, rgba(167,139,250,0.22), rgba(167,139,250,0.12));
+    }
+
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,0.04);color:var(--muted);font-size:12px}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--muted)}
+    .dot.queued{background:var(--warn)}
+    .dot.running{background:var(--accent)}
+    .dot.done{background:var(--good)}
+    .dot.error{background:var(--bad)}
+
+    .jobs{display:flex;flex-direction:column;gap:10px}
+    .job{
+      padding:12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .job-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .job-name{font-weight:800;font-size:13px}
+    .job-meta{color:var(--muted);font-family:var(--mono);font-size:11px}
+
+    .bar{height:10px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden;border:1px solid rgba(255,255,255,0.08);margin-top:10px}
+    .bar > div{height:100%;width:0%;background:linear-gradient(90deg, var(--accent), var(--accent2));transition:width .2s ease}
+
+    .log{
+      margin-top:10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.82);
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      padding: 10px;
+      max-height: 220px;
+      overflow:auto;
+      white-space: pre-wrap;
+    }
+
+    footer{padding: 0 18px 18px; color:var(--muted); font-size:12px}
+    .kbd{font-family:var(--mono); padding:2px 6px; border:1px solid var(--border); border-bottom-color: rgba(255,255,255,0.22); border-radius:8px; background: rgba(255,255,255,0.05)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="title">ERPNext Czech COA Converter</div>
+        <div class="subtitle">
+          Drag & drop <span class="kbd">uctosnova.xml</span> or <span class="kbd">CIS_POLVYK.CSV</span>, configure translation, then queue jobs (FIFO) with real-time progress and a downloadable ERPNext CSV.
+        </div>
+      </div>
+      <div class="pill"><span class="dot" id="serverDot"></span><span id="serverText">Server</span></div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <div class="content">
+          <h2>Upload</h2>
+          <div class="drop" id="drop">
+            <strong id="fileTitle">Drop a .xml or .csv here</strong>
+            <div class="hint">Or click to choose a file. Files are processed on the server. API keys are kept only in your browser storage and sent per job.</div>
+            <input id="fileInput" type="file" accept=".xml,.csv" style="display:none" />
+            <div class="row">
+              <button class="btn" id="chooseBtn" type="button">Choose File</button>
+              <button class="btn secondary" id="enqueueBtn" type="button" disabled>Enqueue Job</button>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:14px">
+            <div>
+              <label>Provider</label>
+              <select id="provider">
+                <option value="siliconflow">SiliconFlow</option>
+                <option value="openrouter">OpenRouter</option>
+                <option value="openai">OpenAI</option>
+                <option value="gemini">Gemini (OpenAI-compatible)</option>
+              </select>
+            </div>
+            <div>
+              <label>Model (optional)</label>
+              <input id="model" placeholder="Leave empty to use server defaults" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>API Key (stored in browser)</label>
+              <input id="apiKey" placeholder="sk-..." />
+            </div>
+            <div>
+              <label>Offline (no API calls)</label>
+              <select id="offline">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Translate Enabled</label>
+              <select id="translateEnabled">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+            <div>
+              <label>Translate Langs (max 2, e.g. en,zh)</label>
+              <input id="translateLangs" placeholder="en,zh" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Currency</label>
+              <input id="currency" value="CZK" />
+            </div>
+            <div>
+              <label>Output Prefix</label>
+              <input id="outputPrefix" value="erpnext_coa" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Limit</label>
+              <input id="limit" type="number" value="131" />
+            </div>
+            <div>
+              <label>Batch Size</label>
+              <input id="batchSize" type="number" value="8" />
+            </div>
+            <div>
+              <label>Max Workers</label>
+              <input id="maxWorkers" type="number" value="16" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="content">
+          <h2>Queue</h2>
+          <div class="jobs" id="jobs"></div>
+          <div class="log" id="globalLog" style="margin-top:12px; display:none"></div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      Tip: you can enqueue multiple files; the server processes FIFO.
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    const state = {
+      file: null,
+      jobs: new Map(),
+    };
+
+    function apiKeyStorageKey(provider){
+      return `erpnext_coa_api_key_${provider}`;
+    }
+
+    function loadApiKey(){
+      const provider = $('provider').value;
+      $('apiKey').value = localStorage.getItem(apiKeyStorageKey(provider)) || '';
+    }
+
+    function saveApiKey(){
+      const provider = $('provider').value;
+      const v = $('apiKey').value || '';
+      localStorage.setItem(apiKeyStorageKey(provider), v);
+    }
+
+    function setSelectedFile(file){
+      state.file = file;
+      $('fileTitle').textContent = file ? `Selected: ${file.name}` : 'Drop a .xml or .csv here';
+      $('enqueueBtn').disabled = !file;
+    }
+
+    function statusDotClass(status){
+      if(status==='queued') return 'queued';
+      if(status==='running') return 'running';
+      if(status==='done') return 'done';
+      if(status==='error') return 'error';
+      return '';
+    }
+
+    function ensureJobCard(jobId, name){
+      if(state.jobs.has(jobId)) return state.jobs.get(jobId);
+
+      const el = document.createElement('div');
+      el.className = 'job';
+      el.innerHTML = `
+        <div class="job-top">
+          <div>
+            <div class="job-name">${name}</div>
+            <div class="job-meta" id="meta-${jobId}">${jobId}</div>
+          </div>
+          <div class="pill"><span class="dot" id="dot-${jobId}"></span><span id="status-${jobId}">queued</span></div>
+        </div>
+        <div class="bar"><div id="bar-${jobId}"></div></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn secondary" id="dl-${jobId}" type="button" disabled>Download</button>
+        </div>
+        <div class="log" id="log-${jobId}"></div>
+      `;
+
+      $('jobs').prepend(el);
+
+      const job = { id: jobId, el, logsEl: $(`log-${jobId}`), barEl: $(`bar-${jobId}`), statusEl: $(`status-${jobId}`), dotEl: $(`dot-${jobId}`), dlBtn: $(`dl-${jobId}`), progress: 0 };
+      job.dlBtn.addEventListener('click', () => {
+        window.location.href = `/api/jobs/${jobId}/download`;
+      });
+
+      state.jobs.set(jobId, job);
+      return job;
+    }
+
+    function appendLog(job, msg){
+      const t = new Date().toISOString().replace('T',' ').slice(0,19);
+      job.logsEl.textContent += `[${t}] ${msg}\n`;
+      job.logsEl.scrollTop = job.logsEl.scrollHeight;
+    }
+
+    function setStatus(job, status){
+      job.statusEl.textContent = status;
+      job.dotEl.className = `dot ${statusDotClass(status)}`;
+    }
+
+    function setProgress(job, p){
+      job.progress = Math.max(0, Math.min(100, p));
+      job.barEl.style.width = `${job.progress}%`;
+    }
+
+    async function pingServer(){
+      try{
+        const r = await fetch('/api/health', { cache: 'no-store' });
+        if(!r.ok) throw new Error('health not ok');
+        const j = await r.json();
+        $('serverDot').className = 'dot done';
+        $('serverText').textContent = `Connected (queue: ${j.queued})`;
+        return;
+      } catch(e) {
+        $('serverDot').className = 'dot error';
+        $('serverText').textContent = 'Disconnected';
+      }
+    }
+
+    async function enqueue(){
+      if(!state.file) return;
+      saveApiKey();
+
+      const settings = {
+        provider: $('provider').value,
+        model: $('model').value.trim(),
+        offline: $('offline').value === 'true',
+        translate_enabled: $('translateEnabled').value === 'true',
+        translate_langs: $('translateLangs').value.trim(),
+        currency: $('currency').value.trim(),
+        output_prefix: $('outputPrefix').value.trim(),
+        limit: Number($('limit').value || 131),
+        batch_size: Number($('batchSize').value || 8),
+        max_workers: Number($('maxWorkers').value || 16),
+      };
+
+      const form = new FormData();
+      form.append('file', state.file);
+      form.append('settings_json', JSON.stringify(settings));
+      form.append('api_key', $('apiKey').value.trim());
+
+      $('enqueueBtn').disabled = true;
+      $('enqueueBtn').textContent = 'Enqueueing...';
+
+      let res;
+      try {
+        res = await fetch('/api/jobs', { method: 'POST', body: form });
+      } finally {
+        $('enqueueBtn').textContent = 'Enqueue Job';
+        $('enqueueBtn').disabled = !state.file;
+      }
+
+      if(!res.ok){
+        const t = await res.text();
+        alert(`Failed: ${t}`);
+        return;
+      }
+
+      const jobInfo = await res.json();
+      const job = ensureJobCard(jobInfo.id, state.file.name);
+      appendLog(job, 'Queued');
+      setProgress(job, 5);
+      listen(jobInfo.id);
+    }
+
+    function listen(jobId){
+      const job = state.jobs.get(jobId);
+      const es = new EventSource(`/api/jobs/${jobId}/events`);
+
+      es.onmessage = (ev) => {
+        try{
+          const data = JSON.parse(ev.data);
+          if(data.type === 'status'){
+            setStatus(job, data.status);
+            if(data.status==='running') setProgress(job, 20);
+            if(data.status==='done') setProgress(job, 100);
+          }
+          if(data.type === 'log'){
+            appendLog(job, data.message);
+          }
+          if(data.type === 'result'){
+            job.dlBtn.disabled = false;
+            appendLog(job, 'Ready to download');
+          }
+          if(data.type === 'error'){
+            appendLog(job, `ERROR: ${data.message}`);
+            setProgress(job, 100);
+          }
+          if(data.type === 'done'){
+            es.close();
+          }
+        } catch(e){
+          // ignore
+        }
+      };
+
+      es.onerror = () => {
+        appendLog(job, 'Event stream disconnected');
+        es.close();
+      };
+    }
+
+    // Dropzone behavior
+    const drop = $('drop');
+    drop.addEventListener('click', (e) => {
+      // Only open the file picker when clicking the drop area itself (not buttons/inputs).
+      if (e.target && e.target.closest && e.target.closest('button,input,select,textarea,a')) return;
+      $('fileInput').click();
+    });
+    $('fileInput').addEventListener('change', (e) => {
+      const f = e.target.files && e.target.files[0];
+      if(f) setSelectedFile(f);
+    });
+
+    ;['dragenter','dragover'].forEach(evt => drop.addEventListener(evt, (e)=>{
+      e.preventDefault();
+      drop.classList.add('drag');
+    }));
+    ;['dragleave','drop'].forEach(evt => drop.addEventListener(evt, (e)=>{
+      e.preventDefault();
+      drop.classList.remove('drag');
+    }));
+    drop.addEventListener('drop', (e)=>{
+      const f = e.dataTransfer.files && e.dataTransfer.files[0];
+      if(f) setSelectedFile(f);
+    });
+
+    $('chooseBtn').addEventListener('click', (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      $('fileInput').click();
+    });
+    $('enqueueBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      enqueue();
+    });
+
+    $('provider').addEventListener('change', loadApiKey);
+    $('apiKey').addEventListener('input', saveApiKey);
+
+    // init
+    $('serverDot').className = 'dot running';
+    $('serverText').textContent = 'Connecting...';
+    loadApiKey();
+    pingServer();
+    setInterval(pingServer, 5000);
+  </script>
+</body>
+</html>
