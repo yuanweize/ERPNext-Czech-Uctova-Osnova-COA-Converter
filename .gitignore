@@ -14,7 +14,7 @@ translation_cache_Qwen/
 
 # Outputs (generated CSVs)
 *.csv
-!data/*.csv
+!data/**/*.csv
 !samples/**/*.csv
 
 # VS Code / misc
