@@ -254,7 +254,7 @@
           <div class="row">
             <div>
               <label>Limit</label>
-              <input id="limit" type="number" value="131" />
+              <input id="limit" type="number" value="100" />
             </div>
             <div>
               <label>Batch Size</label>
@@ -403,7 +403,7 @@
         translate_langs: $('translateLangs').value.trim(),
         currency: $('currency').value.trim(),
         output_prefix: $('outputPrefix').value.trim(),
-        limit: Number($('limit').value || 131),
+        limit: Number($('limit').value || 100),
         batch_size: Number($('batchSize').value || 8),
         max_workers: Number($('maxWorkers').value || 16),
       };

@@ -90,6 +90,11 @@ _ACCOUNT_TYPE_MAP: Dict[str, str] = {
     "411": "Equity",
     "412": "Equity",
     "413": "Equity",
+    # Perpetual Inventory defaults
+    "389": "Stock Received But Not Billed",
+    "518": "Expenses Included In Valuation",
+    "549": "Stock Adjustment",
+    "563": "Exchange Gain/Loss",
     # Cost of Goods Sold
     "504": "Cost of Goods Sold",
     # Expense accounts (class 5 default)

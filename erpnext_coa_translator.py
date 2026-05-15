@@ -88,7 +88,7 @@ def process(mode: str, input_file: str, offline: bool, output_dir: str) -> str:
     print("\n2. 生成 ERPNext CSV...")
 
     csv_rows = [
-        ["Account Name", "Parent Account", "Account Number", "Parent Account Number",
+        ["Account Name", "Parent Account", "Account Number",
          "Is Group", "Account Type", "Root Type", "Account Currency"],
     ]
 
@@ -99,7 +99,7 @@ def process(mode: str, input_file: str, offline: bool, output_dir: str) -> str:
             acct_type = "Expense Account"
         elif rt == "Income":
             acct_type = "Income Account"
-        csv_rows.append([name, "", "", "", "1", acct_type, rt, CURRENCY])
+        csv_rows.append([name, "", "", "1", acct_type, rt, CURRENCY])
 
     # Build a lookup: account_number → display name (for parent references)
     acct_display_names = {}
@@ -124,18 +124,14 @@ def process(mode: str, input_file: str, offline: bool, output_dir: str) -> str:
             # Fall back to ERPNext root
             parent_display = ROOT_NAMES.get(row.root_type, "")
 
-        is_group = "1" if row.is_group else "0"
-        acct_num = "" if row.is_group else row.account_number
-
         csv_rows.append([
             display_name,
             parent_display,
-            acct_num,
-            "",
-            is_group,
+            row.account_number,
+            "1" if row.is_group else "0",
             row.account_type,
             row.root_type,
-            CURRENCY,
+            CURRENCY if not row.is_group else ""
         ])
 
     # 5. Write output
