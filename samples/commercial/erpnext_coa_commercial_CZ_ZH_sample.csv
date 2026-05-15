@@ -255,7 +255,7 @@
 "56 - Finanční náklady / 财务费用","5 - Náklady / 费用","56","5","1","","Expense",""
 "561 - Prodané cenné papíry a podíly / 处置金融工具和股权投资","56 - Finanční náklady / 财务费用","561","56","0","Expense Account","Expense","CZK"
 "562 - Úroky / 利息收入","56 - Finanční náklady / 财务费用","562","56","0","Expense Account","Expense","CZK"
-"563 - Kurzové ztráty / 汇兑损失","56 - Finanční náklady / 财务费用","563","56","0","Exchange Gain/Loss","Expense","CZK"
+"563 - Kurzové ztráty / 汇兑损失","56 - Finanční náklady / 财务费用","563","56","0","Expense Account","Expense","CZK"
 "564 - Náklady z přecenění majetkových cenných papírů k obchodování / 交易性金融资产的估值亏损","56 - Finanční náklady / 财务费用","564","56","0","Expense Account","Expense","CZK"
 "565 - Poskytnuté dary ve finanční oblasti / 提供的财务领域捐赠","56 - Finanční náklady / 财务费用","565","56","0","Expense Account","Expense","CZK"
 "566 - Náklady z finančního majetku / 财务资产的费用","56 - Finanční náklady / 财务费用","566","56","0","Expense Account","Expense","CZK"

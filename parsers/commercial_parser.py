@@ -94,7 +94,7 @@ _ACCOUNT_TYPE_MAP: Dict[str, str] = {
     "389": "Stock Received But Not Billed",
     "518": "Expenses Included In Valuation",
     "549": "Stock Adjustment",
-    "563": "Exchange Gain/Loss",
+    "563": "Expense Account",
     # Cost of Goods Sold
     "504": "Cost of Goods Sold",
     # Expense accounts (class 5 default)
