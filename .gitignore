@@ -14,8 +14,7 @@ translation_cache_Qwen/
 
 # Outputs (generated CSVs)
 *.csv
-!data/commercial/uctova_osnova_2024.csv
-!public_sector_data/CIS_POLVYK.CSV
+!data/*.csv
 !samples/**/*.csv
 
 # VS Code / misc
