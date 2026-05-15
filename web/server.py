@@ -1,3 +1,9 @@
+"""FastAPI backend – dual-mode ERPNext COA Converter.
+
+Supports both Commercial (s.r.o., default) and Public Sector (Státní pokladna)
+modes via FIFO job queue with SSE progress streaming.
+"""
+
 import asyncio
 import contextlib
 import csv
@@ -18,7 +24,7 @@ from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
 import xml.etree.ElementTree as ET
 
 import erpnext_coa_translator as converter
-
+import translation_engine as te
 
 STATIC_DIR = Path(__file__).parent / "static"
 
@@ -37,6 +43,7 @@ class JobState:
     input_name: str
     settings: Dict[str, Any]
     input_ext: str
+    mode: str  # commercial | public_sector
     uploaded_bytes: Optional[bytes] = None
     output_path: Optional[str] = None
     work_dir: Optional[str] = None
@@ -54,7 +61,6 @@ _worker_started = False
 
 @app.get("/api/health")
 async def health():
-    # Lightweight health check for UI and hosting platforms.
     return {
         "status": "ok",
         "queued": _job_queue.qsize(),
@@ -63,8 +69,7 @@ async def health():
     }
 
 
-def _safe_config_for_storage(cfg: Dict[str, Any]) -> Dict[str, Any]:
-    # Never store API keys in memory state we might accidentally dump.
+def _safe_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
     redacted = dict(cfg or {})
     for k in list(redacted.keys()):
         if "key" in k.lower():
@@ -73,67 +78,59 @@ def _safe_config_for_storage(cfg: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _cleanup_old_jobs(now: float) -> None:
-    to_delete = []
-    for job_id, job in _jobs.items():
-        if job.status in ("done", "error") and (now - job.created_at) > JOB_TTL_SECONDS:
-            to_delete.append(job_id)
-
-    for job_id in to_delete:
-        job = _jobs.pop(job_id, None)
-        if not job:
-            continue
-        if job.work_dir:
+    to_delete = [
+        jid for jid, j in _jobs.items()
+        if j.status in ("done", "error") and (now - j.created_at) > JOB_TTL_SECONDS
+    ]
+    for jid in to_delete:
+        job = _jobs.pop(jid, None)
+        if job and job.work_dir:
             with contextlib.suppress(Exception):
                 shutil.rmtree(job.work_dir, ignore_errors=True)
 
 
 def _detect_input_kind(content: bytes) -> Tuple[str, str]:
-    # Returns (kind, extension)
-    # kind: "xml" | "cis_polvyk_csv"
-    # extension: ".xml" | ".csv"
     if not content:
         raise HTTPException(status_code=400, detail="Empty file")
-
     sniff = content[:4096].lstrip()
 
-    # Try XML
+    # XML
     if sniff.startswith(b"<"):
         try:
             root = ET.fromstring(content)
-            first_row = root.find("row")
-            if first_row is None:
-                raise HTTPException(status_code=400, detail="XML format error: missing <row> nodes")
-
-            required = {"vykaz", "polvyk", "polvyk_nazev", "synuc", "end_date"}
-            present = {c.tag for c in list(first_row)}
-            if not required.issubset(present):
-                missing = sorted(required - present)
-                raise HTTPException(status_code=400, detail=f"XML format error: missing fields {missing}")
-            return "xml", ".xml"
-        except HTTPException:
-            raise
+            if root.find("row") is not None:
+                return "xml", ".xml"
         except Exception:
-            # Fall through to CSV detection
             pass
 
-    # Try CIS_POLVYK CSV
+    # CSV detection
     try:
         text = content.decode("utf-8", errors="strict")
     except Exception:
-        raise HTTPException(status_code=400, detail="Unsupported encoding: expected UTF-8")
+        raise HTTPException(status_code=400, detail="Unsupported encoding")
 
-    reader = csv.DictReader(io.StringIO(text), delimiter=';')
-    headers = reader.fieldnames or []
-    required_headers = {
-        '/BIC/ZC_VYKAZ Výkaz',
-        '/BIC/ZC_POLVYK Položka výkazu',
-        '/BIC/ZC_SYNUC Syntetický účet',
-        'DATETO Platí do',
-        'TXTXL Dlouhý text',
+    reader = csv.DictReader(io.StringIO(text), delimiter=";")
+    headers = set(reader.fieldnames or [])
+
+    # Public sector CSV
+    ps_headers = {
+        "/BIC/ZC_VYKAZ Výkaz",
+        "/BIC/ZC_POLVYK Položka výkazu",
+        "/BIC/ZC_SYNUC Syntetický účet",
+        "DATETO Platí do",
+        "TXTXL Dlouhý text",
     }
-    if not required_headers.issubset(set(headers)):
-        raise HTTPException(status_code=400, detail="CSV format error: not CIS_POLVYK layout")
-    return "cis_polvyk_csv", ".csv"
+    if ps_headers.issubset(headers):
+        return "cis_polvyk_csv", ".csv"
+
+    # Commercial CSV (comma-delimited)
+    reader2 = csv.DictReader(io.StringIO(text))
+    headers2 = set(reader2.fieldnames or [])
+    comm_headers = {"account_number", "name_cz", "account_class"}
+    if comm_headers.issubset(headers2):
+        return "commercial_csv", ".csv"
+
+    raise HTTPException(status_code=400, detail="Unrecognized file format")
 
 
 def _sse_pack(event: Dict[str, Any]) -> bytes:
@@ -150,68 +147,66 @@ async def _emit(job: JobState, event: Dict[str, Any]):
 
 
 def _apply_runtime_config(cfg: Dict[str, Any], api_key: str) -> None:
-    # Translate toggle
-    converter.TRANSLATE_ENABLED = bool(cfg.get("translate_enabled", False))
+    te.TRANSLATE_ENABLED = bool(cfg.get("translate_enabled", False))
     raw_langs = (cfg.get("translate_langs", "") or "").strip()
-    converter.RAW_TRANSLATE_LANGS = raw_langs
-    converter.TRANSLATE_LANGS = converter.validate_translation_settings(
-        converter.TRANSLATE_ENABLED,
-        converter.parse_lang_codes(raw_langs if raw_langs else ",".join(converter.DEFAULT_LANGS)),
+    te.RAW_TRANSLATE_LANGS = raw_langs
+    te.TRANSLATE_LANGS = te.validate_translation_settings(
+        te.TRANSLATE_ENABLED,
+        te.parse_lang_codes(raw_langs if raw_langs else ",".join(te.DEFAULT_LANGS)),
     )
-    converter.TARGET_LANGS = converter.TRANSLATE_LANGS if converter.TRANSLATE_ENABLED else []
+    te.TARGET_LANGS = te.TRANSLATE_LANGS if te.TRANSLATE_ENABLED else []
 
-    converter.CURRENCY = (cfg.get("currency") or converter.CURRENCY)
-    converter.LIMIT = int(cfg.get("limit") or converter.LIMIT)
-    converter.OUTPUT_PREFIX = (cfg.get("output_prefix") or converter.OUTPUT_PREFIX)
+    converter.CURRENCY = cfg.get("currency") or converter.CURRENCY
+    te.LIMIT = int(cfg.get("limit") or te.LIMIT)
+    converter.OUTPUT_PREFIX = cfg.get("output_prefix") or converter.OUTPUT_PREFIX
 
-    converter.MAX_WORKERS = int(cfg.get("max_workers") or converter.MAX_WORKERS)
-    converter.BATCH_SIZE = int(cfg.get("batch_size") or converter.BATCH_SIZE)
+    te.MAX_WORKERS = int(cfg.get("max_workers") or te.MAX_WORKERS)
+    te.BATCH_SIZE = int(cfg.get("batch_size") or te.BATCH_SIZE)
 
-    provider = (cfg.get("provider") or converter.PROVIDER).lower()
-    converter.PROVIDER = provider
+    provider = (cfg.get("provider") or te.PROVIDER).lower()
+    te.PROVIDER = provider
 
-    # Model override per provider (optional)
     model = (cfg.get("model") or "").strip()
     if provider == "siliconflow":
-        converter.SILICONFLOW_API_KEY = api_key
+        te.SILICONFLOW_API_KEY = api_key
         if model:
-            converter.MODEL_ID = model
+            te.MODEL_ID = model
     elif provider == "openrouter":
-        converter.OPENROUTER_API_KEY = api_key
+        te.OPENROUTER_API_KEY = api_key
         if model:
-            converter.OPENROUTER_MODEL = model
+            te.OPENROUTER_MODEL = model
     elif provider == "openai":
-        converter.OPENAI_API_KEY = api_key
+        te.OPENAI_API_KEY = api_key
         if model:
-            converter.OPENAI_MODEL = model
+            te.OPENAI_MODEL = model
     elif provider == "gemini":
-        converter.GEMINI_API_KEY = api_key
+        te.GEMINI_API_KEY = api_key
         if model:
-            converter.GEMINI_MODEL = model
+            te.GEMINI_MODEL = model
 
-    # Rebuild provider map to pick up overrides
-    converter.PROVIDERS = {
+    # Rebuild provider map
+    te.PROVIDERS = {
         "siliconflow": {
-            "api_key": converter.SILICONFLOW_API_KEY,
-            "model": converter.MODEL_ID,
+            "api_key": te.SILICONFLOW_API_KEY,
+            "model": te.MODEL_ID,
             "base_url": "https://api.siliconflow.cn/v1",
             "extra_headers": None,
         },
         "openrouter": {
-            "api_key": converter.OPENROUTER_API_KEY,
-            "model": converter.OPENROUTER_MODEL,
+            "api_key": te.OPENROUTER_API_KEY,
+            "model": te.OPENROUTER_MODEL,
             "base_url": "https://openrouter.ai/api/v1",
             "extra_headers": {"X-Title": "ERPNext Czech COA Converter"},
         },
         "openai": {
-            "api_key": converter.OPENAI_API_KEY,
-            "model": converter.OPENAI_MODEL,
+            "api_key": te.OPENAI_API_KEY,
+            "model": te.OPENAI_MODEL,
             "base_url": "https://api.openai.com/v1",
             "extra_headers": None,
         },
         "gemini": {
-            "api_key": converter.GEMINI_API_KEY,
-            "model": converter.GEMINI_MODEL,
+            "api_key": te.GEMINI_API_KEY,
+            "model": te.GEMINI_MODEL,
             "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
             "extra_headers": None,
         },
@@ -231,42 +226,43 @@ async def _worker_loop():
         try:
             tmp_dir = Path(tempfile.mkdtemp(prefix=f"erpnext_coa_{job.id}_"))
             job.work_dir = str(tmp_dir)
-
-            input_ext = str(job.input_ext or "")
-            stem = Path(job.input_name).stem or "input"
-            safe_name = f"{stem}{input_ext}" if input_ext else stem
-            input_path = tmp_dir / safe_name
             output_dir = tmp_dir / "out"
             output_dir.mkdir(parents=True, exist_ok=True)
-
-            uploaded_bytes = job.uploaded_bytes
-            if not isinstance(uploaded_bytes, (bytes, bytearray)):
-                raise RuntimeError("Missing uploaded file bytes")
-            input_path.write_bytes(uploaded_bytes)
-
-            # Do not keep bytes around after writing
-            job.uploaded_bytes = None
 
             api_key = str(job.api_key or "")
             job.api_key = None
             cfg = dict(job.settings or {})
+            mode = job.mode
 
             _apply_runtime_config(cfg, api_key=api_key)
-
-            # Avoid tqdm in server logs
             os.environ["DISABLE_TQDM"] = "1"
 
-            await _emit(job, {"type": "log", "message": f"Input: {job.input_name}"})
-            await _emit(job, {"type": "log", "message": f"Provider: {converter.PROVIDER}"})
+            await _emit(job, {"type": "log", "message": f"Mode: {mode}"})
+            await _emit(job, {"type": "log", "message": f"Provider: {te.PROVIDER}"})
 
             offline = bool(cfg.get("offline", False))
-            if converter.TRANSLATE_ENABLED and converter.provider_key_missing() and not offline:
+            if te.TRANSLATE_ENABLED and te.provider_key_missing() and not offline:
                 offline = True
-                await _emit(job, {"type": "log", "message": "Missing API key -> forcing offline mode"})
+                await _emit(job, {"type": "log", "message": "Missing API key → offline"})
 
-            # Run conversion in a thread to keep event loop responsive
+            # Prepare input file for public sector mode
+            input_file = ""
+            if mode == "public_sector" and job.uploaded_bytes:
+                stem = Path(job.input_name).stem or "input"
+                safe_name = f"{stem}{job.input_ext}"
+                input_path = tmp_dir / safe_name
+                input_path.write_bytes(job.uploaded_bytes)
+                input_file = str(input_path)
+
+            job.uploaded_bytes = None
+
             def _run():
-                return converter.process_input(str(input_path), offline=offline, output_dir=str(output_dir))
+                return converter.process(
+                    mode=mode,
+                    input_file=input_file,
+                    offline=offline,
+                    output_dir=str(output_dir),
+                )
 
             loop = asyncio.get_running_loop()
             output_path = await loop.run_in_executor(None, _run)
@@ -285,7 +281,6 @@ async def _worker_loop():
             await _emit(job, {"type": "error", "message": job.error})
 
         finally:
-            # Signal end of stream for clients
             await _emit(job, {"type": "done"})
             _job_queue.task_done()
 
@@ -307,7 +302,7 @@ async def index():
 
 @app.post("/api/jobs")
 async def create_job(
-    file: UploadFile = File(...),
+    file: Optional[UploadFile] = File(None),
     settings_json: str = Form("{}"),
     api_key: str = Form(""),
 ):
@@ -315,23 +310,34 @@ async def create_job(
     _cleanup_old_jobs(now)
 
     if len(_jobs) >= MAX_JOBS:
-        raise HTTPException(status_code=429, detail="Too many jobs; try again later")
+        raise HTTPException(status_code=429, detail="Too many jobs")
     if _job_queue.qsize() >= MAX_QUEUE:
-        raise HTTPException(status_code=429, detail="Queue is full; try again later")
+        raise HTTPException(status_code=429, detail="Queue full")
 
     try:
         settings = json.loads(settings_json or "{}")
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid settings JSON")
 
-    filename = Path(file.filename or "input").name
-    content = await file.read()
-    if not content:
-        raise HTTPException(status_code=400, detail="Empty file")
-    if len(content) > MAX_UPLOAD_BYTES:
-        raise HTTPException(status_code=413, detail=f"File too large (max {MAX_UPLOAD_MB}MB)")
+    mode = (settings.get("mode") or "commercial").lower()
+    if mode not in ("commercial", "public_sector"):
+        raise HTTPException(status_code=400, detail="Invalid mode")
 
-    kind, ext = _detect_input_kind(content)
+    content = None
+    filename = "built-in"
+    ext = ""
+
+    if file and file.filename:
+        content = await file.read()
+        if content:
+            if len(content) > MAX_UPLOAD_BYTES:
+                raise HTTPException(status_code=413, detail=f"File too large (max {MAX_UPLOAD_MB}MB)")
+            _, ext = _detect_input_kind(content)
+            filename = Path(file.filename).name
+
+    # For commercial mode, file upload is optional
+    if mode == "public_sector" and not content:
+        raise HTTPException(status_code=400, detail="Public sector mode requires a file upload")
 
     job_id = uuid4().hex
     events = asyncio.Queue(maxsize=500)
@@ -343,22 +349,23 @@ async def create_job(
         input_name=filename,
         settings=settings,
         input_ext=ext,
+        mode=mode,
         uploaded_bytes=content,
         events=events,
         api_key=api_key,
     )
     _jobs[job_id] = job
-
     await _job_queue.put(job_id)
     await _emit(job, {"type": "status", "status": job.status})
 
     return {
         "id": job.id,
         "status": job.status,
+        "mode": mode,
         "events_url": f"/api/jobs/{job.id}/events",
         "download_url": f"/api/jobs/{job.id}/download",
         "input": job.input_name,
-        "config": _safe_config_for_storage(job.settings or {}),
+        "config": _safe_config(job.settings or {}),
     }
 
 
@@ -370,6 +377,7 @@ async def get_job(job_id: str):
     return {
         "id": job.id,
         "status": job.status,
+        "mode": job.mode,
         "input": job.input_name,
         "error": job.error,
         "download_url": f"/api/jobs/{job.id}/download" if job.output_path else None,
@@ -383,7 +391,6 @@ async def job_events(job_id: str):
         raise HTTPException(status_code=404, detail="Job not found")
 
     async def gen():
-        # Initial hello
         yield _sse_pack({"type": "hello", "job": job.id})
         while True:
             event = await job.events.get()
@@ -401,7 +408,6 @@ async def download(job_id: str):
         raise HTTPException(status_code=404, detail="Job not found")
     if job.status != "done" or not job.output_path:
         raise HTTPException(status_code=409, detail="Job not finished")
-
     return FileResponse(
         path=job.output_path,
         filename=Path(job.output_path).name,

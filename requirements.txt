@@ -1,6 +1,7 @@
-requests
-tqdm
-python-dotenv
-fastapi
-uvicorn
-python-multipart
+fastapi>=0.109
+uvicorn>=0.27
+python-dotenv>=1.0
+requests>=2.31
+python-multipart>=0.0.7
+tqdm>=4.66
+pdfplumber>=0.10

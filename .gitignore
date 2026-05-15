@@ -12,9 +12,11 @@ __pycache__/
 # Translation caches
 translation_cache_Qwen/
 
-# Outputs
+# Outputs (generated CSVs)
 *.csv
-!CIS_POLVYK.CSV
-!samples/*_sample.csv
+!data/commercial/uctova_osnova_2024.csv
+!public_sector_data/CIS_POLVYK.CSV
+!samples/**/*.csv
+
 # VS Code / misc
 .vscode/

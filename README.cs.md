@@ -1,136 +1,84 @@
-# ERPNext Czech Účtová Osnova (COA Converter) (Čeština)
+# ERPNext – Převodník české účtové osnovy
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+[English](README.md) | [中文](README.zh.md)
 
-[English](README.md) | Čeština | [中文](README.zh.md)
+> **Profesionální dvourežimový** převodník české účtové osnovy do formátu ERPNext CSV.
+> Podporuje **podnikatelské subjekty (s.r.o. / a.s.)** a **veřejný sektor (Státní pokladna)**.
 
-Převod české směrné účtové osnovy (Směrná účtová osnova) do CSV, které lze importovat do ERPNext.
+---
 
-- Vstup: oficiální `uctosnova.xml` nebo `CIS_POLVYK.CSV` (název souboru nehraje roli; formát se ověřuje podle obsahu)
-- Výstup: CSV se správnými kořeny (Asset/Liability/Equity/Income/Expense) a hierarchií
-- Volitelný překlad: CZ + až 2 cílové jazyky (cache / retry / offline)
+## ✨ Funkce
 
-## Ukázkové soubory
-Ukázkové CSV jsou součástí repozitáře (bez API klíčů):
+| Funkce | Komerční režim (výchozí) | Veřejný sektor |
+|---|---|---|
+| **Datový zdroj** | Vestavěná účtová osnova 2024 (vyhláška 500/2002) | Nahrání XML/CSV z data.gov.cz |
+| **Root Types** | Asset / Liability / Equity / Expense / Income | Stejné |
+| **Account Type** | Automatické mapování (Bank, Cash, Tax…) | Manuální |
+| **Nahrání souboru** | Není potřeba | Povinné |
+| **Překlad** | 🌍 AI překlad (EN/ZH/DE/…) | Stejné |
 
-- [samples/erpnext_coa_CZ_sample.csv](samples/erpnext_coa_CZ_sample.csv) — pouze CZ
-- [samples/erpnext_coa_CZ_EN_sample.csv](samples/erpnext_coa_CZ_EN_sample.csv) — CZ/EN
-- [samples/erpnext_coa_CZ_DE_RU_sample.csv](samples/erpnext_coa_CZ_DE_RU_sample.csv) — CZ/DE/RU
-- [samples/erpnext_coa_CZ_ZH_RU_sample.csv](samples/erpnext_coa_CZ_ZH_RU_sample.csv) — CZ/ZH/RU
+## 🚀 Rychlý start
 
-
-## Web UI (localhost / server)
-
-Repo obsahuje jednoduché webové UI na jedné stránce: drag & drop upload (podporuje `uctosnova.xml` i `CIS_POLVYK.CSV`), FIFO frontu úloh, živý průběh (SSE) a stažení výsledného ERPNext CSV.
-
-![Screenshot Web UI](https://github.com/user-attachments/assets/bd357431-8886-494e-919f-ab248fed833f)
-
-- Lokálně:
-	- `pip install -r requirements.txt`
-	- `uvicorn web.server:app --reload`
-	- Otevřete `http://127.0.0.1:8000`
-
-- Spuštění přes Docker:
-	- Build: `docker build -t erpnext-coa .`
-	- Run: `docker run --rm -p 8000:8000 erpnext-coa`
-	- Otevřete `http://127.0.0.1:8000`
-	- Pro překlady předejte proměnné prostředí (např. `--env-file .env`).
-
-- Spuštění přes Docker Compose:
-	- `docker compose up --build`
-	- Otevřete `http://127.0.0.1:8000`
-
-- Jedním klikem nasadit (full stack včetně Python backendu):
-	- [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter)
-
-Poznámka:
-- Cloudflare Pages / EdgeOne / Vercel / Netlify jsou primárně pro statické weby, takže neumí přímo spustit tento Python backend (nelze jednou službou „upload → process → download“).
-
-Další možnosti nasazení (Docker / Python backend):
-- Render (nejjednodušší): použijte tlačítko “Deploy to Render” výše
-- [![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?logo=railway&logoColor=white)](https://railway.app/new)
-- [![Deploy to Koyeb](https://img.shields.io/badge/Deploy%20to-Koyeb-121212?logo=koyeb&logoColor=white)](https://app.koyeb.com/)
-- [![Deploy to Fly.io](https://img.shields.io/badge/Deploy%20to-Fly.io-7B5CFF?logo=flydotio&logoColor=white)](https://fly.io/)
-
-Poznámka: Railway/Koyeb/Fly.io obvykle vyžadují pár kroků v konzoli (import z GitHubu + Docker build). Neexistuje jednotný standard „one-click clone“ URL jako u Render/Vercel/Netlify, proto tlačítka vedou na vstup pro vytvoření projektu.
-
-Pokud přesto chcete Cloudflare Pages / EdgeOne: frontend (statická stránka) nasadit na CF/EO, backend nasadit na Render/Railway a frontend nasměrovat na URL backendu.
-
-## Struktura projektu
-
-```text
-.
-├─ erpnext_coa_translator.py        # CLI převodník: XML/CSV -> ERPNext COA CSV (+ volitelný překlad)
-├─ web/
-│  ├─ server.py                    # FastAPI backend: FIFO úlohy, SSE průběh, stažení výsledku
-│  └─ static/
-│     └─ index.html                # Jednostránkové UI (drag&drop, fronta, průběh, download)
-├─ samples/                        # Ukázkové výstupy (commitované)
-├─ requirements.txt                # Python závislosti (CLI + Web)
-├─ Dockerfile                      # Docker běh (uvicorn)
-├─ docker-compose.yml              # Docker Compose (web server na :8000)
-├─ render.yaml                     # Render deploy blueprint
-├─ uctosnova.xml                   # Oficiální XML vstup (volitelné)
-├─ CIS_POLVYK.CSV                  # Oficiální CSV vstup (volitelné)
-├─ translation_cache.json          # Cache překladů (pro CLI; lze znovu vygenerovat)
-└─ README*.md                      # Dokumentace (EN/CZ/ZH)
-```
-
-## Bezpečnost
-
-- Názvy souborů nejsou omezené. Server rozpozná formát podle obsahu a validuje strukturu (XML musí obsahovat `<row>` a očekávaná pole; CSV musí odpovídat hlavičkám CIS_POLVYK). Neplatné soubory vrátí chybu parsování.
-- API klíče: UI je ukládá pouze v prohlížeči a posílá je pro konkrétní úlohu; server je neukládá na disk a po spuštění úlohy je z paměti odstraní.
-- Ochrana proti zneužití: `MAX_UPLOAD_MB`, `MAX_QUEUE`, `MAX_JOBS`, `JOB_TTL_SECONDS`.
-- Pokud jste někdy omylem commitli skutečný API klíč, ihned ho zneplatněte / otočte (rotate).
-
-## Rychlý start
 ```bash
-python -m venv .venv
-.venv/Scripts/activate
+# Klonování a instalace
+git clone https://github.com/YuanWeize/ERPNext-Czech-Uctova-Osnova-COA-Converter.git
+cd ERPNext-Czech-Uctova-Osnova-COA-Converter
 pip install -r requirements.txt
-python erpnext_coa_translator.py --input uctosnova.xml --offline
-# nebo: python erpnext_coa_translator.py --input CIS_POLVYK.CSV --offline
-# CLI rozpozná XML vs CSV podle obsahu (název/koncovka souboru není důležitá).
+cp .env.example .env
+
+# Generování komerční účtové osnovy (pouze česky, offline)
+python erpnext_coa_translator.py --offline
+
+# S AI překladem (nejdříve nastavte API klíč v .env)
+python erpnext_coa_translator.py
+
+# Generování účtové osnovy veřejného sektoru
+python erpnext_coa_translator.py --mode public_sector --input public_sector_data/uctosnova.xml --offline
 ```
 
-Pro překlady: zkopírujte `.env.example` -> `.env`, nastavte `PROVIDER=...` a příslušný API klíč, pak `TRANSLATE_ENABLED=true`.
+## 🏢 Architektura komerční účtové osnovy
 
-## Pojmenování výstupů
-Generované výstupy jsou gitignore a mají časové razítko (na minutu):
+Založená na **vyhlášce 500/2002 Sb.** se standardní tříúrovňovou hierarchií:
 
-- Výchozí prefix: `OUTPUT_PREFIX=erpnext_coa_multilingual`
-- Jen CZ: `erpnext_coa_multilingual_CZ_YYYYMMDD_HHMM.csv`
-- S jazyky: `erpnext_coa_multilingual_CZ_EN_ZH_YYYYMMDD_HHMM.csv`
+| Úroveň | Příklad | Popis |
+|---|---|---|
+| **Třída** | `0` | Dlouhodobý majetek |
+| **Skupina** | `02` | Dlouhodobý hmotný majetek |
+| **Syntetický účet** | `022` | Hmotné movité věci |
 
-Jazykové tagy jsou oddělené podtržítky kvůli Windows kompatibilitě.
+### Mapování Root Type
 
-## Konfigurace (.env)
-| Proměnná | Význam |
-|---|---|
-| `PROVIDER` | `siliconflow\|openrouter\|openai\|gemini` |
-| `SILICONFLOW_API_KEY` / `MODEL_ID` | SiliconFlow klíč / model |
-| `OPENROUTER_API_KEY` / `OPENROUTER_MODEL` | OpenRouter klíč / model |
-| `OPENAI_API_KEY` / `OPENAI_MODEL` | OpenAI klíč / model |
-| `GEMINI_API_KEY` / `GEMINI_MODEL` | Gemini klíč / model (OpenAI kompatibilní endpoint) |
-| `TRANSLATE_ENABLED` | `true` zapne překlady (default `false`) |
-| `TRANSLATE_LANGS` | dvoupísmenné kódy, max 2 (default `en,zh`) |
-| `MAX_WORKERS` / `BATCH_SIZE` | paralelismus / dávkování |
-| `CURRENCY` | měna účtů (default `CZK`) |
-| `LIMIT` | limit délky názvu (default `131`) |
-| `OUTPUT_PREFIX` | prefix výstupního souboru |
+| Třída | ERPNext Root Type | Logika |
+|---|---|---|
+| 0, 1, 2 | Asset | (2xx s P-značkou → Liability) |
+| 3 | Asset nebo Liability | Podle A/P značky účtu |
+| 4 (41-43, 49) | Equity | Základní kapitál, fondy |
+| 4 (45-48) | Liability | Rezervy, dlouhodobé závazky |
+| 5 | Expense | Nákladové účty |
+| 6 | Income | Výnosové účty |
+| 7 (701/702/710) | Equity | Závěrkové účty |
 
-## Datové zdroje (oficiální)
-- CSV: https://monitor.statnipokladna.gov.cz/data/csv/CIS_POLVYK.CSV
-- XML: https://monitor.statnipokladna.gov.cz/data/xml/uctosnova.xml
-- XSD: https://monitor.statnipokladna.gov.cz/data/xsd/ciselniky/monitorUctosnova.xsd
-- Datový katalog: https://data.gov.cz/dataset?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F00006947%2F87ab86b58f0a0341acb8cb84ca4094fb
+### Automaticky mapované Account Types
 
-## Technologický stack a návrh
-- Python 3.10+, minimum závislostí (`requests`, `python-dotenv`, volitelně `tqdm`).
-- Jeden integrační styl: OpenAI-kompatibilní chat API.
-- Cache + backoff + retry pro stabilní výstupy.
-- ERPNext specifika: hierarchie, duplicity čísel účtů, délkové limity.
+- `211 Pokladna` → **Cash**
+- `221 Peněžní prostředky na účtech` → **Bank**
+- `311 Odběratelé` → **Receivable**
+- `321 Dodavatelé` → **Payable**
+- `343 DPH` → **Tax**
+- `551 Odpisy` → **Depreciation**
+- `07x/08x Oprávky` → **Accumulated Depreciation**
 
-## Licence
-MIT, viz LICENSE.
+## 🌍 AI Překlad
+
+Podporuje **SiliconFlow**, **OpenRouter**, **OpenAI** a **Gemini**. Nastavení v `.env`:
+
+```env
+TRANSLATE_ENABLED=true
+TRANSLATE_LANGS=en,zh
+PROVIDER=siliconflow
+SILICONFLOW_API_KEY=your_key_here
+```
+
+## 📄 Licence
+
+MIT License. Viz [LICENSE](LICENSE).
