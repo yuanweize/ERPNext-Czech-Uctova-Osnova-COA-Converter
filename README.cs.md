@@ -46,17 +46,25 @@ Založená na **vyhlášce 500/2002 Sb.** se standardní tříúrovňovou hierar
 | **Skupina** | `02` | Dlouhodobý hmotný majetek |
 | **Syntetický účet** | `022` | Hmotné movité věci |
 
-### Mapování Root Type
+### Mapování Root Type (v souladu s IFRS)
 
-| Třída | ERPNext Root Type | Logika |
+ERPNext vyžaduje, aby všechny uzly ve větvi stromu sdílely stejný Root Type. Převodník řeší **smíšené třídy** (2, 3, 4) jejich rozdělením — uzly úrovně třídy jsou vynechány a skupiny jsou směrovány přímo na správný kořen ERPNext:
+
+| Třída | ERPNext Root Type | Logika rozdělení |
 |---|---|---|
-| 0, 1, 2 | Asset | (2xx s P-značkou → Liability) |
-| 3 | Asset nebo Liability | Podle A/P značky účtu |
-| 4 (41-43, 49) | Equity | Základní kapitál, fondy |
-| 4 (45-48) | Liability | Rezervy, dlouhodobé závazky |
+| 0, 1 | Asset | Všechny účty jsou aktiva |
+| 2 (21, 22, 25, 26, 29) | Asset | Hotovost, banka, krátkodobý fin. majetek |
+| 2 (23, 24) | **Liability** | Krátkodobé úvěry, finanční výpomoci |
+| 3 (31, 35, 39) | Asset | Pohledávky |
+| 3 (32, 33, 34, 36) | **Liability** | Závazky, zaměstnanci, daně |
+| 3 (37, 38) | **Smíšené** | Rozděleno podle A/P; menšina přeřazena |
+| 4 (41-43, 49) | **Equity** | Základní kapitál, fondy |
+| 4 (45-48) | **Liability** | Rezervy, dlouhodobé závazky |
 | 5 | Expense | Nákladové účty |
 | 6 | Income | Výnosové účty |
 | 7 (701/702/710) | Equity | Závěrkové účty |
+
+> **Smíšené skupiny**: U skupin s účty A i P (např. 33, 34, 37, 38) většinová `balance_side` určuje Root Type skupiny. Menšinové účty jsou přeřazeny přímo pod správný kořen ERPNext.
 
 ### Automaticky mapované Account Types
 
@@ -78,6 +86,16 @@ TRANSLATE_LANGS=en,zh
 PROVIDER=siliconflow
 SILICONFLOW_API_KEY=your_key_here
 ```
+
+## 📋 Změny
+
+### v2.0 (2026-06)
+
+- **Přepis mapování Root Type** — v souladu s IFRS, směrování podle `balance_side` (A/P)
+- **Rozdělení smíšených tříd** — Třídy 2/3/4 správně rozděleny mezi Asset, Liability a Equity
+- **Oprava duplicitních čísel** — Názvy účtů již neobsahují číselné předpony
+- **Čísla účtů pro skupiny** — Skupinové uzly nyní nesou číslo účtu
+- **Číslo nadřazeného účtu** — CSV nyní obsahuje čísla nadřazených účtů
 
 ## 📄 Licence
 

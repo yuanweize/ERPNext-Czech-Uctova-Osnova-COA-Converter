@@ -9,6 +9,7 @@ from __future__ import annotations
 import contextlib
 import json
 import os
+import re
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -411,11 +412,34 @@ def translate_terms(
 # Name building
 # ---------------------------------------------------------------------------
 
+def _strip_code_prefix(code: str, name: str) -> str:
+    """Remove the account number prefix from a Czech account name.
+
+    Handles patterns like "231 - Name", "231 – Name", "231—Name".
+    Also strips any generic leading-digit prefix even if the code does not
+    match, to guarantee no number prefixes leak into ERPNext Account Name.
+    """
+    if not name:
+        return ""
+    # First, try stripping the specific code
+    if code:
+        pattern = rf"^\s*{re.escape(code)}\s*[-–—]\s*"
+        name = re.sub(pattern, "", name).strip()
+    # Safety net: strip any leading digit+dash pattern (e.g. "011 - ")
+    name = re.sub(r"^\s*\d+\s*[-–—]\s*", "", name).strip()
+    return name
+
+
 def build_name(code: str, cz: str, trans_data: Optional[dict],
                target_langs: List[str]) -> str:
-    """Build a multilingual account name that fits within LIMIT chars."""
+    """Build a multilingual account name that fits within LIMIT chars.
+
+    The returned string must NOT contain a number prefix – ERPNext's
+    'Standard with Numbers' mode auto-prepends the Account Number.
+    """
+    clean_cz = _strip_code_prefix(code, cz)
     if not target_langs or not trans_data:
-        return f"{code} - {cz}"[:LIMIT]
+        return clean_cz[:LIMIT]
 
     lang_entries = []
     for lang in target_langs:
@@ -425,7 +449,7 @@ def build_name(code: str, cz: str, trans_data: Optional[dict],
             lang_entries.append((lang, full, short))
 
     if not lang_entries:
-        return f"{code} - {cz}"[:LIMIT]
+        return clean_cz[:LIMIT]
 
     for keep in range(len(lang_entries), 0, -1):
         subset = lang_entries[:keep]
@@ -436,9 +460,10 @@ def build_name(code: str, cz: str, trans_data: Optional[dict],
                 opts.append(short)
             choice_lists.append(opts)
         for combo in product(*choice_lists):
-            parts = [cz] + list(combo)
-            candidate = f"{code} - " + " / ".join(parts)
+            parts = [clean_cz] + list(combo)
+            candidate = " / ".join([p for p in parts if p])
             if len(candidate) <= LIMIT:
                 return candidate
 
-    return f"{code} - {cz}"[:LIMIT]
+    return clean_cz[:LIMIT]
+

@@ -46,17 +46,25 @@ python erpnext_coa_translator.py --mode public_sector --input public_sector_data
 | **组** (Skupina) | `02` | 有形固定资产 |
 | **综合账户** (Syntetický účet) | `022` | 有形动产及其组合 |
 
-### Root Type 映射规则
+### Root Type 映射规则（符合 IFRS）
 
-| 类别 | ERPNext Root Type | 逻辑 |
+ERPNext 要求同一树分支中所有节点共享相同的 Root Type。转换器通过拆分处理“混合类”（2, 3, 4）—— 类级节点被省略，组直接路由到正确的 ERPNext 根节点：
+
+| 类别 | ERPNext Root Type | 拆分逻辑 |
 |---|---|---|
-| 0, 1, 2 | Asset (资产) | 2xx 中标记 P 的 → Liability |
-| 3 | Asset 或 Liability | 按账户的 A/P 标记拆分 |
-| 4 (41-43, 49) | Equity (权益) | 注册资本、留存收益 |
-| 4 (45-48) | Liability (负债) | 准备金、长期应付 |
+| 0, 1 | Asset (资产) | 全部是资产类账户 |
+| 2 (21, 22, 25, 26, 29) | Asset (资产) | 现金、银行、短期金融资产 |
+| 2 (23, 24) | **Liability (负债)** | 短期借款、短期融资 |
+| 3 (31, 35, 39) | Asset (资产) | 应收账款、股东应收 |
+| 3 (32, 33, 34, 36) | **Liability (负债)** | 应付账款、员工负债、税费 |
+| 3 (37, 38) | **混合** | 按 A/P 标志拆分；少数派重新挂载 |
+| 4 (41-43, 49) | **Equity (权益)** | 注册资本、留存收益 |
+| 4 (45-48) | **Liability (负债)** | 准备金、长期应付 |
 | 5 | Expense (费用) | 全部费用类账户 |
 | 6 | Income (收入) | 全部收入类账户 |
 | 7 (701/702/710) | Equity (权益) | 结转账户 |
+
+> **混合组处理**：对于同时包含资产 (A) 和负债 (P) 科目的组（如组 33、34、37、38），多数派的 `balance_side` 决定组的 Root Type。少数派科目被直接挂载到对应的 ERPNext 根节点下。
 
 ### 自动映射的 ERPNext Account Type
 
@@ -79,6 +87,16 @@ PROVIDER=siliconflow
 SILICONFLOW_API_KEY=your_key_here
 ```
 
+## 📋 更新日志
+
+### v2.0 (2026-06)
+
+- **Root Type 映射重写** — 符合 IFRS，基于 `balance_side` (A/P) 标志逐科目路由
+- **混合类拆分** — 第 2/3/4 类正确拆分到 Asset、Liability 和 Equity
+- **名称去重修复** — 科目名称不再包含编号前缀，避免 ERPNext “Standard with Numbers” 模式下双重编号
+- **组节点编号** — 组节点现在也携带科目编号，支持排序
+- **父科目编号** — CSV 现在包含父科目编号字段
+
 ## 📄 许可证
 
-MIT License. 详见 [LICENSE](LICENSE)。
+MIT License。详见 [LICENSE](LICENSE)。

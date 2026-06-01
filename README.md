@@ -80,17 +80,25 @@ The **Czech Standard Commercial Chart of Accounts** (Decree 500/2002 Coll.) uses
 | **Group** (Skupina) | `02` | Tangible Fixed Assets |
 | **Account** (Syntetický účet) | `022` | Tangible Movable Assets |
 
-### Root Type Mapping
+### Root Type Mapping (IFRS-Aligned)
 
-| Class | Root Type | Logic |
+ERPNext requires all nodes in a tree branch to share the same Root Type. The converter handles **mixed classes** (2, 3, 4) by splitting them — class-level nodes are omitted and groups are routed directly to the correct ERPNext root:
+
+| Class | Root Type | Splitting Logic |
 |---|---|---|
-| 0, 1, 2 | Asset | (2xx with P-marker → Liability) |
-| 3 | Asset or Liability | Per A/P marker on each account |
-| 4 (41-43, 49) | Equity | Share capital, retained earnings |
-| 4 (45-48) | Liability | Provisions, long-term payables |
+| 0, 1 | Asset | All accounts are Asset |
+| 2 (21, 22, 25, 26, 29) | Asset | Cash, bank, short-term financial assets |
+| 2 (23, 24) | **Liability** | Short-term loans, financial assistance |
+| 3 (31, 35, 39) | Asset | Receivables, shareholder receivables |
+| 3 (32, 33, 34, 36) | **Liability** | Payables, employee liabilities, tax |
+| 3 (37, 38) | **Mixed** | Split per A/P marker; minority re-parented |
+| 4 (41-43, 49) | **Equity** | Share capital, retained earnings |
+| 4 (45-48) | **Liability** | Provisions, long-term payables |
 | 5 | Expense | All expense accounts |
 | 6 | Income | All revenue accounts |
 | 7 (701/702/710) | Equity | Closing accounts |
+
+> **Mixed group handling**: For groups containing both Asset (A) and Liability (P) accounts (e.g., group 33, 34, 37, 38), the majority `balance_side` determines the group's Root Type. Minority accounts are re-parented directly under the correct ERPNext root node.
 
 ### Auto-mapped ERPNext Account Types
 
@@ -115,6 +123,16 @@ TRANSLATE_LANGS=en,zh
 PROVIDER=siliconflow
 SILICONFLOW_API_KEY=your_key_here
 ```
+
+## 📋 Changelog
+
+### v2.0 (2026-06)
+
+- **Root Type mapping rewrite** — IFRS-aligned, per-account routing based on `balance_side` (A/P) markers
+- **Mixed-class splitting** — Classes 2/3/4 correctly split between Asset, Liability, and Equity
+- **Name deduplication fix** — Account names no longer contain number prefixes that ERPNext would duplicate in "Standard with Numbers" mode
+- **Account Number for groups** — Group nodes now carry their account number for proper sorting
+- **Parent Account Number** — CSV now includes parent account numbers for better referencing
 
 ## 📄 License
 

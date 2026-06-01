@@ -107,6 +107,8 @@ def process(mode: str, input_file: str, offline: bool, output_dir: str) -> str:
     for row in rows:
         norm = normalize_term(row.name_cz)
         trans_data = cache.get(norm, {})
+        # Pass account_number so _strip_code_prefix can remove it if present
+        # in the Czech name; the returned display_name will be number-free.
         display_name = te.build_name(row.account_number, row.name_cz, trans_data, target_langs)
         acct_display_names[row.account_number] = display_name
 
@@ -118,21 +120,29 @@ def process(mode: str, input_file: str, offline: bool, output_dir: str) -> str:
 
         # Resolve parent
         parent_display = ""
+        parent_acct_num = ""
         if row.parent_number:
             parent_display = acct_display_names.get(row.parent_number, "")
+            parent_acct_num = row.parent_number if parent_display else ""
         if not parent_display:
             # Fall back to ERPNext root
             parent_display = ROOT_NAMES.get(row.root_type, "")
+            parent_acct_num = ""
+
+        is_group = "1" if row.is_group else "0"
+        # Assign Account Number to ALL nodes (groups and ledgers alike)
+        # so ERPNext can sort and display them with "Standard with Numbers".
+        acct_num = row.account_number
 
         csv_rows.append([
             display_name,
             parent_display,
-            row.account_number,
-            row.parent_number,
-            "1" if row.is_group else "0",
+            acct_num,
+            parent_acct_num,
+            is_group,
             row.account_type,
             row.root_type,
-            CURRENCY if not row.is_group else ""
+            CURRENCY,
         ])
 
     # 5. Write output

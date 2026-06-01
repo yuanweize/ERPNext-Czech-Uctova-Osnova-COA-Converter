@@ -19,3 +19,4 @@ translation_cache_Qwen/
 
 # VS Code / misc
 .vscode/
+.DS_Store
