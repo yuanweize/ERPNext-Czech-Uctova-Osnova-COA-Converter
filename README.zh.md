@@ -7,7 +7,7 @@
 
 ---
 
-## ✨ 核心功能
+## 核心功能
 
 | 功能 | 商业模式 (默认) | 公共部门模式 |
 |---|---|---|
@@ -17,7 +17,12 @@
 | **文件上传** | 不需要 | 必需 |
 | **翻译** | 🌍 AI 驱动多语言翻译 (EN/ZH/DE/…) | 同上 |
 
-## 🚀 快速开始
+<div align="center">
+  <img src="assets/webui_preview.png" width="850" alt="ERPNext 捷克会计科目表转换器 Web 界面">
+  <p><em>ERPNext 捷克会计科目表转换器 Web 界面 — 支持商业版/公共部门双模式、AI 多语言翻译与一键导出 ERPNext 标准 CSV</em></p>
+</div>
+
+## 快速开始
 
 ```bash
 # 克隆 & 安装
@@ -36,7 +41,7 @@ python erpnext_coa_translator.py
 python erpnext_coa_translator.py --mode public_sector --input public_sector_data/uctosnova.xml --offline
 ```
 
-## 🏢 商业版科目表架构
+## 商业版科目表架构
 
 基于 **Decree 500/2002 Coll.** 的标准三层结构：
 
@@ -76,7 +81,7 @@ ERPNext 要求同一树分支中所有节点共享相同的 Root Type。转换�
 - `551 折旧 (Odpisy)` → **Depreciation**
 - `07x/08x 累计折旧 (Oprávky)` → **Accumulated Depreciation**
 
-## 🌍 AI 翻译引擎
+## AI 翻译引擎
 
 支持 **SiliconFlow**、**OpenRouter**、**OpenAI** 和 **Gemini**。在 `.env` 中配置：
 
@@ -87,7 +92,7 @@ PROVIDER=siliconflow
 SILICONFLOW_API_KEY=your_key_here
 ```
 
-## 📋 更新日志
+## 更新日志
 
 ### v2.0 (2026-06)
 
@@ -97,6 +102,6 @@ SILICONFLOW_API_KEY=your_key_here
 - **组节点编号** — 组节点现在也携带科目编号，支持排序
 - **父科目编号** — CSV 现在包含父科目编号字段
 
-## 📄 许可证
+## 许可证
 
 MIT License。详见 [LICENSE](LICENSE)。

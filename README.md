@@ -7,7 +7,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Commercial (Default) | Public Sector |
 |---|---|---|
@@ -17,7 +17,12 @@
 | **File Upload** | Not required | Required |
 | **Translation** | 🌍 AI-powered multilingual (EN/ZH/DE/…) | Same |
 
-## 🚀 Quick Start
+<div align="center">
+  <img src="assets/webui_preview.png" width="850" alt="ERPNext Czech COA Converter Web UI">
+  <p><em>ERPNext Czech Chart of Accounts Converter — Web UI for Decree 500/2002 conversion, AI translation, and ERPNext CSV export</em></p>
+</div>
+
+## Quick Start
 
 ### Option A: CLI (Recommended)
 
@@ -51,7 +56,7 @@ uvicorn web.server:app --host 0.0.0.0 --port 8000
 docker compose up --build
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -70,7 +75,7 @@ docker compose up --build
 └── samples/                       # Example output CSVs
 ```
 
-## 🏢 Commercial COA Architecture
+## Commercial COA Architecture
 
 The **Czech Standard Commercial Chart of Accounts** (Decree 500/2002 Coll.) uses a 3-level hierarchy:
 
@@ -113,7 +118,7 @@ ERPNext requires all nodes in a tree branch to share the same Root Type. The con
 - `5xx` → **Expense Account**
 - `6xx` → **Income Account**
 
-## 🌍 AI Translation
+## AI Translation
 
 Supports **SiliconFlow**, **OpenRouter**, **OpenAI**, and **Gemini** as LLM providers. Configure in `.env`:
 
@@ -124,7 +129,7 @@ PROVIDER=siliconflow
 SILICONFLOW_API_KEY=your_key_here
 ```
 
-## 📋 Changelog
+## Changelog
 
 ### v2.0 (2026-06)
 
@@ -134,6 +139,6 @@ SILICONFLOW_API_KEY=your_key_here
 - **Account Number for groups** — Group nodes now carry their account number for proper sorting
 - **Parent Account Number** — CSV now includes parent account numbers for better referencing
 
-## 📄 License
+## License
 
 MIT License. See [LICENSE](LICENSE).

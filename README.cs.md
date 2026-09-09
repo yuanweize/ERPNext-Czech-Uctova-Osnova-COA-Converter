@@ -7,7 +7,7 @@
 
 ---
 
-## ✨ Funkce
+## Funkce
 
 | Funkce | Komerční režim (výchozí) | Veřejný sektor |
 |---|---|---|
@@ -17,7 +17,12 @@
 | **Nahrání souboru** | Není potřeba | Povinné |
 | **Překlad** | 🌍 AI překlad (EN/ZH/DE/…) | Stejné |
 
-## 🚀 Rychlý start
+<div align="center">
+  <img src="assets/webui_preview.png" width="850" alt="ERPNext Převodník české účtové osnovy Webové rozhraní">
+  <p><em>ERPNext Převodník české účtové osnovy — Webové rozhraní pro vyhlášku 500/2002 Sb., AI překlad a export do ERPNext CSV</em></p>
+</div>
+
+## Rychlý start
 
 ```bash
 # Klonování a instalace
@@ -36,7 +41,7 @@ python erpnext_coa_translator.py
 python erpnext_coa_translator.py --mode public_sector --input public_sector_data/uctosnova.xml --offline
 ```
 
-## 🏢 Architektura komerční účtové osnovy
+## Architektura komerční účtové osnovy
 
 Založená na **vyhlášce 500/2002 Sb.** se standardní tříúrovňovou hierarchií:
 
@@ -76,7 +81,7 @@ ERPNext vyžaduje, aby všechny uzly ve větvi stromu sdílely stejný Root Type
 - `551 Odpisy` → **Depreciation**
 - `07x/08x Oprávky` → **Accumulated Depreciation**
 
-## 🌍 AI Překlad
+## AI Překlad
 
 Podporuje **SiliconFlow**, **OpenRouter**, **OpenAI** a **Gemini**. Nastavení v `.env`:
 
@@ -87,7 +92,7 @@ PROVIDER=siliconflow
 SILICONFLOW_API_KEY=your_key_here
 ```
 
-## 📋 Změny
+## Změny
 
 ### v2.0 (2026-06)
 
@@ -97,6 +102,6 @@ SILICONFLOW_API_KEY=your_key_here
 - **Čísla účtů pro skupiny** — Skupinové uzly nyní nesou číslo účtu
 - **Číslo nadřazeného účtu** — CSV nyní obsahuje čísla nadřazených účtů
 
-## 📄 Licence
+## Licence
 
 MIT License. Viz [LICENSE](LICENSE).
