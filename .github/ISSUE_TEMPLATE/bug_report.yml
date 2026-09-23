@@ -1,0 +1,39 @@
+name: Bug Report
+description: Report a parsing, translation, or export issue in ERPNext Czech COA Converter.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! **Do NOT include proprietary chart of accounts or private accounting balances in your report.**
+  - type: dropdown
+    id: module
+    attributes:
+      label: Processing Stage
+      options:
+        - Czech PDF/CSV Parsing (Vyhláška 500/2002 Sb.)
+        - AI Translation (Claude / OpenAI)
+        - ERPNext Format Conversion
+        - Web UI / File Upload
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Clear description of the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce or sample account code triggering the error.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Traceback / Logs
+      description: Python error logs or traceback.
+      render: shell
