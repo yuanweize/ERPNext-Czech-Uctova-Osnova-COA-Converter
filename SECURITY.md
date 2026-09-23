@@ -21,4 +21,4 @@ If you discover a security vulnerability or credential leak:
 1. **Do NOT open a public issue.**
 2. Report privately via [GitHub Security Advisories](https://github.com/yuanweize/ERPNext-Czech-Uctova-Osnova-COA-Converter/security/advisories/new) or contact `yuanweize@users.noreply.github.com`.
 3. Provide details and reproduction steps.
-4. We will acknowledge receipt within 48 hours.
+4. I aim to acknowledge valid security reports as soon as practical, investigate the root cause, and coordinate a patch.
