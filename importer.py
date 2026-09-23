@@ -148,3 +148,11 @@ def generate_data_from_excel(file_doc, extension, as_dict=False):
 
 	for row in rows:
 		if as_dict:
+			data.append({frappe.scrub(header): row[index] for index, header in enumerate(headers)})
+		else:
+			if not row[1] and len(row) > 1:
+				row[1] = row[0]
+				row[3] = row[2]
+			data.append(row)
+
+	return data
